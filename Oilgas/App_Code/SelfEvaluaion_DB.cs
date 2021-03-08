@@ -85,7 +85,7 @@ left join 天然氣_自評表題目檔 q on (
     else '' end
 ) = q.天然氣自評表題目分類guid and q.天然氣自評表題目狀態='A'
 where lv1.天然氣自評表分類階層='1' and lv1.天然氣自評表分類狀態='A'
-order by CONVERT(int,lv1.天然氣自評表分類排序),CONVERT(int,q.天然氣自評表題目排序)
+order by CONVERT(int,lv1.天然氣自評表分類排序),CONVERT(int,lv2.天然氣自評表分類排序),CONVERT(int,lv3.天然氣自評表分類排序),CONVERT(int,q.天然氣自評表題目排序)
 for xml auto,root('root')
 ) as xmlDoc ");
 		

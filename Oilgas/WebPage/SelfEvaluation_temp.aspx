@@ -12,8 +12,6 @@
 	<link href="../css/jquery.treetable.theme.default.css" rel="stylesheet" />
 	<script type="text/javascript">
 		$(document).ready(function () {
-			$("#example-basic").treetable({ expandable: true });
-
 			$.ajax({
 				type: "POST",
 				async: true, //在沒有返回值之前,不會執行下一步動作
@@ -83,7 +81,6 @@
 									qStr = '';
 								}
 							});
-
 							
 							$("#tablist").treetable({ expandable: true });
 						}
@@ -132,34 +129,6 @@
 			</thead>
 			<tbody></tbody>
 		</table>
-
-		<table id="example-basic">
-        <caption>Basic jQuery treetable Example</caption>
-        <thead>
-          <tr>
-            <th>Tree column</th>
-            <th>Additional data</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-tt-id="1">
-            <td>Node 1: Click on the icon in front of me to expand this branch.</td>
-            <td>I live in the second column.</td>
-          </tr>
-          <tr data-tt-id="1.1" data-tt-parent-id="1">
-            <td>Node 1.1: Look, I am a table row <em>and</em> I am part of a tree!</td>
-            <td>Interesting.</td>
-          </tr>
-          <tr data-tt-id="1.1.1" data-tt-parent-id="1.1">
-            <td>Node 1.1.1: I am part of the tree too!</td>
-            <td>That's it!</td>
-          </tr>
-          <tr data-tt-id="2">
-            <td>Node 2: I am another root node, but without children</td>
-            <td>Hurray!</td>
-          </tr>
-        </tbody>
-      </table>
 	</form>
 </body>
 </html>
