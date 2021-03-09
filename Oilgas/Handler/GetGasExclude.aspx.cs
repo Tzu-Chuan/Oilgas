@@ -4,29 +4,36 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 using System.Xml;
+using System.Data;
 
-public partial class Handler_SelfEvaluation_QuestionList : System.Web.UI.Page
+public partial class Handler_GetGasExclude : System.Web.UI.Page
 {
-	SelfEvaluaion_DB db = new SelfEvaluaion_DB();
+	GasCompanyExclude_DB db = new GasCompanyExclude_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
-		///功    能: 查詢自評表題目
+		///功    能: 查詢自評表業者排除題目
 		///說    明:
 		/// * Request[""]: 
 		///-----------------------------------------------------
 		XmlDocument xDoc = new XmlDocument();
-		//string str = (string.IsNullOrEmpty(Request["str"])) ? "" : Request["str"].ToString().Trim();
 		try
 		{
-			string xmlstr = string.Empty;
-			DataTable dt = db.GetQuestionList();
-			if (dt.Rows.Count > 0)
-				xDoc.LoadXml(dt.Rows[0]["xmlDoc"].ToString());
-			else
-				throw new Exception("查無資料!");
+			if (LogInfo.competence == "01")
+			{
+
+			}
+			else if (LogInfo.competence == "02")
+			{
+				db._年份 = "110";
+				db._業者guid = LogInfo.companyGuid;
+				DataTable dt = db.GetList();
+				string xmlstr = string.Empty;
+				xmlstr = DataTableToXml.ConvertDatatableToXML(dt, "dataList", "data_item");
+				xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>" + xmlstr + "</root>";
+				xDoc.LoadXml(xmlstr);
+			}
 		}
 		catch (Exception ex)
 		{

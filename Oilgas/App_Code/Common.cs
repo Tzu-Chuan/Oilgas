@@ -309,11 +309,12 @@ public class Account
 			LogInfo.email = dt.Rows[0]["mail"].ToString();
 			LogInfo.orgcd = dt.Rows[0]["單位"].ToString();
 			LogInfo.orgname = dt.Rows[0]["單位名稱"].ToString();
-			LogInfo.competence = dt.Rows[0]["角色"].ToString();
+			LogInfo.competence = dt.Rows[0]["帳號類別"].ToString();
+			LogInfo.user = dt.Rows[0]["網站類別"].ToString();
 		}
         else
         {
-			throw new ApplicationException("無效的帳號或密碼"); ;
+			throw new ApplicationException("無效的帳號或密碼");
         }
     }
 }

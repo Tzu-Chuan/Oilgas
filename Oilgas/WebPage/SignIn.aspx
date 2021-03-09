@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>石油與天然氣登入</title>
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
@@ -34,7 +34,7 @@
 						if ($(data).find("Error").length > 0)
 							$("#errMsg").html($(data).find("Error").attr("Message"));
 						else {
-							location.href = "Entrance.aspx";
+							location.href = "Entrance_temp.aspx";
 						}
 					}
 				});
@@ -47,7 +47,7 @@
 	</script>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1">
         <div>
 			<table align="center">
 				<tr>

@@ -12,10 +12,7 @@ using System.Configuration;
 public class CodeTable_DB
 {
     string KeyWord = string.Empty;
-    public string _KeyWord
-    {
-        set { KeyWord = value; }
-    }
+    public string _KeyWord { set { KeyWord = value; } }
     #region 私用
     string C_ID = string.Empty;
     string C_Group_cn = string.Empty;

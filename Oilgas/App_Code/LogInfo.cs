@@ -233,6 +233,22 @@ public class LogInfo
 			HttpContext.Current.Session["competence"] = value;
 		}
 	}
+
+	/// <summary>
+	/// 業者類別。
+	/// </summary>
+	public static string user
+	{
+		get
+		{
+			return (HttpContext.Current.Session["user"] != null) ?
+				 (!string.IsNullOrEmpty(HttpContext.Current.Session["user"].ToString())) ? HttpContext.Current.Session["user"].ToString() : "" : "";
+		}
+		set
+		{
+			HttpContext.Current.Session["user"] = value;
+		}
+	}
 }
 #endregion
 
