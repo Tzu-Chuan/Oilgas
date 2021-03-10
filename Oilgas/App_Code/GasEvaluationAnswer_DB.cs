@@ -48,20 +48,16 @@ public class GasEvaluationAnswer_DB
 		StringBuilder sb = new StringBuilder();
 		sb.Append(@"
 declare @datacount int
-select @datacount=count(*) from 天然氣_自評表答案 where 業者guid=@業者guid and 題目guid=@題目guid and 資料狀態='A'
+select @datacount=count(*) from 天然氣_自評表答案 where 業者guid=@業者guid and 題目guid=@題目guid and 資料狀態='A' and 填寫人員類別=@填寫人員類別 and 年度=@年度
 
 if @datacount>0
 	begin
 		update 天然氣_自評表答案 set
-		業者guid=@業者guid,
-		題目guid=@題目guid,
-		年度=@年度,
 		答案=@答案,
 		委員意見=@委員意見,
-		填寫人員類別=@填寫人員類別,
 		修改日期=@修改日期,
 		修改者=@修改者
-		where 業者guid=@業者guid and 題目guid=@題目guid
+		where 業者guid=@業者guid and 題目guid=@題目guid and 填寫人員類別=@填寫人員類別 and 年度=@年度
 	end
 else
 	begin
@@ -104,5 +100,25 @@ else
 
 		oCmd.Transaction = oTran;
 		oCmd.ExecuteNonQuery();
+	}
+
+	public DataTable GetCompanyAns()
+	{
+		SqlCommand oCmd = new SqlCommand();
+		oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
+		StringBuilder sb = new StringBuilder();
+
+		sb.Append(@"select 題目guid,答案,委員意見,填寫人員類別 from 天然氣_自評表答案 where 資料狀態='A' and 業者guid=@業者guid and 年度=@年度 ");
+
+		oCmd.CommandText = sb.ToString();
+		oCmd.CommandType = CommandType.Text;
+		SqlDataAdapter oda = new SqlDataAdapter(oCmd);
+		DataTable ds = new DataTable();
+
+		oCmd.Parameters.AddWithValue("@業者guid", 業者guid);
+		oCmd.Parameters.AddWithValue("@年度", 年度);
+
+		oda.Fill(ds);
+		return ds;
 	}
 }

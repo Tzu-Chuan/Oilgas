@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SelfEvaluation_temp.aspx.cs" Inherits="WebPage_SelfEvaluation_temp" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GasSelfEvaluation_temp.aspx.cs" Inherits="WebPage_GasSelfEvaluation_temp" %>
 
 <!DOCTYPE html>
 
@@ -7,6 +7,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>自評表</title>
 	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="../js/NickCommon.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui.1.12.1.js"></script>
 	<script type="text/javascript" src="../js/jquery.treetable.js"></script>
 	<link href="../css/jquery.treetable.css" rel="stylesheet" />
@@ -15,7 +16,18 @@
 	<script type="text/javascript">
 		$(document).ready(function () {
 			GetList();
-			hideQuestion();
+			if ($("#Competence").val() == "01")
+				$(".cRadio").prop("disabled", true);
+			// 業者隱藏題目
+			else if ($("#Competence").val() == "02") {
+				hideQuestion();
+				$(".mRadio").prop("disabled", true);
+			}
+			
+			// Get Answer
+			GetAns();
+
+			//$(".mRadio[value='01']").prop("checked", true);
 
 			// 送出自評表
 			$(document).on("click", "#subbtn", function () {
@@ -26,11 +38,11 @@
 				var data = new FormData(form);
 
 				// If you want to add an extra field for the FormData
-				//data.append("mode", mode);
+				data.append("cpid", $.getQueryString("cp"));
 
 				$.ajax({
 					type: "POST",
-					async: false, //在沒有返回值之前,不會執行下一步動作
+					async: true, //在沒有返回值之前,不會執行下一步動作
 					url: "../Handler/GasSaveSelfEvaluation.aspx",
 					data: data,
 					processData: false,
@@ -39,6 +51,14 @@
 					error: function (xhr) {
 						$("#errMsg").html("Error: " + xhr.status);
 						console.log(xhr.responseText);
+					},
+					beforeSend: function () {
+						$("#subbtn").val("資料儲存中...");
+						$("#subbtn").prop("disabled", true);
+					},
+					complete: function () {
+						$("#subbtn").val("儲存");
+						$("#subbtn").prop("disabled", false);
 					},
 					success: function (data) {
 						if ($(data).find("Error").length > 0) {
@@ -68,30 +88,29 @@
 
 			// 儲存備註
 			$(document).on("click", "#ps_savebtn", function () {
-				$($("#ps_" + $("#qGuid").val())).val($("#psStr").val());
 				var simpleStr = $("#psStr").val();
 				simpleStr = (simpleStr.length > 15) ? simpleStr.substr(0, 15) + "..." : simpleStr;
 				$($("#sp_" + $("#qGuid").val())).html(simpleStr);
+				$($("#ps_" + $("#qGuid").val())).val($("#psStr").val());
 				$('#psDialog').dialog('close');
 			});
-		});// end js
+		}); // end js
 
 		function GetList() {
 			$.ajax({
 				type: "POST",
-				async: true, //在沒有返回值之前,不會執行下一步動作
+				async: false, //在沒有返回值之前,不會執行下一步動作
 				url: "../Handler/GetSelfEvaluation_QuestionList.aspx",
-				error: function (xhr) {
-					alert("Error: " + xhr.status);
-					console.log(xhr.responseText);
+				data: {
+					year: $("#year").val()
 				},
-				complete: function () {
-					$("#loading").hide();
-					$(".ShowCss").show();
+				error: function (xhr) {
+					$("#errMsg").html("Error: " + xhr.status);
+					console.log(xhr.responseText);
 				},
 				success: function (data) {
 					if ($(data).find("Error").length > 0)
-						alert($(data).find("Error").attr("Message"));
+						$("#errMsg").html($(data).find("Error").attr("Message"));
 					else {
 						$("#divlist").empty();
 						if ($(data).find("lv1").length > 0) {
@@ -140,23 +159,19 @@
 								qStr += '<tr guid="' + $(this).attr("qGuid") + '"  data-tt-id="' + $(this).attr("lvGuid") + '" data-tt-parent-id="' + $(this).attr("pGuid") + '">';
 								qStr += '<td>' + $(this).attr("qTitle") + '</td>';
 								qStr += '<td>';
-								if ($("#Competence").val() == "02") {
-									qStr += '<input type="radio" name="cg_' + $(this).attr("qGuid") + '" value="01" />符合';
-									qStr += '<input type="radio" name="cg_' + $(this).attr("qGuid") + '" value="02" />不符合';
-									qStr += '<input type="radio" name="cg_' + $(this).attr("qGuid") + '" value="03" />不適用';
-								}
+								qStr += '<input type="radio" name="cg_' + $(this).attr("qGuid") + '" value="01" class="cRadio"  />符合';
+								qStr += '<input type="radio" name="cg_' + $(this).attr("qGuid") + '" value="02" class="cRadio" />不符合';
+								qStr += '<input type="radio" name="cg_' + $(this).attr("qGuid") + '" value="03" class="cRadio" />不適用';
 								qStr += '</td>';
 								qStr += '<td>';
-								if ($("#Competence").val() == "01") {
-									qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="01" class="psCtrl" />符合';
-									qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="02" class="psCtrl" />不符合';
-									qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="03" class="psCtrl" />不適用';
-								}
+								qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="01" class="psCtrl mRadio" />符合';
+								qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="02" class="psCtrl mRadio" />不符合';
+								qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="03" class="psCtrl mRadio" />不適用';
 								qStr += '</td>';
 								qStr += '<td>';
 								qStr += '<span id="sp_' + $(this).attr("qGuid") + '"></span>';
 								qStr += '<input type="button" qid="' + $(this).attr("qGuid") + '" value="編輯" name="psbtn" style="display:none;" />';
-								qStr += '<input type="hidden" id="ps_' + $(this).attr("qGuid") + '" />';
+								qStr += '<input type="hidden" id="ps_' + $(this).attr("qGuid") + '" name="ps_' + $(this).attr("qGuid") + '" />';
 								qStr += '</td>';
 								qStr += '</tr>';
 
@@ -168,7 +183,8 @@
 							});
 
 							$("#tablist").treetable({
-								expandable: false // 展開or收合
+								expandable: false, // 展開or收合
+								column: 0
 							});
 						}
 					}
@@ -205,19 +221,15 @@
 		function hideQuestion() {
 			$.ajax({
 				type: "POST",
-				async: true, //在沒有返回值之前,不會執行下一步動作
+				async: false, //在沒有返回值之前,不會執行下一步動作
 				url: "../Handler/GetGasExclude.aspx",
 				error: function (xhr) {
-					alert("Error: " + xhr.status);
+					$("#errMsg").html("Error: " + xhr.status);
 					console.log(xhr.responseText);
-				},
-				complete: function () {
-					$("#loading").hide();
-					$(".ShowCss").show();
 				},
 				success: function (data) {
 					if ($(data).find("Error").length > 0)
-						alert($(data).find("Error").attr("Message"));
+						$("#errMsg").html($(data).find("Error").attr("Message"));
 					else {
 						if ($(data).find("data_item").length > 0) {
 							$(data).find("data_item").each(function () {
@@ -227,6 +239,44 @@
 									$("#tablist tbody").find("tr[guid='" + $(this).children("排除分類guid").text().trim() + "']").hide();
 									$("#tablist tbody").find("tr[data-tt-parent-id='" + $(this).children("排除分類guid").text().trim() + "']").hide();
 								}
+							});
+						}
+					}
+				}
+			});
+		}
+
+		function GetAns() {
+			$.ajax({
+				type: "POST",
+				async: false, //在沒有返回值之前,不會執行下一步動作
+				url: "../Handler/GetGasAnswer.aspx",
+				data: {
+					cpid: $.getQueryString("cp"),
+					year: $("#year").val()
+				},
+				error: function (xhr) {
+					$("#errMsg").html("Error: " + xhr.status);
+					console.log(xhr.responseText);
+				},
+				complete: function () {
+					$("#loading").hide();
+					$(".ShowCss").show();
+				},
+				success: function (data) {
+					if ($(data).find("Error").length > 0)
+						$("#errMsg").html($(data).find("Error").attr("Message"));
+					else {
+						if ($(data).find("data_item").length > 0) {
+							$(data).find("data_item[填寫人員類別='01']").each(function () {
+								$("input[name='mg_" + $(this).attr("題目guid") + "'][value='" + $(this).attr("答案") + "']").prop("checked", true);
+								$("input[name='ps_" + $(this).attr("題目guid") + "']").val($(this).attr("委員意見"));
+								$("#sp_" + $(this).attr("題目guid")).html($(this).attr("委員意見"));
+								if ($(this).attr("答案") != "01" && $("#Competence").val() != "02")
+									$("input[name='psbtn'][qid='" + $(this).attr("題目guid") + "']").show();
+							});
+							$(data).find("data_item[填寫人員類別='02']").each(function () {
+								$("input[name='cg_" + $(this).attr("題目guid") + "'][value='" + $(this).attr("答案") + "']").prop("checked", true);
 							});
 						}
 					}
@@ -255,6 +305,11 @@
 <body>
 	<input type="hidden" id="Competence" value="<%= identity %>" />
 	<form id="form1">
+		<div style="margin-bottom:20px;">年度: 
+			<select id="year">
+				<option value="110">110</option>
+			</select>
+		</div>
 		<div id="loading">資料讀取中...</div>
 		<%--<div id="divlist" style="display:none;"></div>--%>
 		<table id="tablist" width="100%"  class="ShowCss" style="display:none;">
@@ -269,7 +324,7 @@
 			<tbody></tbody>
 		</table>
 		<div id="errMsg" style="color:red;"></div>
-		<input type="button" id="subbtn" value="送出" class="ShowCss" style="display:none;" />
+		<input type="button" id="subbtn" value="儲存" class="ShowCss" style="display:none;" />
 		<!--dialog-->
 		<input type="hidden" id="qGuid" />
 		<div id="psDialog" style="display:none;">

@@ -15,12 +15,14 @@ public partial class Handler_GetGasInfo : System.Web.UI.Page
 		///-----------------------------------------------------
 		///功    能: 查詢天然氣業者基本資料
 		///說    明:
-		/// * Request[""]: 
+		/// * Request["cpid"]: 業者Guid 
 		///-----------------------------------------------------
 		XmlDocument xDoc = new XmlDocument();
 		try
 		{
-			db._guid = LogInfo.companyGuid;
+			string cpid = (string.IsNullOrEmpty(Request["cpid"])) ? LogInfo.companyGuid : Request["cpid"].ToString().Trim();
+
+			db._guid = cpid;
 			DataTable dt = db.GetInfo();
 			string xmlstr = string.Empty;
 			xmlstr = DataTableToXml.ConvertDatatableToXML(dt, "dataList", "data_item");

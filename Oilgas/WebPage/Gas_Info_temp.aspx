@@ -6,11 +6,19 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="../js/NickCommon.js"></script>
 	<title>天然氣基本資料</title>
 
 	<script type="text/javascript">
 		$(document).ready(function () {
-			GetInfo()
+			GetInfo();
+
+			$(document).on("click", "#EvalBtn", function () {
+				if ($("#Competence").val() == "01")
+					location.href = "GasSelfEvaluation_temp.aspx?cp=" + $.getQueryString("cp");
+				else
+					location.href = "GasSelfEvaluation_temp.aspx";
+			});
 		});
 
 		function GetInfo() {
@@ -18,6 +26,9 @@
 				type: "POST",
 				async: true, //在沒有返回值之前,不會執行下一步動作
 				url: "../Handler/GetGasInfo.aspx",
+				data: {
+					cpid: $.getQueryString("cp")
+				},
 				error: function (xhr) {
 					alert("Error: " + xhr.status);
 					console.log(xhr.responseText);
@@ -39,10 +50,11 @@
 </head>
 <body>
 	<form id="form1">
+		<input type="hidden" id="Competence" value="<%= identity %>" />
 		<div style="margin-bottom:20px;">
 			<div>事業名稱: <span id="name"></span></div>
 		</div>
-		<div><a href="SelfEvaluation_temp.aspx">自評表</a></div>
+		<div><input id="EvalBtn" type="button" value="自評表" /></div>
 	</form>
 </body>
 </html>

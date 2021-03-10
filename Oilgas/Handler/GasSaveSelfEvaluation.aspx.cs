@@ -19,7 +19,7 @@ public partial class Handler_GasSaveSelfEvaluation : System.Web.UI.Page
 		///-----------------------------------------------------
 		///功    能: 儲存自評表答案
 		///說    明:
-		/// * Request[""]: 
+		/// * Request["cpid"]: 業者Guid
 		///-----------------------------------------------------
 
 		XmlDocument xDoc = new XmlDocument();
@@ -40,6 +40,8 @@ public partial class Handler_GasSaveSelfEvaluation : System.Web.UI.Page
 			}
 			#endregion
 
+			string cpid = (string.IsNullOrEmpty(Request["cpid"])) ? LogInfo.companyGuid : Request["cpid"].ToString().Trim();
+
 			DataTable qdt = q_db.GetQuestionGuid();
 			if (qdt.Rows.Count > 0)
 			{
@@ -48,16 +50,16 @@ public partial class Handler_GasSaveSelfEvaluation : System.Web.UI.Page
 					string cAns = (string.IsNullOrEmpty(Request["cg_" + qdt.Rows[i]["天然氣自評表題目guid"].ToString()])) ? "" : Request["cg_" + qdt.Rows[i]["天然氣自評表題目guid"].ToString()].ToString().Trim();
 					string mAns = (string.IsNullOrEmpty(Request["mg_" + qdt.Rows[i]["天然氣自評表題目guid"].ToString()])) ? "" : Request["mg_" + qdt.Rows[i]["天然氣自評表題目guid"].ToString()].ToString().Trim();
 					string PsStr = (string.IsNullOrEmpty(Request["ps_" + qdt.Rows[i]["天然氣自評表題目guid"].ToString()])) ? "" : Request["ps_" + qdt.Rows[i]["天然氣自評表題目guid"].ToString()].ToString().Trim();
-
+					
 					if (LogInfo.competence == "01") // 委員
 					{
-						ans_db._業者guid = "";
+						ans_db._業者guid = cpid;
 						ans_db._答案 = mAns;
 						ans_db._委員意見 = PsStr;
 					}
 					else // 業者
 					{
-						ans_db._業者guid = LogInfo.mGuid;
+						ans_db._業者guid = cpid;
 						ans_db._答案 = cAns;
 						ans_db._委員意見 = "";
 					}

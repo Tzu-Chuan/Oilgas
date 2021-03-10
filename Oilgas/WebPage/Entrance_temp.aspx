@@ -28,7 +28,7 @@
 			登入者名稱:<%= name %>
 		</div>
 		<div id="dvOil"><a href="Oil_Info_temp.aspx">石油入口</a></div>
-		<div id="dvGas"><a href="Gas_Info_temp.aspx">天然氣入口</a></div>
+		<div id="dvGas"><a href="GasCompanyList_temp.aspx">天然氣入口</a></div>
 	</form>
 </body>
 </html>

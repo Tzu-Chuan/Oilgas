@@ -7,27 +7,30 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Xml;
 
-public partial class Handler_GetSelfEvaluation_QuestionList : System.Web.UI.Page
+public partial class Handler_GetGasAnswer : System.Web.UI.Page
 {
-	GasSelfEvaluaion_DB db = new GasSelfEvaluaion_DB();
+	GasEvaluationAnswer_DB db = new GasEvaluationAnswer_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
-		///功    能: 查詢自評表題目
+		///功    能: 查詢自評表答案
 		///說    明:
-		/// * Request["year"]: 年度
+		/// * Request["cpid"]: 業者Guid 
+		/// * Request["year"]: 年度 
 		///-----------------------------------------------------
 		XmlDocument xDoc = new XmlDocument();
 		try
 		{
+			string cpid = (string.IsNullOrEmpty(Request["cpid"])) ? LogInfo.companyGuid : Request["cpid"].ToString().Trim();
 			string year = (string.IsNullOrEmpty(Request["year"])) ? "" : Request["year"].ToString().Trim();
 
+			db._業者guid = cpid;
+			db._年度 = year;
+			DataTable dt = db.GetCompanyAns();
 			string xmlstr = string.Empty;
-			DataTable dt = db.GetQuestionList(year);
-			if (dt.Rows.Count > 0)
-				xDoc.LoadXml(dt.Rows[0]["xmlDoc"].ToString());
-			else
-				throw new Exception("查無資料!");
+			xmlstr = DataTableToXml.ConvertDatatableToXmlByAttribute(dt, "dataList", "data_item");
+			xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>" + xmlstr + "</root>";
+			xDoc.LoadXml(xmlstr);
 		}
 		catch (Exception ex)
 		{
