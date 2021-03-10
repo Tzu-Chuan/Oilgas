@@ -15,6 +15,7 @@
 	<link href="../css/jquery-ui.css" rel="stylesheet" />
 	<script type="text/javascript">
 		$(document).ready(function () {
+			ddlYear();
 			GetList();
 			if ($("#Competence").val() == "01")
 				$(".cRadio").prop("disabled", true);
@@ -284,6 +285,32 @@
 			});
 		}
 
+		function ddlYear() {
+			$.ajax({
+				type: "POST",
+				async: false, //在沒有返回值之前,不會執行下一步動作
+				url: "../Handler/GetQuestionYear.aspx",
+				error: function (xhr) {
+					$("#errMsg").html("Error: " + xhr.status);
+					console.log(xhr.responseText);
+				},
+				success: function (data) {
+					if ($(data).find("Error").length > 0)
+						$("#errMsg").html($(data).find("Error").attr("Message"));
+					else {
+						$("#year").empty();
+						var ddlstr = '';
+						if ($(data).find("data_item").length > 0) {
+							$(data).find("data_item").each(function () {
+								ddlstr += '<option value="' + $(this).children("天然氣自評表題目年份").text().trim() + '">' + $(this).children("天然氣自評表題目年份").text().trim() + '</option>';
+							});
+						}
+						$("#year").append(ddlstr);
+					}
+				}
+			});
+		}
+
 		function doOpenDialog() {
 			$("#psDialog").dialog({
 				title: "備註",
@@ -306,9 +333,7 @@
 	<input type="hidden" id="Competence" value="<%= identity %>" />
 	<form id="form1">
 		<div style="margin-bottom:20px;">年度: 
-			<select id="year">
-				<option value="110">110</option>
-			</select>
+			<select id="year"></select>
 		</div>
 		<div id="loading">資料讀取中...</div>
 		<%--<div id="divlist" style="display:none;"></div>--%>

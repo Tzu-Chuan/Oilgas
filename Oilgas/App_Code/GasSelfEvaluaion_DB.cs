@@ -117,4 +117,25 @@ for xml auto,root('root')
 		oda.Fill(ds);
 		return ds;
 	}
+
+	public DataTable GetYear()
+	{
+		SqlCommand oCmd = new SqlCommand();
+		oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
+		StringBuilder sb = new StringBuilder();
+
+		sb.Append(@"select 天然氣自評表題目年份 from 天然氣_自評表題目檔 
+group by 天然氣自評表題目年份
+order by 天然氣自評表題目年份 desc ");
+
+		oCmd.CommandText = sb.ToString();
+		oCmd.CommandType = CommandType.Text;
+		SqlDataAdapter oda = new SqlDataAdapter(oCmd);
+		DataTable ds = new DataTable();
+
+		//oCmd.Parameters.AddWithValue("@A", A);
+
+		oda.Fill(ds);
+		return ds;
+	}
 }

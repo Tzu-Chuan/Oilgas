@@ -7,27 +7,24 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Xml;
 
-public partial class Handler_GetSelfEvaluation_QuestionList : System.Web.UI.Page
+public partial class Handler_GetQuestionYear : System.Web.UI.Page
 {
 	GasSelfEvaluaion_DB db = new GasSelfEvaluaion_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
-		///功    能: 查詢自評表題目
+		///功    能: 查詢題目年度列表
 		///說    明:
-		/// * Request["year"]: 年度
+		/// * Request[""]:  
 		///-----------------------------------------------------
 		XmlDocument xDoc = new XmlDocument();
 		try
 		{
-			string year = (string.IsNullOrEmpty(Request["year"])) ? "" : Request["year"].ToString().Trim();
-
+			DataTable dt = db.GetYear();
 			string xmlstr = string.Empty;
-			DataTable dt = db.GetQuestionList(year);
-			if (dt.Rows[0]["xmlDoc"].ToString().Trim() != "")
-				xDoc.LoadXml(dt.Rows[0]["xmlDoc"].ToString());
-			else
-				throw new Exception("查無資料!");
+			xmlstr = DataTableToXml.ConvertDatatableToXML(dt, "dataList", "data_item");
+			xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>" + xmlstr + "</root>";
+			xDoc.LoadXml(xmlstr);
 		}
 		catch (Exception ex)
 		{
