@@ -23,7 +23,7 @@ public partial class Handler_GetSelfEvaluation_QuestionList : System.Web.UI.Page
 			string year = (string.IsNullOrEmpty(Request["year"])) ? "" : Request["year"].ToString().Trim();
 
 			string xmlstr = string.Empty;
-			DataTable dt = db.GetQuestionList(year);
+			DataTable dt = db.GetQuestionList("110");
 			if (dt.Rows[0]["xmlDoc"].ToString().Trim() != "")
 				xDoc.LoadXml(dt.Rows[0]["xmlDoc"].ToString());
 			else

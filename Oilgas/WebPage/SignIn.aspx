@@ -2,11 +2,25 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>石油與天然氣登入</title>
-<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="keywords" content="關鍵字內容" />
+	<meta name="description" content="描述" /><!--告訴搜尋引擎這篇網頁的內容或摘要。-->
+	<meta name="generator" content="Notepad" /><!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。-->
+	<meta name="author" content="工研院 資科中心" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
+	<meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... -->
+	<meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
+	<title>天然氣事業輸儲設備查核及檢測資訊系統</title>
+	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+	<link  href="../css/bootstrap.css" rel="stylesheet" />
+	<!-- normalize & bootstrap's grid system -->
+	<link href="../css/OchiColor.css" rel="stylesheet" type="text/css" />
+	<link href="../css/OchiLayout.css" rel="stylesheet" type="text/css" />
+	<link href="../css/OchiRWD.css" rel="stylesheet" type="text/css" />
+	<!-- ochsion layout RWD -->
+	<link href="../css/login.css" rel="stylesheet" type="text/css" />
 
 	<script type="text/javascript">
 		$(document).ready(function () {
@@ -34,7 +48,7 @@
 						if ($(data).find("Error").length > 0)
 							$("#errMsg").html($(data).find("Error").attr("Message"));
 						else {
-							location.href = "Entrance_temp.aspx";
+							location.href = "Entrance.aspx";
 						}
 					}
 				});
@@ -47,26 +61,42 @@
 	</script>
 </head>
 <body>
-    <form id="form1">
-        <div>
-			<table align="center">
-				<tr>
-					<td align="right">帳號：</td>
-					<td colspan="2"><input type="text" id="acStr" style="width:99%" /></td>
-				</tr>
-				<tr>
-					<td align="right">密碼：</td>
-					<td colspan="2"><input type="password" id="pStr" style="width:99%" /></td>
-				</tr>
-				<tr>
-					<td align="right">驗証碼：</td>
-					<td><input type="text" id="codeStr" maxlength="4" />&nbsp;&nbsp;<a href="javascript:void(0);" onclick="changeCode()"><img src="../images/refresh.png" alt="變更驗證碼" height="20" /></a></td>
-					<td><img src="../handler/ValidationCode.aspx" alt="驗證碼" id="imgCode" height="30" /></td>
-				</tr>
-			</table>
-        </div>
-		<div id="errMsg" style="color:red; text-align:center; "></div>
-		<div style="text-align:center;"><input id="lgbtn" type="button" value="登入" /></div>
-    </form>
+	<form id="form1">
+		<div class="loginwrapper padding10RL">
+			<div class="loginblock">
+				<div class="loginheader textcenter">
+					<img src="<%= ResolveUrl("~/images/boe-logo.png") %>" class="imgcenter">
+					<div class="font-size6 font-shadowA font-bold">石油與天然氣輸儲設備查核及檢測雲端平台</div>
+				</div>
+
+				<div class="padding10ALL">
+					<div class="OchiFixTable width100 TitleLength03 font-size3 margin10T">
+						<div class="OchiRow">
+							<div class="OchiCell OchiTitle TitleSetWidth font-size3">帳號</div>
+							<div class="OchiCell width100"><input type="text" id="acStr" class="width99 inputex" /></div>
+						</div>
+						<!-- OchiRow -->
+						<div class="OchiRow">
+							<div class="OchiCell OchiTitle TitleSetWidth font-size3">密碼</div>
+							<div class="OchiCell width100"><input type="password" id="pStr" class="width99 inputex" /></div>
+						</div>
+						<!-- OchiRow -->
+						<div class="OchiRow">
+							<div class="OchiCell OchiTitle TitleSetWidth font-size3">驗證碼</div>
+							<div class="OchiCell width100">
+								<input type="text" id="codeStr" class="inputex" size="6" />
+								<img src="../handler/ValidationCode.aspx" alt="驗證碼" id="imgCode" height="25" />
+								<a href="javascript:void(0);" onclick="changeCode()"><img src="<%= ResolveUrl("~/images/refresh.png") %>" alt="變更驗證碼" height="20" /></a>
+							</div>
+						</div><!-- OchiRow -->
+					</div><!-- OchiFixTable -->
+				</div>
+				<div id="errMsg" style="color: red; text-align: center;"></div>
+				<div class="margin20T textcenter"><a id="lgbtn" href="javascript:void(0);" class="fullbtn loginbtn">登入</a></div>
+			</div>
+		</div>
+	</form>
+	<script type="text/javascript" src="js/GenCommon.js"></script>
+	<!-- UIcolor JS -->
 </body>
 </html>
