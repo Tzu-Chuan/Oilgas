@@ -1,21 +1,21 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GasSelfEvaluation.aspx.cs" Inherits="WebPage_GasSelfEvaluation" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="OilSelfEvaluation.aspx.cs" Inherits="WebPage_OilSelfEvaluation" %>
 
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="keywords" content="關鍵字內容" />
-		<meta name="description" content="描述" /><!--告訴搜尋引擎這篇網頁的內容或摘要。--> 
-		<meta name="generator" content="Notepad" /><!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。--> 
-		<meta name="author" content="工研院 資訊處" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
-		<meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... --> 
-		<meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
-		<title>天然氣事業輸儲設備查核及檢測資訊系統</title>
-		<!--#include file="Head_Include.html"-->
-		<script type="text/javascript">
+<head runat="server">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="keywords" content="關鍵字內容" />
+	<meta name="description" content="描述" /><!--告訴搜尋引擎這篇網頁的內容或摘要。--> 
+	<meta name="generator" content="Notepad" /><!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。--> 
+	<meta name="author" content="工研院 資訊處" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
+	<meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... --> 
+	<meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
+	<title>天然氣事業輸儲設備查核及檢測資訊系統</title>
+	<!--#include file="Head_Include.html"-->
+	<script type="text/javascript">
 			$(document).ready(function () {
 				GetList();
 
@@ -30,7 +30,7 @@
 				// Get Answer
 				GetAns();
 
-				//$(".cRadio[value='01']").prop("checked", true);
+				//$(".mRadio[value='01']").prop("checked", true);
 
 				// 全部展開
 				$(document).on("click", "#btnallopen", function () {
@@ -58,7 +58,7 @@
 					$.ajax({
 						type: "POST",
 						async: true, //在沒有返回值之前,不會執行下一步動作
-						url: "../Handler/GasSaveSelfEvaluation.aspx",
+						url: "../Handler/OilSaveSelfEvaluation.aspx",
 						data: data,
 						processData: false,
 						contentType: false,
@@ -122,7 +122,7 @@
 					async: false, //在沒有返回值之前,不會執行下一步動作
 					url: "../Handler/GetSelfEvaluation_QuestionList.aspx",
 					data: {
-						category: "gas",
+						category: "oil",
 						year: "110"
 					},
 					error: function (xhr) {
@@ -228,7 +228,7 @@
 				$.ajax({
 					type: "POST",
 					async: false, //在沒有返回值之前,不會執行下一步動作
-					url: "../Handler/GetGasExclude.aspx",
+					url: "../Handler/GetOilExclude.aspx",
 					error: function (xhr) {
 						$("#errMsg").html("Error: " + xhr.status);
 						console.log(xhr.responseText);
@@ -256,7 +256,7 @@
 				$.ajax({
 					type: "POST",
 					async: false, //在沒有返回值之前,不會執行下一步動作
-					url: "../Handler/GetGasAnswer.aspx",
+					url: "../Handler/GetOilAnswer.aspx",
 					data: {
 						cpid: $.getQueryString("cp"),
 						year: "110"
@@ -296,8 +296,8 @@
 				$.colorbox({ inline: true, href: "#checklistedit", width: "100%", maxWidth: "800", maxHeight: ColHeight, opacity: 0.5 });
 			}
 		</script>
-	</head>
-	<body class="bgG">
+</head>
+<body class="bgG">
 	<!-- 開頭用div:修正mmenu form bug -->
 	<div>
 	<input type="hidden" id="Competence" value="<%= identity %>" />
@@ -321,7 +321,7 @@
 
 		<div class="container BoxBgWa BoxShadowD">
 			<div class="WrapperBody" id="WrapperBody">
-				<!--#include file="GasHeader.html"-->
+				<!--#include file="OilHeader.html"-->
 
 				<div id="ContentWrapper">
 					<div class="container margin15T">
@@ -330,9 +330,9 @@
 								<span class="filetitle font-size7"><%= companyName %></span>
 								<span class="btnright">
 									<div class="font-size4 font-normal">
-										<i class="fa fa-file-word-o IconCc" aria-hidden="true"></i><a href="../doc/附件3、110年天然氣生產進口事業查核填寫內容.docx" target="_blank">查核填寫內容下載</a> 
-										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/查核配合事項(天然氣).pptx" target="_blank">查核配合事項下載</a> 
-										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/附件4、110年天然氣生產、進口事業輸儲設備查核簡報大綱.pptx" target="_blank">簡報大綱下載</a>
+										<i class="fa fa-file-word-o IconCc" aria-hidden="true"></i><a href="../doc/附件3、110年度石油業者石油管線及儲油設施查核.docx" target="_blank">查核填寫內容下載</a> 
+										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/查核配合事項_石油.pptx" target="_blank">查核配合事項下載</a> 
+										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/附件4、110年度石油業者簡報內容格式_管線及儲槽.pptx" target="_blank">簡報大綱下載</a>
 									</div>
 								</span>
 							</div>
@@ -343,11 +343,11 @@
 								</div>
 							</div>
 							
-							<div class="stripetreeG margin10T">
+							<div class="stripetreeB margin10T">
 								<table id="tablist" width="100%" border="0" cellspacing="0" cellpadding="0">
 									<thead>
 										<tr>
-											<th nowrap="nowrap">110年天然氣生產及進口事業輸儲設備查核項目</th>
+											<th nowrap="nowrap">110年石油管線及儲油設施查核項目</th>
 											<th nowrap="nowrap" width="200">業者</th>
 											<th nowrap="nowrap" width="200">委員</th>
 											<th nowrap="nowrap">參考文件/現場位置</th>
@@ -420,7 +420,6 @@
 		<script type="text/javascript" src="../js/GenCommon.js"></script><!-- UIcolor JS -->
 		<script type="text/javascript" src="../js/PageCommon.js"></script><!-- 系統共用 JS -->
 		<script type="text/javascript" src="../js/MenuGas.js"></script><!-- 系統共用 JS -->
-		<script type="text/javascript" src="../js/SubMenuGasA.js"></script><!-- 內頁選單 -->
 		<script type="text/javascript" src="../js/autoHeight.js"></script><!-- 高度不足頁面的絕對置底footer -->
 	</body>
 </html>

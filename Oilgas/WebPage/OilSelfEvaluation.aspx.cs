@@ -6,10 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 
-public partial class WebPage_GasSelfEvaluation : System.Web.UI.Page
+public partial class WebPage_OilSelfEvaluation : System.Web.UI.Page
 {
 	public string username, identity, companyName;
-	GasCompanyInfo_DB gasInfo_db = new GasCompanyInfo_DB();
+	OilCompanyInfo_DB oilInfo_db = new OilCompanyInfo_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		if (LogInfo.mGuid == "")
@@ -41,11 +41,12 @@ public partial class WebPage_GasSelfEvaluation : System.Web.UI.Page
 						break;
 				}
 			}
-			gasInfo_db._guid = cpid;
-			DataTable dt = gasInfo_db.GetInfo();
+
+			oilInfo_db._guid = cpid;
+			DataTable dt = oilInfo_db.GetInfo();
 			if (dt.Rows.Count > 0)
 			{
-				companyName = dt.Rows[0]["營業處廠"].ToString();
+				companyName = dt.Rows[0]["中心庫區儲運課工場"].ToString();
 			}
 		}
 	}

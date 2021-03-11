@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Xml;
 
-public partial class Handler_GetGasAnswer : System.Web.UI.Page
+public partial class Handler_GetOilAnswer : System.Web.UI.Page
 {
-	GasEvaluationAnswer_DB db = new GasEvaluationAnswer_DB();
+	OilEvaluationAnswer_DB db = new OilEvaluationAnswer_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
@@ -42,7 +42,7 @@ public partial class Handler_GetGasAnswer : System.Web.UI.Page
 			}
 
 			db._業者guid = cpid;
-			db._年度 = year;
+			db._年度 = "110";
 			DataTable dt = db.GetCompanyAns();
 			string xmlstr = string.Empty;
 			xmlstr = DataTableToXml.ConvertDatatableToXmlByAttribute(dt, "dataList", "data_item");

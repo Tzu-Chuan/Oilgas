@@ -43,7 +43,7 @@ for(i=0;i<serarrSbnum; i++){
 }
 
 var filecode = "\
-<div class=\"font-size4 font-normal\"><i class=\"fa fa-file-word-o IconCc\" aria-hidden=\"true\"></i><a href=\"doc/附件3、110年度石油業者石油管線及儲油設施查核.docx\" target=\"_blank\">查核填寫內容下載</a> <i class=\"fa fa-file-powerpoint-o IconCc\" aria-hidden=\"true\"></i><a href=\"#\" target=\"_blank\">查核配合事項下載</a> <i class=\"fa fa-file-powerpoint-o IconCc\" aria-hidden=\"true\"></i><a href=\"doc/附件4、110年度石油業者簡報內容格式_管線及儲槽.pptx\" target=\"_blank\">簡報大綱下載</a></div>\
+<div class=\"font-size4 font-normal\"><i class=\"fa fa-file-word-o IconCc\" aria-hidden=\"true\"></i><a href=\"doc/附件3、110年度石油業者石油管線及儲油設施查核.docx\" target=\"_blank\">查核填寫內容下載</a> <i class=\"fa fa-file-powerpoint-o IconCc\" aria-hidden=\"true\"></i><a href=\"doc/查核配合事項_石油.pptx\" target=\"_blank\">查核配合事項下載</a> <i class=\"fa fa-file-powerpoint-o IconCc\" aria-hidden=\"true\"></i><a href=\"doc/附件4、110年度石油業者簡報內容格式_管線及儲槽.pptx\" target=\"_blank\">簡報大綱下載</a></div>\
 ";
 
 //將選單程式引入HTML

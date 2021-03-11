@@ -7,13 +7,13 @@ using System.Web.UI.WebControls;
 using System.Xml;
 using System.Data;
 
-public partial class Handler_GetGasExclude : System.Web.UI.Page
+public partial class Handler_GetOilExclude : System.Web.UI.Page
 {
-	GasCompanyExclude_DB db = new GasCompanyExclude_DB();
+	OilCompanyExclude_DB db = new OilCompanyExclude_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
-		///功    能: 查詢天然氣自評表業者排除題目
+		///功    能: 查詢石油自評表業者排除題目
 		///說    明:
 		/// * Request[""]: 
 		///-----------------------------------------------------
