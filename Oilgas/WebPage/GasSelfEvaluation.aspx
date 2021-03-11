@@ -276,10 +276,9 @@
 									var simpleStr = ($(this).attr("委員意見").length > 15) ? $(this).attr("委員意見").substr(0, 15) + "..." : $(this).attr("委員意見");
 									$("#sp_" + $(this).attr("題目guid")).html(simpleStr);
 									$("#sp_" + $(this).attr("題目guid")).attr("title", $(this).attr("委員意見"));
-									if ($(this).attr("答案") != "01" && $("#Competence").val() != "02") {
-										$("#sp_" + $(this).attr("題目guid")).show();
+									if ($(this).attr("答案") != "01" && $("#Competence").val() != "02")
 										$("a[name='psbtn'][qid='" + $(this).attr("題目guid") + "']").show();
-									}
+									$("#sp_" + $(this).attr("題目guid")).show();
 								});
 								$(data).find("data_item[填寫人員類別='02']").each(function () {
 									$("input[name='cg_" + $(this).attr("題目guid") + "'][value='" + $(this).attr("答案") + "']").prop("checked", true);
