@@ -30,14 +30,14 @@ public partial class WebPage_OilSelfEvaluation : System.Web.UI.Page
 			{
 				switch (LogInfo.mGuid)
 				{
-					case "gas0000":
-						cpid = "fe7263bf055c4974a38ca85ded1832b7";
+					case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
+						cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
 						break;
-					case "oil1111":
-						cpid = "6247cd5d6f7f4408889b0bd760576ff3";
+					case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
+						cpid = "972153A3-98FE-40F8-9F4D-7C950BD3F51C";
 						break;
-					case "oil2222":
-						cpid = "a76c92cdb6894a11a2a870c3af50ed1b";
+					case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
+						cpid = "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1";
 						break;
 				}
 			}

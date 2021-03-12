@@ -21,16 +21,16 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 				default:
 					break;
 				case "01": // 委員
-					// for 3/16
+						   // for 3/16
 					switch (LogInfo.mGuid)
 					{
-						case "gas0000":
-							Response.Redirect("~/WebpPage/GasInfo.aspx");
+						case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
+							Response.Redirect("~/WebPage/GasInfo.aspx");
 							break;
-						case "oil1111":
+						case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
 							Response.Redirect("~/DemoHtml/oil-firmB001.html");
 							break;
-						case "oil2222":
+						case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
 							Response.Redirect("~/DemoHtml/oil-firmC001.html");
 							break;
 					}
@@ -62,7 +62,7 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 					if (LogInfo.user == "01")
 					{
 						// for 3/16
-						if (LogInfo.companyGuid == "6247cd5d6f7f4408889b0bd760576ff3")
+						if (LogInfo.companyGuid == "39DF8B07-2F23-4D0E-8983-22AB7510DD3D")
 							Response.Redirect("~/DemoHtml/oil-firmB001.html");
 						else
 							Response.Redirect("~/DemoHtml/oil-firmC001.html");

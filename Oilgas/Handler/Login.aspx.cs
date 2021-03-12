@@ -26,13 +26,13 @@ public partial class Manage_BackEnd_Login : System.Web.UI.Page
 		try
 		{
 			#region 檢查驗証碼
-			//if (Session["ValidateNumber"] != null)
-			//{
-			//	if (Session["ValidateNumber"].ToString() != vCode.ToUpper())
-			//	{
-			//		throw new Exception("驗證碼輸入錯誤");
-			//	}
-			//}
+			if (Session["ValidateNumber"] != null)
+			{
+				if (Session["ValidateNumber"].ToString() != vCode.ToUpper())
+				{
+					throw new Exception("驗證碼輸入錯誤");
+				}
+			}
 			#endregion
 
 			string xmlstr = string.Empty;
