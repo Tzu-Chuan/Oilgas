@@ -1,0 +1,36 @@
+﻿
+<ul class='nav'>
+	<li>
+		<a href='#' target='_self'>天然氣業者基本資料</a>
+		<ul class='navSa'>
+			<li><a href="GasInfo.aspx" target='_self'>事業單位基本資料表</a></li>
+			<li><a href="GasTubeCheckPlanAndResult.aspx" target='_self'>用戶管線定期檢查計畫及檢查結果</a></li>
+			<li><a href="GasAreaSchematicDiagram.aspx" target='_self'>轄區管線示意圖</a></li>
+			<li><a href="GasStationFlowChart.aspx" target='_self'>場站管線流程圖(PFD)</a></li>
+			<li><a href="GasStationAboutDistribution.aspx" target='_self'>場站概況分佈圖</a></li>
+		</ul>
+	</li>
+	<li>
+		<a href='#' target='_self'>管線管理</a>
+		<ul class='navSb'>
+			<li><a href="GasTubeInfo.aspx" target='_self'>管線基本資料</a></li>
+			<li><a href="GasTubeComplete.aspx" target='_self'>管線完整性管理作為</a></li>
+			<li><a href="GasCheckSmartTubeCleaner.aspx" target='_self'>智慧型通管器檢查(ILI)</a></li>
+			<li><a href="GasTubeCheck.aspx" target='_self'>管線巡檢</a></li>
+			<li><a href="GasTubeMaintain.aspx" target='_self'>管線維修或開挖</a></li>
+			<li><a href="GasRiskAssessment.aspx" target='_blank'>風險評估</a></li>
+			<li><a href="GasInsideInspect.aspx" target='_self'>內部稽核</a></li>
+		</ul>
+	</li>
+	<li><a href="GasAccidentLearning.aspx" target='_self'>事故學習</a></li>
+	<li><a href="GasSelfEvaluation.aspx" target='_blank'>查核項目自評</a></li>
+	<li><a href="javascript:void(0);" target='_self'>查核簡報上傳</a></li>
+</ul>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var pathAry = window.location.pathname.split('/');
+		var pathName = pathAry[(pathAry.length - 1)];
+		$("#navmenuV a[href='" + pathName + "']").parent().addClass("active");
+	});
+</script>

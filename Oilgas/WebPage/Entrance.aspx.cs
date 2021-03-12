@@ -25,7 +25,7 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 					switch (LogInfo.mGuid)
 					{
 						case "gas0000":
-							Response.Redirect("~/DemoHtml/gas-firmA001.html");
+							Response.Redirect("~/WebpPage/GasInfo.aspx");
 							break;
 						case "oil1111":
 							Response.Redirect("~/DemoHtml/oil-firmB001.html");
@@ -68,7 +68,7 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 							Response.Redirect("~/DemoHtml/oil-firmC001.html");
 					}
 					else
-						Response.Redirect("~/DemoHtml/gas-firmA001.html");
+						Response.Redirect("~/WebPage/GasInfo.aspx");
 					break;
 			}
 		}
