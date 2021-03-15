@@ -82,47 +82,20 @@ public class OilCompanyInfo_DB
 		return ds;
 	}
 
-	public DataSet GetCompanyList(string pStart, string pEnd)
+	public DataTable GetCompanyList()
 	{
 		SqlCommand oCmd = new SqlCommand();
 		oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
 		StringBuilder sb = new StringBuilder();
 
-		sb.Append(@"select [guid],[父層guid],[排序編號],[石油組織階層],[電話],[地址]
-,[儲槽數量],[管線數量],[維運計畫書及成果報告],[曾執行過查核日期]
-,case when [中心庫區儲運課工場] is not null and [中心庫區儲運課工場]<>''  then [中心庫區儲運課工場]
-when [組] is not null and [組] <>'' then [組]
-when [營業處廠] is not null and [營業處廠]<>'' then [營業處廠]
-when [事業部] is not null and [事業部]<>'' then [事業部]
-when [處] is not null and [處]<>'' then [處]
-else ''
-end as [company] 
-into #tmp
-from [石油_業者基本資料]
-where [資料狀態]='A' and [父層guid] is not null and [父層guid]<>'' ");
-
-		if (KeyWord != "")
-		{
-			sb.Append(@"and (lower(
-                                isnull(中心庫區儲運課工場,'')
-                                ) like '%' + lower(@KeyWord) + '%')  ");
-		}
-
-		sb.Append(@"
-select count(*) as total from #tmp
-
-select * from (
-           select ROW_NUMBER() over (order by 排序編號) itemNo,* from #tmp
-)#tmp where itemNo between @pStart and @pEnd ");
+		sb.Append(@"select * from 石油_業者基本資料 "); 
 
 		oCmd.CommandText = sb.ToString();
 		oCmd.CommandType = CommandType.Text;
 		SqlDataAdapter oda = new SqlDataAdapter(oCmd);
-		DataSet ds = new DataSet();
+		DataTable ds = new DataTable();
 
 		oCmd.Parameters.AddWithValue("@KeyWord", KeyWord);
-		oCmd.Parameters.AddWithValue("@pStart", pStart);
-		oCmd.Parameters.AddWithValue("@pEnd", pEnd);
 		oda.Fill(ds);
 		return ds;
 	}

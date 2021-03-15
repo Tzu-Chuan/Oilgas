@@ -21,19 +21,12 @@ public partial class Handler_GetGasCompanyList : System.Web.UI.Page
 		try
 		{
 			string SearchStr = (string.IsNullOrEmpty(Request["SearchStr"])) ? "" : Request["SearchStr"].ToString().Trim();
-			string PageNo = (string.IsNullOrEmpty(Request["PageNo"])) ? "" : Request["PageNo"].ToString().Trim();
-			int PageSize = (string.IsNullOrEmpty(Request["PageSize"])) ? 10 : int.Parse(Request["PageSize"].ToString().Trim());
-
-			//計算起始與結束
-			int pageEnd = (int.Parse(PageNo) + 1) * PageSize;
-			int pageStart = pageEnd - PageSize + 1;
 
 			db._KeyWord = SearchStr;
-			DataSet dt = db.GetCompanyList(pageStart.ToString(), pageEnd.ToString());
+			DataTable dt = db.GetCompanyList();
 			string xmlstr = string.Empty;
-			string totalxml = "<total>" + dt.Tables[0].Rows[0]["total"].ToString() + "</total>";
-			xmlstr = DataTableToXml.ConvertDatatableToXML(dt.Tables[1], "dataList", "data_item");
-			xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>" + totalxml + xmlstr + "</root>";
+			xmlstr = DataTableToXml.ConvertDatatableToXML(dt, "dataList", "data_item");
+			xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>"  + xmlstr + "</root>";
 			xDoc.LoadXml(xmlstr);
 		}
 		catch (Exception ex)

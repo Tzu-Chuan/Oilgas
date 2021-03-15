@@ -47,45 +47,20 @@ public class GasCompanyInfo_DB
 	public string _資料狀態 { set { 資料狀態 = value; } }
 	#endregion
 
-	 public DataSet GetCompanyList(string pStart, string pEnd)
+	public DataTable GetCompanyList()
 	{
 		SqlCommand oCmd = new SqlCommand();
 		oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
 		StringBuilder sb = new StringBuilder();
 
-		sb.Append(@"select [guid],[父層guid],[排序編號],[天然氣組織階層]
-,[地址],[電話],[fun2]
-,case when [中心庫區儲運課工場] is not null and [中心庫區儲運課工場]<>''  then [中心庫區儲運課工場]
-when [營業處廠] is not null and [營業處廠]<>'' then [營業處廠]
-when [事業部] is not null and [事業部]<>'' then [事業部]
-else ''
-end as [company] 
-into #tmp
-from [天然氣_業者基本資料表] 
-where [資料狀態]='A' and [父層guid] is not null and [父層guid]<>'' ");
-
-		if (KeyWord != "")
-		{
-			sb.Append(@"and (lower(
-                                isnull(中心庫區儲運課工場,'')
-                                ) like '%' + lower(@KeyWord) + '%')  ");
-		}
-
-		sb.Append(@"
-select count(*) as total from #tmp
-
-select * from (
-           select ROW_NUMBER() over (order by 排序編號) itemNo,* from #tmp
-)#tmp where itemNo between @pStart and @pEnd ");
+		sb.Append(@"select * from 天然氣_業者基本資料表 ");
 
 		oCmd.CommandText = sb.ToString();
 		oCmd.CommandType = CommandType.Text;
 		SqlDataAdapter oda = new SqlDataAdapter(oCmd);
-		DataSet ds = new DataSet();
+		DataTable ds = new DataTable();
 
 		oCmd.Parameters.AddWithValue("@KeyWord", KeyWord);
-		oCmd.Parameters.AddWithValue("@pStart", pStart);
-		oCmd.Parameters.AddWithValue("@pEnd", pEnd);
 		oda.Fill(ds);
 		return ds;
 	}

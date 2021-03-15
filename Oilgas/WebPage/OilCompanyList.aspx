@@ -13,7 +13,7 @@
 	<meta name="author" content="工研院 資訊處" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
 	<meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... --> 
 	<meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
-	<title>天然氣事業輸儲設備查核及檢測資訊系統</title>
+	<title>石油業輸儲設備查核及檢測資訊系統</title>
 	<!--#include file="Head_Include.html"-->
 	<script type="text/javascript">
 		$(document).ready(function () {
@@ -39,15 +39,13 @@
 			});
 		}); // end js
 
-		function getData(p) {
+		function getData() {
 			$.ajax({
 				type: "POST",
 				async: false, //在沒有返回值之前,不會執行下一步動作
 				url: "../Handler/GetOilCompanyList.aspx",
 				data: {
-					SearchStr: $("#SearchStr").val(),
-					PageNo: p,
-					PageSize: Page.Option.PageSize
+					SearchStr: $("#SearchStr").val()
 				},
 				error: function (xhr) {
 					alert("Error: " + xhr.status);
@@ -63,8 +61,12 @@
 						if ($(data).find("data_item").length > 0) {
 							$(data).find("data_item").each(function (i) {
 								tabstr += '<tr>';
-								tabstr += '<td align="center" nowrap="nowrap">' + $(this).children("itemNo").text().trim() + '</td>';
-								tabstr += '<td nowrap="nowrap">' + $(this).children("company").text().trim() + '</td>';
+								tabstr += '<td nowrap="nowrap">' + $(this).children("公司名稱").text().trim() + '</td>';
+								tabstr += '<td nowrap="nowrap">' + $(this).children("處").text().trim() + '</td>';
+								tabstr += '<td nowrap="nowrap">' + $(this).children("事業部").text().trim() + '</td>';
+								tabstr += '<td nowrap="nowrap">' + $(this).children("營業處廠").text().trim() + '</td>';
+								tabstr += '<td nowrap="nowrap">' + $(this).children("組").text().trim() + '</td>';
+								tabstr += '<td nowrap="nowrap">' + $(this).children("中心庫區儲運課工場").text().trim() + '</td>';
 								tabstr += '<td align="center" nowrap="nowrap" class="font-normal"><a href="javascript:void(0);" name="editbtn" aid="' + $(this).children("guid").text().trim() + '">檢視</a>';
 								tabstr += '</tr>';
 							});
@@ -72,8 +74,6 @@
 						else
 							tabstr += '<tr><td colspan="3">查詢無資料</td></tr>';
 						$("#tablist tbody").append(tabstr);
-						Page.Option.Selector = "#pageblock";
-						Page.CreatePage(p, $("total", data).text());
 					}
 				}
 			});
@@ -117,8 +117,12 @@
                         <table id="tablist" width="100%" border="0" cellspacing="0" cellpadding="0">
                             <thead>
 								<tr>
-									<th nowrap="nowrap" width="50">項次</th>
-									<th nowrap="nowrap">業者</th>
+									<th nowrap="nowrap">公司名稱</th>
+									<th nowrap="nowrap">處</th>
+									<th nowrap="nowrap">事業部</th>
+									<th nowrap="nowrap">營業處廠</th>
+									<th nowrap="nowrap">組</th>
+									<th nowrap="nowrap">中心庫區儲運課工場</th>
 									<th nowrap="nowrap" width="100">功能</th>
 								</tr>
                             </thead>
