@@ -86,7 +86,7 @@
                 </div><!-- left -->
                 <div class="right">
                     <div class="loginfo padding10RL font-normal">
-                        登入者：
+                        <!--登入者：-->
                         <!-- RWD 外部連結 start -->
                         <div class="HeaderOtherLinkWrapper">
                     <span id="HeaderOtherLink">
@@ -123,7 +123,7 @@
 
                 <div class="padding10ALL">
                     <div class="filetitlewrapper">
-                        <span class="filetitle font-size7">海管室</span>
+                        <span class="filetitle font-size7">天然氣業者</span>
                         <span class="btnright"><div id="filedown"></div></span>
                     </div>
 
@@ -133,8 +133,56 @@
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
 
-                            <div class="BoxBorderSa BoxRadiusB padding5ALL textcenter"><div class="opa6 font-size3">目前無資料</div></div>
+                            <div class="OchiTrasTable width100 TitleLength08 font-size3">
+                                <div class="OchiRow">
+                                    <div class="OchiCell OchiTitle IconCe TitleSetWidth">依據文件名稱</div>
+                                    <div class="OchiCell width100">
+                                        <input type="text" class="inputex width99" value="" disabled>
+                                    </div>
+                                </div><!-- OchiRow -->
+                                <div class="OchiRow">
+                                    <div class="OchiHalf">
+                                        <div class="OchiCell OchiTitle IconCe TitleSetWidth">文件編號</div>
+                                        <div class="OchiCell width100"><input type="text" class="inputex width100" value="" disabled></div>
+                                    </div><!-- OchiHalf -->
+                                    <div class="OchiHalf">
+                                        <div class="OchiCell OchiTitle IconCe TitleSetWidth">文件日期</div>
+                                        <div class="OchiCell width100"><input type="text" class="inputex width100" value="" disabled></div>
+                                    </div><!-- OchiHalf -->
+                                </div><!-- OchiRow -->
+                                <div class="OchiRow">
+                                    <div class="OchiCell OchiTitle IconCe TitleSetWidth">每年巡檢次數</div>
+                                    <div class="OchiCell width100">
+                                        <input type="text" class="inputex width99" value="" disabled>
+                                    </div>
+                                </div><!-- OchiRow -->
+                            </div><!-- OchiTrasTable -->
 
+                            <div class="font-size3 margin10T">海底管線外部檢測異常處理情形</div>
+                            <div class="stripeMeG tbover margin5T">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <th nowrap >追蹤 <br>
+                                            序號 </th>
+                                        <th nowrap>KP(編號)</th>
+                                        <th nowrap>隸屬管線名稱 <br>
+                                            (及管線編號)</th>
+                                        <th nowrap>異常起始日期 <br>
+                                            (年/月)</th>
+                                        <th nowrap>異常狀況 </th>
+                                        <th nowrap>處理情形 </th>
+                                    </tr>
+                                    <tr>
+                                        <td >&nbsp;</td>
+                                        <td ></td>
+                                        <td ></td>
+                                        <td ></td>
+                                        <td ></td>
+                                        <td ></td>
+                                    </tr>
+
+                                </table>
+                            </div><!-- stripeMe -->
                         </div><!-- col -->
                     </div><!-- row -->
 
@@ -176,10 +224,10 @@ $(document).ready(function(){
 <script type="text/javascript" src="js/GenCommon.js"></script><!-- UIcolor JS -->
 <script type="text/javascript" src="js/PageCommon.js"></script><!-- 系統共用 JS -->
 <script type="text/javascript" src="js/MenuGas.js"></script><!-- 系統共用 JS -->
-<script type="text/javascript" src="js/SubMenuGasA.js"></script><!-- 內頁選單 -->
+<script type="text/javascript" src="js/SubMenuGasTemp.js"></script><!-- 內頁選單 -->
 <script type="text/javascript">
-    $("#navmenuV ul li:nth-child(2)").addClass("open");
-    $("#navmenuV ul li:nth-child(2) li:nth-child(6)").addClass("active");
+    $("#navmenuV ul li:nth-child(3)").addClass("open");
+    $("#navmenuV ul li:nth-child(3) li:nth-child(7)").addClass("active");
     $('.nav').navgoco();
 </script>
 <script type="text/javascript" src="js/autoHeight.js"></script><!-- 高度不足頁面的絕對置底footer -->

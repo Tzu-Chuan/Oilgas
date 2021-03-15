@@ -86,7 +86,7 @@
                 </div><!-- left -->
                 <div class="right">
                     <div class="loginfo padding10RL font-normal">
-                        登入者：
+                        <!--登入者：-->
                         <!-- RWD 外部連結 start -->
                         <div class="HeaderOtherLinkWrapper">
                     <span id="HeaderOtherLink">
@@ -123,7 +123,7 @@
 
                 <div class="padding10ALL">
                     <div class="filetitlewrapper">
-                        <span class="filetitle font-size7">海管室</span>
+                        <span class="filetitle font-size7">天然氣業者</span>
                         <span class="btnright"><div id="filedown"></div></span>
                     </div>
 
@@ -132,12 +132,7 @@
                             <div id="navmenuV"></div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
-
-                            <div class="BoxBorderSa BoxRadiusB padding5ALL textcenter"><div class="opa6 font-size3">目前無資料</div></div>
-                            <div class="margin5TB font-size2">
-                                (1) 前一年度維修、換管、遷管或開挖：109年度所進行管線的維護作業種類。<br>
-                                (2) 管段位置：請填寫管線維修或開挖之位置說明。
-                            </div>
+                            <div class="BoxBorderSa BoxRadiusB padding5ALL textcenter"><div class="opa6 font-size3">請以圖示方式簡要說明貴中心所轄天然氣管線，或處理廠處理流程，或液化天然氣廠輸儲流程等，<br>其內容包括：管線、管徑、使用壓力及各站場與標示供氣用戶的名稱。</div></div>
                         </div><!-- col -->
                     </div><!-- row -->
 
@@ -173,16 +168,39 @@
 <!-- 本頁面使用的JS -->
 <script type="text/javascript">
 $(document).ready(function(){
+    $("#collapse1").collapse({
+        query: 'div.collapseTitle',//收合標題樣式名
+        persist: false,//是否記憶收合,需配合jquery.collapse_storage.js
+        open: function() {
+            this.slideDown(100);//動畫效果
+        },
+        close: function() {
+            this.slideUp(100);//動畫效果
+        },
+    });
+
+    $("#collapse1").trigger("open") // 預設全開啟
+//$("#collapse1").trigger("close") // 預設全關閉(default)
+    $("#collapse1 div:nth-child(1) div.collapseTitle a").trigger("open") // 控制第幾個開啟
+
+//全部收合展開按鈕動作
+    $("#collapse1open").click(function(){
+        $("#collapse1").trigger("open")
+    });
+    $("#collapse1close").click(function(){
+        $("#collapse1").trigger("close")
+    });
+
 
 });
 </script>
 <script type="text/javascript" src="js/GenCommon.js"></script><!-- UIcolor JS -->
 <script type="text/javascript" src="js/PageCommon.js"></script><!-- 系統共用 JS -->
 <script type="text/javascript" src="js/MenuGas.js"></script><!-- 系統共用 JS -->
-<script type="text/javascript" src="js/SubMenuGasA.js"></script><!-- 內頁選單 -->
+<script type="text/javascript" src="js/SubMenuGasTemp.js"></script><!-- 內頁選單 -->
 <script type="text/javascript">
-    $("#navmenuV ul li:nth-child(2)").addClass("open");
-    $("#navmenuV ul li:nth-child(2) li:nth-child(5)").addClass("active");
+    $("#navmenuV ul li:nth-child(1)").addClass("open");
+    $("#navmenuV ul li:nth-child(1) li:nth-child(3)").addClass("active");
     $('.nav').navgoco();
 </script>
 <script type="text/javascript" src="js/autoHeight.js"></script><!-- 高度不足頁面的絕對置底footer -->

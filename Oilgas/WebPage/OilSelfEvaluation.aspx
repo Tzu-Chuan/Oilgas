@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html>
-<head runat="server">
+<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,12 +19,18 @@
 			$(document).ready(function () {
 				GetList();
 
-				// disabled
-				if ($("#Competence").val() == "01")
-					$(".cRadio").prop("disabled", true);
-				else if ($("#Competence").val() == "02") {
-					RemoveQuestion(); // 業者不須自評
-					$(".mRadio").prop("disabled", true);
+					switch ($("#Competence").val()) {
+					case "01":
+						$(".cRadio").prop("disabled", true);
+						break;
+					case "02":
+						RemoveQuestion(); // 業者不須自評
+						$(".mRadio").prop("disabled", true);
+						break;
+					case "03":
+					case "04":
+						$("#subbtn").hide();
+						break;
 				}
 
 				// Get Answer
@@ -276,7 +282,7 @@
 									var simpleStr = ($(this).attr("委員意見").length > 15) ? $(this).attr("委員意見").substr(0, 15) + "..." : $(this).attr("委員意見");
 									$("#sp_" + $(this).attr("題目guid")).html(simpleStr);
 									$("#sp_" + $(this).attr("題目guid")).attr("title", $(this).attr("委員意見"));
-									if ($(this).attr("答案") != "01" && $("#Competence").val() != "02") 
+									if ($(this).attr("答案") != "01" && $("#Competence").val() != "02" && $(this).attr("答案") != "") 
 										$("a[name='psbtn'][qid='" + $(this).attr("題目guid") + "']").show();
 									$("#sp_" + $(this).attr("題目guid")).show();
 								});
@@ -326,7 +332,7 @@
 					<div class="container margin15T">
 						<div class="padding10ALL">
 							<div class="filetitlewrapper">
-								<span class="filetitle font-size7"><%= companyName %></span>
+								<span class="filetitle font-size7">石油自評表</span>
 								<span class="btnright">
 									<div class="font-size4 font-normal">
 										<i class="fa fa-file-word-o IconCc" aria-hidden="true"></i><a href="../doc/附件3、110年度石油業者石油管線及儲油設施查核.docx" target="_blank">查核填寫內容下載</a> 

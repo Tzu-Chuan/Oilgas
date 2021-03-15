@@ -25,7 +25,7 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 					switch (LogInfo.mGuid)
 					{
 						case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
-							Response.Redirect("~/WebPage/GasInfo.aspx");
+							Response.Redirect("~/WebPage/GasCompanyList.aspx");
 							break;
 						case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
 							Response.Redirect("~/DemoHtml/oil-firmB001.html");
@@ -69,6 +69,8 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 					}
 					else
 						Response.Redirect("~/WebPage/GasInfo.aspx");
+					break;
+				case "03":
 					break;
 			}
 		}

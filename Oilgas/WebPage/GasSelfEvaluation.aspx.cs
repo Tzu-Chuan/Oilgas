@@ -41,6 +41,7 @@ public partial class WebPage_GasSelfEvaluation : System.Web.UI.Page
 						break;
 				}
 			}
+
 			gasInfo_db._guid = cpid;
 			DataTable dt = gasInfo_db.GetInfo();
 			if (dt.Rows.Count > 0)

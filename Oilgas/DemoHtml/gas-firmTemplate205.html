@@ -86,7 +86,7 @@
                 </div><!-- left -->
                 <div class="right">
                     <div class="loginfo padding10RL font-normal">
-                        登入者：
+                        <!--登入者：-->
                         <!-- RWD 外部連結 start -->
                         <div class="HeaderOtherLinkWrapper">
                     <span id="HeaderOtherLink">
@@ -123,7 +123,7 @@
 
                 <div class="padding10ALL">
                     <div class="filetitlewrapper">
-                        <span class="filetitle font-size7">海管室</span>
+                        <span class="filetitle font-size7">天然氣業者</span>
                         <span class="btnright"><div id="filedown"></div></span>
                     </div>
 
@@ -133,16 +133,50 @@
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
 
-                            <div class="BoxBorderSa BoxRadiusB padding5ALL textcenter"><div class="opa6 font-size3">目前無資料</div></div>
+                            <div class="stripeMeG tbover">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <th nowrap rowspan="2">國土資訊系統 <br>管線編號 </th>
+                                        <th nowrap rowspan="2">是否執行緊密電位 <br>(Y/N)</th>
+                                        <th nowrap rowspan="2">同時檢測管線數量 </th>
+                                        <th nowrap rowspan="2">最近一次執行 <br>年/月 </th>
+                                        <th nowrap rowspan="2">報告產出 <br>年/月 </th>
+                                        <th nowrap rowspan="2">檢測長度 <br>(公里)</th>
+                                        <th nowrap rowspan="2">合格標準 <br>請參照 <br>填表說明(2)</th>
+                                        <th nowrap colspan="2">立即改善 </th>
+                                        <th nowrap colspan="2">排程改善 </th>
+                                        <th nowrap>需監控點 </th>
+                                        <th nowrap rowspan="2">備註 </th>
+                                    </tr>
+                                    <tr>
+                                        <th nowrap>數量 </th>
+                                        <th nowrap>改善完成數量 </th>
+                                        <th nowrap>數量 </th>
+                                        <th nowrap>改善完成數量 </th>
+                                        <th nowrap>數量 </th>
+                                    </tr>
+                                    <tr>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </div><!-- stripeMe -->
                             <div class="margin5TB font-size2">
-                                (1) 同時檢測管線數量：進行緊密電位檢測時，同時檢測到的管線數量（管束管線數量）。<br>
-                                (2) 合格標準：請依據該管線檢測報告判定結果時，所引用之標準，請填入相對應之數字， 1. 通電電位< -850mVCSE  2.極化電位< -850mVCSE  3.極化量>100mV  4.其他<br>
-                                (3) 訊號異常點_數量：依據公司之檢測合格標準，所判定訊號異常的點數。<br>
-                                (4) 訊號異常點_確認數量：排除箱涵、水泥遮蔽等訊號所剩數量。<br>
-                                (5) 訊號異常點_改善完成數量：確定已改善完成的數量。<br>
-                                (6) 備註：若檢測時之管線數量2條以上(含)，請以同一代號註明同一管束，如：以A、B…區別。<br>
-                                (7) 異常點處理情形：若有立即改善點或排程改善點，請於此項目詳細填寫。若不只一條管線有立即改善點或排程改善點，請複製格式依序分別填寫。<br>
-
+                                (1) 管壁減薄請依腐蝕位置(內部、外部)、減薄量30%、40%、50%及變形量>12%分別填寫數量。<br>
+                                (2) 開挖確認數量：已依檢測結果進行開挖確認的數量。<br>
+                                (3) 改善完成數量：經開挖確認後，進行改善(例：銲補、換管、貼補等)。<br>
+                                (4) 若ILI執行檢測之管線，有多段管線編號，若無法分段統計管壁減薄數量，則擇一段管線編號填寫全線數量，其他段之管線，則於備註欄註明同一檢測管線之編號。
                             </div>
                         </div><!-- col -->
                     </div><!-- row -->
@@ -185,10 +219,10 @@ $(document).ready(function(){
 <script type="text/javascript" src="js/GenCommon.js"></script><!-- UIcolor JS -->
 <script type="text/javascript" src="js/PageCommon.js"></script><!-- 系統共用 JS -->
 <script type="text/javascript" src="js/MenuGas.js"></script><!-- 系統共用 JS -->
-<script type="text/javascript" src="js/SubMenuGasA.js"></script><!-- 內頁選單 -->
+<script type="text/javascript" src="js/SubMenuGasTemp.js"></script><!-- 內頁選單 -->
 <script type="text/javascript">
-    $("#navmenuV ul li:nth-child(2)").addClass("open");
-    $("#navmenuV ul li:nth-child(2) li:nth-child(5)").addClass("active");
+    $("#navmenuV ul li:nth-child(3)").addClass("open");
+    $("#navmenuV ul li:nth-child(3) li:nth-child(5)").addClass("active");
     $('.nav').navgoco();
 </script>
 <script type="text/javascript" src="js/autoHeight.js"></script><!-- 高度不足頁面的絕對置底footer -->

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -85,23 +85,23 @@
                     <div class="font-size9 IconTG font-shadowA font-bold">天然氣事業輸儲設備查核及檢測資訊系統</div>
                 </div><!-- left -->
                 <div class="right">
-					<div class="loginfo padding10RL font-normal">
-						登入者：
-						<!-- RWD 外部連結 start -->
-						<div class="HeaderOtherLinkWrapper">
-							<span id="HeaderOtherLink">
-								<ul>
-									<li><a href="#">登出</a></li>
-								</ul>
-							</span>
-						</div><!-- HeaderOtherLinkWrapper -->
-						<span class="HeaderOtherLinkOpen"><a href="#HeaderOtherLinkS" class="open-popup-link">外部連結</a></span>
-						<div id="HeaderOtherLinkS" class="magpopup magSizeM mfp-hide">
-							<div class="magpopupTitle textcenter">外部連結</div>
-							<span id="HeaderOtherLinkCopy"></span>
-						</div><!--magpopup -->
-						<!-- RWD 外部連結 end -->
-					</div><!-- loginfo -->
+                    <div class="loginfo padding10RL font-normal">
+                        <!--登入者：-->
+                        <!-- RWD 外部連結 start -->
+                        <div class="HeaderOtherLinkWrapper">
+                    <span id="HeaderOtherLink">
+                    <ul>
+                        <li><a href="#">登出</a></li>
+                    </ul>
+                    </span>
+                        </div><!-- HeaderOtherLinkWrapper -->
+                        <span class="HeaderOtherLinkOpen"><a href="#HeaderOtherLinkS" class="open-popup-link">外部連結</a></span>
+                        <div id="HeaderOtherLinkS" class="magpopup magSizeM mfp-hide">
+                            <div class="magpopupTitle textcenter">外部連結</div>
+                            <span id="HeaderOtherLinkCopy"></span>
+                        </div><!--magpopup -->
+                        <!-- RWD 外部連結 end -->
+                    </div><!-- loginfo -->
                 </div><!-- right -->
             </div><!-- twocolR -->
 
@@ -123,7 +123,7 @@
 
                 <div class="padding10ALL">
                     <div class="filetitlewrapper">
-                        <span class="filetitle font-size7">海管室</span>
+                        <span class="filetitle font-size7">天然氣業者</span>
                         <span class="btnright"><div id="filedown"></div></span>
                     </div>
 
@@ -132,7 +132,29 @@
                             <div id="navmenuV"></div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
-                            <img src="images/firmA001.jpg" class="img-responsive imgcenter">
+
+                            <div class="font-size3"><input type="radio" disabled> 用戶管線定期檢查：<input type="radio" disabled> 委外檢查</div>
+
+                            <div class="stripeMeG margin5T tbover">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <th >項目 </th>
+                                        <th width="45%" >用戶名稱 </th>
+                                        <th  colspan="2">檢查期限 </th>
+                                        <th  colspan="3">檢查結果 </th>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">1</td>
+                                        <td ></td>
+                                        <td ><input type="radio" disabled> 符合 </td>
+                                        <td ><input type="radio" disabled> 不符合 </td>
+                                        <td ><input type="radio" disabled> 合格 </td>
+                                        <td ><input type="radio" disabled> 不合格 </td>
+                                        <td ><input type="radio" disabled> 拒檢 </td>
+                                    </tr>
+                                </table>
+                            </div><!-- stripeMe -->
+
                         </div><!-- col -->
                     </div><!-- row -->
 
@@ -197,10 +219,10 @@ $(document).ready(function(){
 <script type="text/javascript" src="js/GenCommon.js"></script><!-- UIcolor JS -->
 <script type="text/javascript" src="js/PageCommon.js"></script><!-- 系統共用 JS -->
 <script type="text/javascript" src="js/MenuGas.js"></script><!-- 系統共用 JS -->
-<script type="text/javascript" src="js/SubMenuGasA.js"></script><!-- 內頁選單 -->
+<script type="text/javascript" src="js/SubMenuGasTemp.js"></script><!-- 內頁選單 -->
 <script type="text/javascript">
     $("#navmenuV ul li:nth-child(1)").addClass("open");
-    $("#navmenuV ul li:nth-child(1) li:nth-child(3)").addClass("active");
+    $("#navmenuV ul li:nth-child(1) li:nth-child(2)").addClass("active");
     $('.nav').navgoco();
 </script>
 <script type="text/javascript" src="js/autoHeight.js"></script><!-- 高度不足頁面的絕對置底footer -->

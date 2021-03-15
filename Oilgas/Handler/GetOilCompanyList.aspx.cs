@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Xml;
 
-public partial class Handler_GetGasCompanyList : System.Web.UI.Page
+public partial class Handler_GetOilCompanyList : System.Web.UI.Page
 {
-	GasCompanyInfo_DB db = new GasCompanyInfo_DB();
+	OilCompanyInfo_DB db = new OilCompanyInfo_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
