@@ -91,7 +91,7 @@
                         <div class="HeaderOtherLinkWrapper">
                     <span id="HeaderOtherLink">
                     <ul>
-                        <li><a href="#">登出</a></li>
+                        <!--<li><a href="#">登出</a></li>-->
                     </ul>
                     </span>
                         </div><!-- HeaderOtherLinkWrapper -->
@@ -132,7 +132,122 @@
                             <div id="navmenuV"></div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
-                            <div class="BoxBorderSa BoxRadiusB padding5ALL textcenter"><div class="opa6 font-size3">目前無資料</div></div>
+                            <div class="stripeMeB tbover">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <th  rowspan="2">長途管線識別碼 </th>
+                                        <th >檢測 <br>
+                                            方法 </th>
+                                        <th >最近一次執行年/月 </th>
+                                        <th >報告產出 <br>
+                                            年/月 </th>
+                                        <th >檢測長度 <br>
+                                            公里 </th>
+                                        <th  colspan="4">減薄30%-40% <br>
+                                            數量 </th>
+                                        <th  colspan="4">減薄40%-50%數量 </th>
+                                        <th  colspan="4">減薄50%以上數量 </th>
+                                        <th  colspan="2">Dent </th>
+                                        <th >備註 </th>
+                                    </tr>
+                                    <tr>
+                                        <th >UT <br>
+                                            磁漏 </th>
+                                        <th  valign="top">&nbsp;</th>
+                                        <th  valign="top">&nbsp;</th>
+                                        <th  valign="top">&nbsp;</th>
+                                        <th  valign="top">內 </th>
+                                        <th >開挖 <br>
+                                            確認 </th>
+                                        <th  valign="top">外 </th>
+                                        <th >開挖 <br>
+                                            確認 </th>
+                                        <th  valign="top">內 </th>
+                                        <th >開挖 <br>
+                                            確認 </th>
+                                        <th  valign="top">外 </th>
+                                        <th >開挖 <br>
+                                            確認 </th>
+                                        <th  valign="top">內 </th>
+                                        <th >開挖 <br>
+                                            確認 </th>
+                                        <th  valign="top">外 </th>
+                                        <th >開挖 <br>
+                                            確認 </th>
+                                        <th  valign="top">&gt;12% </th>
+                                        <th >開挖 <br>
+                                            確認 </th>
+                                        <th >&nbsp;</th>
+                                    </tr>
+                                    <tr>
+                                        <td >8070101090002 </td>
+                                        <td >磁漏 </td>
+                                        <td >108/03</td>
+                                        <td >109/8/5</td>
+                                        <td >30.9KM</td>
+                                        <td >1</td>
+                                        <td >0</td>
+                                        <td >1</td>
+                                        <td >1 </td>
+                                        <td >2</td>
+                                        <td >0</td>
+                                        <td >2</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >岡山-台南供油(換管) </td>
+                                    </tr>
+                                    <tr>
+                                        <td >8070101090008 </td>
+                                        <td >UT </td>
+                                        <td >108/06</td>
+                                        <td >2020/10/28</td>
+                                        <td >28.4KM</td>
+                                        <td >1</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >岡山中繼站-<br>
+                                            永康清管站 </td>
+                                    </tr>
+                                    <tr>
+                                        <td >8070101090008 </td>
+                                        <td >UT </td>
+                                        <td >108/06</td>
+                                        <td >2020/10/28</td>
+                                        <td >28.7KM</td>
+                                        <td >3</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >1</td>
+                                        <td >1 </td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >&nbsp;</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >0</td>
+                                        <td >永康清管站-新營中繼站(貼補) </td>
+                                    </tr>
+                                </table>
+                            </div><!-- stripeMe -->
                             <div class="margin5TB font-size2">
                                 (1) 管壁減薄請依腐蝕位置(內部、外部)、減薄量30%、40%、50%及變形量>12%分別填寫數量。<br>
                                 (2) 開挖確認數量：已依檢測結果進行開挖確認的數量。<br>
@@ -214,7 +329,7 @@ $(document).ready(function(){
 <script type="text/javascript" src="js/MenuOil.js"></script><!-- 系統共用 JS -->
 <script type="text/javascript" src="js/SubMenuOilA.js"></script><!-- 內頁選單 -->
 <script type="text/javascript">
-    //$(".container").css("max-width","1800px");
+    $(".container").css("max-width","1800px");
     $("#navmenuV ul li:nth-child(3)").addClass("open");
     $("#navmenuV > ul > li:nth-child(3) li:nth-child(6)").addClass("active");
     $('.nav').navgoco();
