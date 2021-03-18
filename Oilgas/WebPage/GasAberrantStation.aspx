@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GasStationAboutDistribution.aspx.cs" Inherits="WebPage_GasStationAboutDistribution" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="GasAberrantStation.aspx.cs" Inherits="WebPage_GasTubeInfo" %>
 
 <!DOCTYPE html>
 
@@ -50,12 +50,41 @@
 
                     <div class="row margin20T">
                         <div class="col-lg-3 col-md-4 col-sm-5">
-                            <div id="navmenuV">
-
-                            </div>
+                            <div id="navmenuV"></div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
-                            <div class="BoxBorderSa BoxRadiusB padding5ALL textcenter"><div class="opa6 font-size3">目前無資料</div></div>
+                            <div class="stripeMeG tbover">
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <th >異常整流站 <br>
+                                          名稱 </th>
+                                        <th >異常起始日期 <br>
+                                          (年/月)</th>
+                                        <th >異常狀況 </th>
+                                        <th >整流站修復進度 <br>
+                                          1.公司報修 <br>
+                                          2.設計中 <br>
+                                          3.向地方主管機關提出申請中 <br>
+                                          4.修復中 </th>
+                                        <th >影響長途管線識別碼 </th>
+                                        <th > 預計完成日期 </th>
+                                        <th >備註 </th>
+                                      </tr>
+                                      <tr>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                        <td >&nbsp;</td>
+                                      </tr>
+
+                                </table>
+                            </div><!-- stripeMe -->
+
+
+
                         </div><!-- col -->
                     </div><!-- row -->
 
@@ -163,8 +192,8 @@
 				$("#collapse1").trigger("close")
 			});
 
-			$("#navmenuV ul li:nth-child(1)").addClass("open");
-			$("#navmenuV ul li:nth-child(1) li:nth-child(5)").addClass("active");
+			$("#navmenuV ul li:nth-child(2)").addClass("open");
+			$("#navmenuV ul li:nth-child(2) li:nth-child(4)").addClass("active");
 			$('.nav').navgoco();
 		});
 	</script>

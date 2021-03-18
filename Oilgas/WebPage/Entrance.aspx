@@ -60,7 +60,7 @@
                         </a>
                     </td>
                     <td width="33%">
-                        <a href="week-index.html" target="_blank" class="enerbtn">
+                        <a href="#" target="_blank" class="enerbtn">
                             <i class="fa fa-calendar font-sizeIcon" aria-hidden="true"></i>
                             <div class="font-size5 font-bold">週報、季報、月報</div>
                             <div class="font-size3">管理系統</div>

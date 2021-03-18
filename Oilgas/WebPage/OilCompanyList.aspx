@@ -80,7 +80,7 @@
 		}
 	</script>
 </head>
-<body class="bgG">
+<body class="bgB">
 	<!-- 開頭用div:修正mmenu form bug -->
 	<div>
 	<form id="form1">

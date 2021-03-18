@@ -57,7 +57,7 @@
                     <div class="row margin20T">
                         <div class="col-lg-3 col-md-4 col-sm-5">
                             <div id="navmenuV">
-								<!--#include file="GasLeftMenu.html"-->
+
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
@@ -320,6 +320,7 @@
 			});
 			
 			$("#navmenuV ul li:nth-child(1)").addClass("open");
+			$("#navmenuV ul li:nth-child(1) li:nth-child(1)").addClass("active");
 			$('.nav').navgoco();
 		});
 	</script>

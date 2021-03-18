@@ -50,44 +50,48 @@
 
                     <div class="row margin20T">
                         <div class="col-lg-3 col-md-4 col-sm-5">
-                            <div id="navmenuV"><!--#include file="GasLeftMenu.html"--></div>
+                            <div id="navmenuV"></div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
                             <div class="stripeMeG tbover">
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <th nowrap>長途管線識別碼<br>8050101xxxxx </th>
-                                        <th nowrap>管線名稱<br>(公司)</th>
-                                        <th nowrap>起點</th>
-                                        <th nowrap>迄點</th>
-                                        <th nowrap>管徑<br>(吋)</th>
-                                        <th nowrap>厚度<br>(mm)<br>註1</th>
-                                        <th nowrap>管材<br>(詳細規格)</th>
-                                        <th nowrap>包覆材料</th>
-                                        <th nowrap>轄管長度 <br>(公里)<br>註2</th>
-                                        <th nowrap>內容物<br>註3 </th>
-                                        <th nowrap>緊急遮斷閥(處)<br>註4</th>
-                                        <th nowrap>建置年<br>(民國)</th>
-                                        <th nowrap>設計壓力<br>(kg/cm<sup>2</sup>)<br>註5 </th>
-                                        <th nowrap>使用壓力 <br>(kg/cm<sup>2</sup>) <br>註5 </th>
-                                        <th nowrap>使用狀態
-                                            <ol>
-                                                <li>使用中 </li>
-                                                <li>停用 </li>
-                                                <li>備用 </li>
-                                            </ol></th>
-                                        <th nowrap>附掛橋樑數量 <br>註6 </th>
-                                    </tr>
-                                    <tr>
-                                        <td >805010126001</td>
+                                        <th nowrap>長途管線識別碼 </th>
+                                        <th nowrap>轄區長途管線名稱 <br>(公司)</th>
+                                        <th  nowrap>銜接管線識別碼 <br>(上游) </th>
+                                        <th  nowrap>銜接管線識別碼 <br>(下游) </th>
+                                        <th nowrap>起點 </th>
+                                        <th nowrap>迄點 </th>
+                                        <th nowrap>管徑 <br>吋 </th>
+                                        <th nowrap>厚度 <br>(mm)</th>
+                                        <th nowrap>管材 <br>(詳細規格)</th>
+                                        <th nowrap>包覆材料 </th>
+                                        <th nowrap>轄管長度 <br>(公尺)</th>
+                                        <th nowrap>內容物 </th>
+                                        <th nowrap>緊急遮斷閥 <br>(處)</th>
+                                        <th nowrap>建置年 <br>(民國年月)</th>
+                                        <th nowrap>設計壓力 <br>(Kg/cm<sup>2</sup>)</th>
+                                        <th nowrap>使用 <br>壓力 <br>(Kg/cm<sup>2</sup>)</th>
+                                        <th nowrap>使用狀態 <br>
+                                          1.使用中 <br>
+                                          2.停用 <br>
+                                          3.備用 </th>
+                                        <th nowrap>附掛 <br>
+                                          橋樑 <br>
+                                          數量 </th>
+                                      </tr>
+                                      <tr>
+                                        <td >805010126001 </td>
                                         <td >永安至通霄36吋天然氣海管 </td>
-                                        <td>永安廠 </td>
+                                        <td >NA</td>
+                                        <td >NA</td>
+                                        <td >永安廠 </td>
                                         <td >通霄轉輸中心 </td>
                                         <td >36</td>
                                         <td >14.30、15.90、17.50、19.10</td>
                                         <td >API5LX65</td>
                                         <td >5.6mm媒焦油瓷漆(CTE)</td>
-                                        <td >237592.410</td>
+                                        <td >237,592.41</td>
                                         <td >天然氣 </td>
                                         <td >0</td>
                                         <td >88.05</td>
@@ -95,17 +99,19 @@
                                         <td >75</td>
                                         <td >1</td>
                                         <td >0</td>
-                                    </tr>
-                                    <tr>
+                                      </tr>
+                                      <tr>
                                         <td >805010125001</td>
                                         <td >台中至通霄36吋天然氣海管 </td>
+                                        <td >NA</td>
+                                        <td >NA</td>
                                         <td >台中廠 </td>
                                         <td >通霄轉輸中心 </td>
                                         <td >36</td>
                                         <td >14.30、15.90、  21.00</td>
                                         <td >API5LX65</td>
                                         <td >FBE/3-Layer PE</td>
-                                        <td >44701.590</td>
+                                        <td >44,701.59</td>
                                         <td >天然氣 </td>
                                         <td >0</td>
                                         <td >96.06</td>
@@ -113,17 +119,19 @@
                                         <td >75</td>
                                         <td >1</td>
                                         <td >0</td>
-                                    </tr>
-                                    <tr>
+                                      </tr>
+                                      <tr>
                                         <td >805010125002</td>
                                         <td >通霄至大潭36吋天然氣海管 </td>
+                                        <td >NA</td>
+                                        <td >NA</td>
                                         <td >通霄轉輸中心 </td>
                                         <td >大潭配氣站 </td>
                                         <td >36</td>
                                         <td >14.30、15.90、21.00、25.40</td>
                                         <td >API5LX65</td>
                                         <td >FBE/3-Layer    PE</td>
-                                        <td >85430.010</td>
+                                        <td >85,430.01</td>
                                         <td >天然氣 </td>
                                         <td >0</td>
                                         <td >96.06</td>
@@ -131,7 +139,7 @@
                                         <td >75</td>
                                         <td >1</td>
                                         <td >0</td>
-                                    </tr>
+                                      </tr>
                                 </table>
                             </div><!-- stripeMe -->
 
@@ -230,6 +238,7 @@
 <!-- 本頁面使用的JS -->
 	<script type="text/javascript">
 		$(document).ready(function () {
+		    $(".container").css("max-width","1800px");
 			$("#collapse1").collapse({
 				query: 'div.collapseTitle',//收合標題樣式名
 				persist: false,//是否記憶收合,需配合jquery.collapse_storage.js
@@ -254,6 +263,7 @@
 			});
 
 			$("#navmenuV ul li:nth-child(2)").addClass("open");
+			$("#navmenuV ul li:nth-child(2) li:nth-child(1)").addClass("active");
 			$('.nav').navgoco();
 		});
 	</script>

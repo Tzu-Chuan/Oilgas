@@ -121,7 +121,7 @@
                         </div>
                     </div>--%>
 
-                    <div class="stripeMeB font-size3 margin10T">
+                    <div class="stripeMeG font-size3 margin10T">
                         <table id="tablist" width="100%" border="0" cellspacing="0" cellpadding="0">
                             <thead>
 								<tr>

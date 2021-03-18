@@ -38,7 +38,7 @@ public partial class Handler_GetGasAnswer : System.Web.UI.Page
 					case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
 						cpid = "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1";
 						break;
-				}
+                }
 			}
 
 			db._業者guid = cpid;

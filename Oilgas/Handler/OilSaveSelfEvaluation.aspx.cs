@@ -56,7 +56,10 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
 					case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
 						cpid = "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1";
 						break;
-				}
+                    case "4290C46B-7BEB-4A8E-A37F-325D58D2D579":
+                        cpid = "972153A3-98FE-40F8-9F4D-7C950BD3F51C";
+                        break;
+                }
 			}
 
 			DataTable qdt = q_db.GetQuestionGuid();
@@ -70,25 +73,40 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
 
 					if (LogInfo.competence == "02") // 業者
 					{
-						ans_db._業者guid = cpid;
-						ans_db._答案 = cAns;
-						ans_db._委員意見 = "";
-					}
+                        if (cAns != "")
+                        {
+                            ans_db._業者guid = cpid;
+                            ans_db._答案 = cAns;
+                            ans_db._委員意見 = "";
+
+                            ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
+                            ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
+                            ans_db._填寫人員類別 = LogInfo.competence;
+                            ans_db._建立者 = LogInfo.mGuid;
+                            ans_db._修改者 = LogInfo.mGuid;
+
+                            ans_db.SaveAnswer(oConn, myTrans);
+                        }
+						
+                    }
 					else
 					{
 						ans_db._業者guid = cpid;
 						ans_db._答案 = mAns;
 						string pStr = (mAns != "01") ? PsStr : "";
 						ans_db._委員意見 = pStr;
-					}
 
-					ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
-					ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
-					ans_db._填寫人員類別 = LogInfo.competence;
-					ans_db._建立者 = LogInfo.mGuid;
-					ans_db._修改者 = LogInfo.mGuid;
 
-					ans_db.SaveAnswer(oConn, myTrans);
+                        ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
+                        ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
+                        ans_db._填寫人員類別 = LogInfo.competence;
+                        ans_db._建立者 = LogInfo.mGuid;
+                        ans_db._修改者 = LogInfo.mGuid;
+
+                        ans_db.SaveAnswer(oConn, myTrans);
+                    }
+
+					
 				}
 			}
 

@@ -45,117 +45,146 @@
 
 
 
+
+
                 <div class="padding10ALL">
                     <div class="filetitlewrapper">
                         <span class="filetitle font-size7">海管室</span>
                         <span class="btnright"><div id="filedown"></div></span>
                     </div>
 
-                    <div class="stripeMeG tbover">
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <th nowrap width="200" rowspan="2">風險評估管線名稱 <br>
-                                    (及管線編號)</th>
-                                <th nowrap rowspan="2">最近一次 <br>
-                                    執行日期 <br>
-                                    (年/月)</th>
-                                <th nowrap rowspan="2">再評估時機： <br>
-                                    1.定期(5年)<br>
-                                    2.風險因子異動 </th>
-                                <th nowrap rowspan="2">管線長度 <br>(公里)</th>
-                                <th nowrap rowspan="2">分段數量 </th>
-                                <th nowrap width="180" rowspan="2">已納入 <br>ILI結果 <br>(4)</th>
-                                <th nowrap rowspan="2">已納入CIPS結果 <br>(5)</th>
-                                <th nowrap rowspan="2">已納入 <br>巡管結果 <br>
-                                    1.是 <br>
-                                    2.否 <br>
-                                    (6)</th>
-                                <th nowrap colspan="3">各等級風險 <br>
-                                    管段數量 </th>
-                                <th nowrap width="200" rowspan="2">降低高風險<br>管段之相關作為 </th>
-                                <th nowrap rowspan="2">改善後風險<br>等級 高、中、低</th>
-                            </tr>
-                            <tr>
-                                <th >高 </th>
-                                <th >中 </th>
-                                <th >低 </th>
-                            </tr>
-                            <tr>
-                                <td >台中至通霄36吋天然氣海管 <br>
-                                    (805010125001)</td>
-                                <td >108.12</td>
-                                <td >1</td>
-                                <td >46.8km</td>
-                                <td >1</td>
-                                <td ><ul>
-                                    <li>台中廠過台中港航道之HDD管段局部管壁減薄最深59%。 </li>
-                                    <li>KP25.780處外部缺陷深度自33% （101年）成長為42% （107年)，此缺陷為小凹陷。 </li>
-                                </ul></td>
-                                <td >NA</td>
-                                <td >1</td>
-                                <td >v</td>
-                                <td >&nbsp;</td>
-                                <td >&nbsp;</td>
-                                <td ><ul>
-                                    <li>KP7~KP8.5拋石保護工程發包程序規劃中。目前可列入重點檢測區域，觀察其是否有自然回填之現象或持續擴大懸空規模再作維護策略制定。 </li>
-                                    <li>綜上，本公司擬定期及不定期執行風險評估，如有風險之虞則儘速進行妥適保護工法，以降低風險，確保輸氣操作安全。 </li>
-                                </ul></td>
-                                <td >&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td >通霄至大潭36吋天然氣海管 <br>
-                                    (805010125002)</td>
-                                <td >108.12</td>
-                                <td >1</td>
-                                <td >88.8km</td>
-                                <td >1</td>
-                                <td ><ul>
-                                    <li>通霄至大潭KP81.008檢測結果發現2.9% 凹陷。 </li>
-                                </ul></td>
-                                <td >NA</td>
-                                <td >1</td>
-                                <td >&nbsp;</td>
-                                <td >&nbsp;</td>
-                                <td >v</td>
-                                <td ><ul>
-                                    <li>本公司擬定期及不定期執行風險評估，如有風險之虞則儘速進行妥適保護工法，以降低風險，確保輸氣操作安全。 </li>
-                                </ul></td>
-                                <td >&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td >永安至通霄36吋天然氣海管 <br>
-                                    (805010126001)</td>
-                                <td >108.12</td>
-                                <td >1</td>
-                                <td >237,7km</td>
-                                <td >1</td>
-                                <td ><ul>
-                                    <li>KP34處外部管壁減薄最深37%，ERF為0.80。 </li>
-                                </ul></td>
-                                <td >NA</td>
-                                <td >1</td>
-                                <td >v</td>
-                                <td >&nbsp;</td>
-                                <td >&nbsp;</td>
-                                <td ><ul>
-                                    <li>KP32、KP59本公司針對此區域的海床保護工程目前已發包且執行中，待保護工程於109.06完成後，海床沖刷危害風險將已被有效管控掌握，預估風險將可調至低度風險，在竣工後定期追蹤檢查此區域的保護工狀態及地貌變化。 </li>
-                                    <li>綜上，本公司擬定期及不定期執行風險評估，如有風險之虞則儘速進行妥適保護工法，以降低風險，確保輸氣操作安全。 </li>
-                                </ul></td>
-                                <td >&nbsp;</td>
-                            </tr>
-                        </table>
-                    </div><!-- stripeMe -->
-                    <div class="margin5TB font-size2">
-                        (1) 風險評估相關教育訓練：包含公司內部自行辦理或至其他機構辦理之風險評估教育訓練。<br>
-                        (2) 訓練課程屬於內部訓練者，請填1；外部訓練者，請填2。<br>
-                        (3) 再評估時機：最近一次所執行之評估是公司定期規劃(例：每5年一次)，或因風險評估之因子有所異動 (例：遷管、換管)而執行。<br>
-                        (4) 執行該管線風險評估時，已將ILI檢測結果納入評估參數，請填寫檢測時間，若尚未考量ILI檢測結果，或該管線尚未執行ILI檢測者，請填NA。<br>
-                        (5) 執行該管線風險評估時，已將CIPS檢測結果納入評估參數，請填檢測時間，若尚未考量CIPS檢測結果者，請填NA。<br>
-                        (6) 執行該管線風險評估時，已將巡管結果(如：未會勘而開挖頻度)納入評估參數，請填「1」，若尚未考量巡管結果者，請填「2」。<br>
-                        (7) 各等級風險管段數量：請分別填入高、中、低風險之管段數量。<br>
-                        (8) 若評估結果有中高風險管段，應於「降低中高風險管段之作為」欄位註明相對應之作為或其作為相關文件名稱，並於「改善後風險等級」欄位中，填入改善後之風險等級(高、中、低)。
+                    <div class="row margin20T">
+                        <div class="col-lg-3 col-md-4 col-sm-5">
+                            <div id="navmenuV"></div>
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-7">
+                        <div class="stripeMeG tbover">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <th nowrap  rowspan="2">長途管線 <br>
+                                      識別碼 </th>
+                                    <th nowrap rowspan="2">最近一次 <br>
+                                      執行日期 <br>
+                                      (年/月)</th>
+                                    <th nowrap rowspan="2">再評估時機 <br>
+                                      1.定期(5年)<br>
+                                      2.風險因子異動 </th>
+                                    <th nowrap rowspan="2">管線長度 <br>
+                                      (公尺)</th>
+                                    <th nowrap rowspan="2">分段數量 </th>
+                                    <th nowrap rowspan="2">已納入 <br>
+                                      ILI結果 <br>
+                                      (4)</th>
+                                    <th nowrap rowspan="2">已納入CIPS結果 <br>
+                                      (5)</th>
+                                    <th nowrap rowspan="2">已納入 <br>
+                                      巡管結果 <br>
+                                      1.是 <br>
+                                      2.否 <br>
+                                      (6)</th>
+                                    <th nowrap colspan="3">各等級風險 <br>
+                                      管段數量 </th>
+                                    <th nowrap rowspan="2">降低中高風險管段之<br>相關作為文件名稱 </th>
+                                    <th nowrap rowspan="2">改善後 <br>
+                                      風險等級 <br>
+                                      高、中、低 </th>
+                                  </tr>
+                                  <tr>
+                                    <th >高 </th>
+                                    <th >中 </th>
+                                    <th >低 </th>
+                                  </tr>
+                                  <tr>
+                                    <td >台中至通霄36吋天然氣海管 <br>
+                                      (805010125001)</td>
+                                    <td >110/01</td>
+                                    <td >1</td>
+                                    <td >44701.59</td>
+                                    <td >1</td>
+                                    <td  valign="top"><ul>
+                                      <li>KP4.95：109年7月IP檢測台中廠過台中港航道之HDD管段局部管壁減薄最深48%(0.861)，本段屬中風險。 </li>
+                                      <li>KP8.436：超過最大懸空允許值，本段屬高風險。 </li>
+                                      <li>其餘管段皆屬低風險。 </li>
+                                    </ul></td>
+                                    <td >NA</td>
+                                    <td >1</td>
+                                    <td >v</td>
+                                    <td >&nbsp;</td>
+                                    <td >&nbsp;</td>
+                                    <td ><ul>
+                                      <li>0800-SW-06-01風險評估表 </li>
+                                      <li>DNV協助更新海管風險評估表 </li>
+                                      <li>台中通霄36吋海管IP檢測工作總結報告 </li>
+                                      <li>109年度台中至通霄36吋海管IP整體內部檢測結果分析、評估報告 </li>
+                                      <li>KP8.436：預計110年5月底施作ROV檢測確認KP8.436管段懸空長度，確認長度後，評估此管段因懸空而導致管線之疲勞 (Vortex Induced Vibration) 問題。 </li>
+                                    </ul></td>
+                                    <td >中 <br>
+                                      (目前進行中)</td>
+                                  </tr>
+                                  <tr>
+                                    <td >通霄至大潭36吋天然氣海管 <br>
+                                      (805010125002)</td>
+                                    <td >110/01</td>
+                                    <td >1</td>
+                                    <td >85430.01</td>
+                                    <td >1</td>
+                                    <td  valign="top"><ul>
+                                      <li>保護工整體現況良好，持續發揮原設計功能，有效保護海管，每年定期檢測持續以ROV針對各保護工處進行確認，以確保管線安全。 </li>
+                                      <li>本海管管段皆屬低風險。 </li>
+                                    </ul></td>
+                                    <td >NA</td>
+                                    <td >1</td>
+                                    <td >&nbsp;</td>
+                                    <td >&nbsp;</td>
+                                    <td >v</td>
+                                    <td ><ul>
+                                      <li>0800-SW-06-01風險評估表 </li>
+                                      <li>2DNV協助更新海管風險評估表 </li>
+                                    </ul></td>
+                                    <td >低 </td>
+                                  </tr>
+                                  <tr>
+                                    <td >永安至通霄36吋天然氣海管 <br>
+                                      (805010126001)</td>
+                                    <td >110/01</td>
+                                    <td >1</td>
+                                    <td >237592.41</td>
+                                    <td >1</td>
+                                    <td  valign="top"><ul>
+                                      <li>KP42.472現有懸空長度為6公尺，未超過最大允許懸空長度，顯示在一般環境條件下海管仍屬安全狀態，但海底異重流推擠管線的危害風險需釐清，本段屬中風險。 </li>
+                                      <li>其餘管段皆屬低風險。 </li>
+                                    </ul></td>
+                                    <td >NA</td>
+                                    <td >1</td>
+                                    <td >&nbsp;</td>
+                                    <td >v</td>
+                                    <td >&nbsp;</td>
+                                    <td ><ul>
+                                      <li>.0800-SW-06-01風險評估表 </li>
+                                      <li>DNV協助更新海管風險評估表 </li>
+                                      <li>DNV永安至通霄海管KP42因季節性海床地形變化比較分析評估報告 </li>
+                                      <li>曾文溪口海底天然管線周邊海底地形變異分析工作(財團法人成大水利海洋研究發展文教基金會)</li>
+                                    </ul></td>
+                                    <td >低 <br>
+                                      (目前進行中)</td>
+                                  </tr>
+                            </table>
+                        </div><!-- stripeMe -->
+                        <div class="margin5TB font-size2">
+                            (1) 風險評估相關教育訓練：包含公司內部自行辦理或至其他機構辦理之風險評估教育訓練。<br>
+                            (2) 訓練課程屬於內部訓練者，請填1；外部訓練者，請填2。<br>
+                            (3) 再評估時機：最近一次所執行之評估是公司定期規劃(例：每5年一次)，或因風險評估之因子有所異動 (例：遷管、換管)而執行。<br>
+                            (4) 執行該管線風險評估時，已將ILI檢測結果納入評估參數，請填寫檢測時間，若尚未考量ILI檢測結果，或該管線尚未執行ILI檢測者，請填NA。<br>
+                            (5) 執行該管線風險評估時，已將CIPS檢測結果納入評估參數，請填檢測時間，若尚未考量CIPS檢測結果者，請填NA。<br>
+                            (6) 執行該管線風險評估時，已將巡管結果(如：未會勘而開挖頻度)納入評估參數，請填「1」，若尚未考量巡管結果者，請填「2」。<br>
+                            (7) 各等級風險管段數量：請分別填入高、中、低風險之管段數量。<br>
+                            (8) 若評估結果有中高風險管段，應於「降低中高風險管段之作為」欄位註明相對應之作為或其作為相關文件名稱，並於「改善後風險等級」欄位中，填入改善後之風險等級(高、中、低)。
 
-                    </div>
+                        </div>
+                        </div><!-- col -->
+                    </div><!-- row -->
+
+
 
                 </div>
             </div><!-- container -->
@@ -237,6 +266,7 @@
 <!-- 本頁面使用的JS -->
 	<script type="text/javascript">
 		$(document).ready(function () {
+		    $(".container").css("max-width","1800px");
 			$("#collapse1").collapse({
 				query: 'div.collapseTitle',//收合標題樣式名
 				persist: false,//是否記憶收合,需配合jquery.collapse_storage.js
@@ -261,6 +291,7 @@
 			});
 
 			$("#navmenuV ul li:nth-child(2)").addClass("open");
+			$("#navmenuV ul li:nth-child(2) li:nth-child(7)").addClass("active");
 			$('.nav').navgoco();
 		});
 	</script>

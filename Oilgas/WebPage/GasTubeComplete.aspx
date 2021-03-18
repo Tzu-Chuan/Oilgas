@@ -53,74 +53,112 @@
 
                     <div class="row margin20T">
                         <div class="col-lg-3 col-md-4 col-sm-5">
-                            <div id="navmenuV"><!--#include file="GasLeftMenu.html"--></div>
+                            <div id="navmenuV"></div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
                             <div class="stripeMeG tbover">
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <th nowrap  rowspan="2" valign="top">轄區長途 <br>
-                                            管線識別碼 <br>
-                                            (國土資訊系統)<br>
-                                            8050101xxxxx</th>
-                                        <th nowrap valign="top">智慧型通管器(ILI) 可行性 </th>
-                                        <th nowrap valign="top">耐壓強度試驗(TP)<br>
-                                            可行性 </th>
-                                        <th nowrap>緊密電位(CIPS)</th>
-                                        <th nowrap>電磁包覆(PCM)</th>
-                                        <th nowrap>智慧型通管器(ILI)</th>
-                                        <th nowrap>耐壓強度試驗 <br>(TP)</th>
-                                        <th nowrap>受雜散 <br>電流影響 </th>
-                                        <th nowrap rowspan="2">優先處理 <br>順序 </th>
-                                    </tr>
-                                    <tr>
-                                        <th nowrap valign="top">1.可 <br>
-                                            2.無法 </th>
-                                        <th nowrap valign="top">1.可 <br>
-                                            2.無法 </th>
-                                        <th nowrap>年/月 </th>
-                                        <th nowrap>年/月 </th>
-                                        <th nowrap>年/月 </th>
-                                        <th nowrap>年/月 </th>
-                                        <th nowrap valign="top">1.有 <br>
-                                            2.無 </th>
-                                    </tr>
-                                    <tr>
+                                        <th  rowspan="2">長途管線 <br>
+                                          識別碼 </th>
+                                        <th >風險評估 <br>
+                                          年/月 </th>
+                                        <th >智慧型通管器(ILI) 可行性 </th>
+                                        <th >耐壓強度試驗 <br>
+                                          (TP)<br>
+                                          可行性 </th>
+                                        <th >緊密電位(CIPS)<br>
+                                          年/月 </th>
+                                        <th >電磁包覆(PCM)<br>
+                                          年/月 </th>
+                                        <th >智慧型通管器(ILI)<br>
+                                          年/月 </th>
+                                        <th >耐壓強度試驗 <br>
+                                          (TP)<br>
+                                          年/月 </th>
+                                        <th >耐壓強度試驗 <br>
+                                          (TP)<br>
+                                          介質 </th>
+                                        <th >試壓壓力與MOP壓力倍數 </th>
+                                        <th >耐壓強度試驗 <br>
+                                          (TP)<br>
+                                          持壓時間 <br>
+                                          (小時)</th>
+                                        <th >受雜散 <br>
+                                          電流影響 </th>
+                                        <th >洩漏偵測系統 <br>
+                                          (LLDS)</th>
+                                        <th  rowspan="2">強化作為 </th>
+                                      </tr>
+                                      <tr>
+                                        <th  valign="top">&nbsp;</th>
+                                        <th  valign="top">1.可 <br>
+                                          2.無法 </th>
+                                        <th  valign="top">1.可 <br>
+                                          2.無法 </th>
+                                        <th >&nbsp;</th>
+                                        <th >&nbsp;</th>
+                                        <th >&nbsp;</th>
+                                        <th >&nbsp;</th>
+                                        <th >&nbsp;</th>
+                                        <th >&nbsp;</th>
+                                        <th >&nbsp;</th>
+                                        <th  valign="top">1.有 <br>
+                                          2.無 </th>
+                                        <th >1.有 <br>
+                                          2.無 </th>
+                                      </tr>
+                                      <tr>
                                         <td >805010125001<br>
-                                            (台中至通霄)</td>
-                                        <td >1</td>
+                                          (台中至通霄)</td>
+                                        <td  valign="top">110/01</td>
+                                        <td  valign="top">1</td>
+                                        <td  valign="top">2</td>
+                                        <td >NA</td>
+                                        <td >NA</td>
+                                        <td >109.07.26</td>
+                                        <td >NA</td>
+                                        <td >NA</td>
+                                        <td >NA </td>
+                                        <td >NA </td>
                                         <td >2</td>
-                                        <td >NA</td>
-                                        <td >NA</td>
-                                        <td >107.02.17</td>
-                                        <td >NA</td>
                                         <td >2</td>
-                                        <td >1</td>
-                                    </tr>
-                                    <tr>
+                                        <td  valign="top">NA </td>
+                                      </tr>
+                                      <tr>
                                         <td >805010125002<br>
-                                            (通霄至大潭)</td>
-                                        <td >1</td>
-                                        <td >2</td>
+                                          (通霄至大潭)</td>
+                                        <td  valign="top">110/01</td>
+                                        <td  valign="top">1</td>
+                                        <td  valign="top">2</td>
                                         <td >NA</td>
                                         <td >NA</td>
                                         <td >107.03.04</td>
                                         <td >NA</td>
+                                        <td >NA</td>
+                                        <td >NA </td>
+                                        <td >NA </td>
                                         <td >2</td>
-                                        <td >3</td>
-                                    </tr>
-                                    <tr>
+                                        <td >2</td>
+                                        <td  valign="top">NA </td>
+                                      </tr>
+                                      <tr>
                                         <td >805010126001<br>
-                                            (永安至通霄)</td>
-                                        <td >1</td>
-                                        <td >2</td>
+                                          (永安至通霄)</td>
+                                        <td  valign="top">110/01</td>
+                                        <td  valign="top">1</td>
+                                        <td  valign="top">2</td>
                                         <td >NA</td>
                                         <td >NA</td>
-                                        <td >於108.12.27開始施作，預計109.06完成檢測作業。 </td>
+                                        <td >預計於110年4月執行。 </td>
                                         <td >NA</td>
+                                        <td >NA</td>
+                                        <td >NA </td>
+                                        <td >NA </td>
                                         <td >2</td>
                                         <td >2</td>
-                                    </tr>
+                                        <td  valign="top">NA </td>
+                                      </tr>
                                 </table>
                             </div><!-- stripeMe -->
 
@@ -219,6 +257,7 @@
 <!-- 本頁面使用的JS -->
 	<script type="text/javascript">
 		$(document).ready(function () {
+		    $(".container").css("max-width","1800px");
 			$("#collapse1").collapse({
 				query: 'div.collapseTitle',//收合標題樣式名
 				persist: false,//是否記憶收合,需配合jquery.collapse_storage.js
@@ -243,6 +282,7 @@
 			});
 
 			$("#navmenuV ul li:nth-child(2)").addClass("open");
+			$("#navmenuV ul li:nth-child(2) li:nth-child(2)").addClass("active");
 			$('.nav').navgoco();
 		});
 	</script>

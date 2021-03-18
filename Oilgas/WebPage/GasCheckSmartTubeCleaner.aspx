@@ -53,77 +53,131 @@
 
                     <div class="row margin20T">
                         <div class="col-lg-3 col-md-4 col-sm-5">
-                            <div id="navmenuV"><!--#include file="GasLeftMenu.html"--></div>
+                            <div id="navmenuV"></div>
                         </div>
                         <div class="col-lg-9 col-md-8 col-sm-7">
 
                             <div class="stripeMeG tbover">
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <th nowrap rowspan="2">管線名稱(及管線編號) </th>
-                                        <th nowrap rowspan="2">報告名稱 </th>
-                                        <th nowrap rowspan="2">報告 <br>
-                                            日期<br>
-                                            (年/月)</th>
-                                        <th nowrap rowspan="2" valign="top">檢測方法:<br>
-                                            1.UT<br>
-                                            2.磁漏 </th>
-                                        <th nowrap rowspan="2">檢測 <br>
-                                            日期<br>
-                                            (年/月)</th>
-                                        <th nowrap rowspan="2">檢測長度<br>
-                                            (公里)</th>
-                                        <th nowrap colspan="2">異常點數量 </th>
-                                        <th nowrap rowspan="2">改善完成數量 </th>
-                                        <th nowrap rowspan="2">列為監控點數量 </th>
-                                        <th nowrap rowspan="2">改善未完成之數量 </th>
-                                    </tr>
-                                    <tr>
-                                        <th nowrap>內部 </th>
-                                        <th nowrap>外部 </th>
-                                    </tr>
-                                    <tr>
-                                        <td  valign="top">台中至通霄36吋天然氣海管 <br>
-                                            (805010125001)</td>
-                                        <td >智慧型IP檢測工作總結報告書(台中至通霄)羅森 </td>
-                                        <td >107.06</td>
+                                        <th  rowspan="2">長途管線 <br>
+                                          識別碼 </th>
+                                        <th >檢測 <br>
+                                          方法 </th>
+                                        <th >最近一次執行年/月 </th>
+                                        <th >報告產出 <br>
+                                          年/月 </th>
+                                        <th >檢測長度 <br>
+                                          公尺 </th>
+                                        <th  colspan="4">減薄30%-40%<br>
+                                          數量 </th>
+                                        <th  colspan="4">減薄40%-50%數量 </th>
+                                        <th  colspan="5">減薄50%以上數量 </th>
+                                        <th  colspan="2">Dent </th>
+                                        <th >備註 </th>
+                                      </tr>
+                                      <tr>
+                                        <th >&nbsp;</th>
+                                        <th  valign="top">&nbsp;</th>
+                                        <th  valign="top">&nbsp;</th>
+                                        <th  valign="top">&nbsp;</th>
+                                        <th  valign="top">內 </th>
+                                        <th >開挖 <br>
+                                          確認 </th>
+                                        <th  valign="top">外 </th>
+                                        <th >開挖 <br>
+                                          確認 </th>
+                                        <th  valign="top">內 </th>
+                                        <th >開挖 <br>
+                                          確認 </th>
+                                        <th  valign="top">外 </th>
+                                        <th width="36" colspan="2">開挖 <br>
+                                          確認 </th>
+                                        <th  valign="top">內 </th>
+                                        <th >開挖 <br>
+                                          確認 </th>
+                                        <th  valign="top">外 </th>
+                                        <th >開挖 <br>
+                                          確認 </th>
+                                        <th  valign="top">&gt;12%</th>
+                                        <th >開挖 <br>
+                                          確認 </th>
+                                        <th >&nbsp;</th>
+                                      </tr>
+                                      <tr>
+                                        <td >台中至通霄36吋天然氣海管 <br>
+                                          (805010125001)</td>
+                                        <td >智慧型IP檢測工作 </td>
+                                        <td >109.07</td>
+                                        <td >109.12</td>
+                                        <td >44,701.59</td>
+                                        <td >0</td>
+                                        <td >NA </td>
                                         <td >2</td>
-                                        <td >107.02.17</td>
-                                        <td >46.8km</td>
                                         <td >0</td>
-                                        <td >6</td>
                                         <td >0</td>
-                                        <td >1</td>
-                                        <td >5</td>
-                                    </tr>
-                                    <tr>
-                                        <td  valign="top">通霄至大潭36吋天然氣海管 <br>
-                                            (805010125002)</td>
-                                        <td >智慧型IP檢測工作總結報告書(通霄至大潭)羅森 </td>
-                                        <td >107.06</td>
+                                        <td >NA </td>
                                         <td >2</td>
-                                        <td >107.03.04</td>
-                                        <td >88.8km</td>
+                                        <td width="36" colspan="2">0</td>
                                         <td >0</td>
-                                        <td >dent</td>
+                                        <td >NA</td>
                                         <td >0</td>
-                                        <td >1</td>
+                                        <td >NA </td>
                                         <td >0</td>
-                                    </tr>
-                                    <tr>
-                                        <td  valign="top">永安至通霄36吋天然氣海管 <br>
-                                            (805010126001)</td>
-                                        <td >智慧型IP檢測工作總結報告書(永安至通霄)羅森 </td>
+                                        <td >NA</td>
+                                        <td ><ol>
+                                          <li>短期改善措施： </li>
+                                          <li>建置陰極防蝕整流站及監測井，加強海管保護電位，於108.01.30完成。 </li>
+                                          <li>已於109.7.26施作台中至通霄IP檢測工作，確認該處減薄無缺陷增長，檢測報告顯示目前10年內無立即修復風險。 </li>
+                                          <li>長期改善措施： </li>
+                                        </ol>      鋪設新管線(HDD工法)，預計110年06月底完成，並配合台中至通霄陸管預計於111年底前完成後執行，預計於112年9月前完成新舊管線銜接工程為目標；若台中至通霄36吋陸管工程延宕，則於112年9月前施作IP檢測確認海管減薄狀況。 </td>
+                                      </tr>
+                                      <tr>
+                                        <td >通霄至大潭36吋天然氣海管 <br>
+                                          (805010125002)</td>
+                                        <td >智慧型IP檢測工作 </td>
+                                        <td >107.03</td>
+                                        <td >107.06</td>
+                                        <td >85,430.01</td>
+                                        <td >0</td>
+                                        <td >NA </td>
+                                        <td >0</td>
+                                        <td >NA </td>
+                                        <td >0</td>
+                                        <td >NA </td>
+                                        <td >0</td>
+                                        <td width="36" colspan="2">NA </td>
+                                        <td >0</td>
+                                        <td >NA</td>
+                                        <td >0</td>
+                                        <td >NA </td>
+                                        <td >0</td>
+                                        <td >NA</td>
+                                        <td >預計112年執行 </td>
+                                      </tr>
+                                      <tr>
+                                        <td >永安至通霄36吋天然氣海管 <br>
+                                          (805010126001)</td>
+                                        <td >智慧型IP檢測工作 </td>
+                                        <td >99.11</td>
                                         <td >99.12</td>
-                                        <td >2</td>
-                                        <td >99.11.06</td>
-                                        <td >237.7km</td>
+                                        <td >237,592.41</td>
+                                        <td >0</td>
+                                        <td >NA </td>
+                                        <td >3</td>
                                         <td >0</td>
                                         <td >0</td>
+                                        <td >NA </td>
                                         <td >0</td>
+                                        <td width="36" colspan="2">NA </td>
                                         <td >0</td>
+                                        <td >NA</td>
                                         <td >0</td>
-                                    </tr>
+                                        <td >NA </td>
+                                        <td >0</td>
+                                        <td >NA</td>
+                                        <td >預計於110年4月執行。 </td>
+                                      </tr>
                                 </table>
                             </div><!-- stripeMe -->
                             <div class="margin5TB font-size2">
@@ -216,6 +270,7 @@
 <!-- 本頁面使用的JS -->
 	<script type="text/javascript">
 		$(document).ready(function () {
+		    $(".container").css("max-width","1800px");
 			$("#collapse1").collapse({
 				query: 'div.collapseTitle',//收合標題樣式名
 				persist: false,//是否記憶收合,需配合jquery.collapse_storage.js
@@ -240,6 +295,7 @@
 			});
 
 			$("#navmenuV ul li:nth-child(2)").addClass("open");
+			$("#navmenuV ul li:nth-child(2) li:nth-child(3)").addClass("active");
 			$('.nav').navgoco();
 		});
 	</script>

@@ -33,7 +33,11 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 						case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
 							Response.Redirect("~/DemoHtml/oil-firmC001.html");
 							break;
-					}
+                        case "4290C46B-7BEB-4A8E-A37F-325D58D2D579":
+                            Response.Redirect("~/DemoHtml/oil-firmB001.html");
+                            break;
+
+                    }
 
 					//gmc_db._年度 = "110";
 					//gmc_db._委員guid = LogInfo.mGuid;

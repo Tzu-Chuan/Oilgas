@@ -302,7 +302,7 @@
 			}
 		</script>
 </head>
-<body class="bgG">
+<body class="bgB">
 	<!-- 開頭用div:修正mmenu form bug -->
 	<div>
 	<input type="hidden" id="Competence" value="<%= identity %>" />
@@ -355,7 +355,7 @@
 											<th nowrap="nowrap">110年石油管線及儲油設施查核項目</th>
 											<th nowrap="nowrap" width="200">業者</th>
 											<th nowrap="nowrap" width="200">委員</th>
-											<th nowrap="nowrap">參考文件/現場位置</th>
+											<th nowrap="nowrap">檢視文件</th>
 											<th nowrap="nowrap" width="300">委員建議</th>
 										</tr>
 									</thead>
