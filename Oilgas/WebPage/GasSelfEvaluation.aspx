@@ -28,7 +28,9 @@
 						RemoveQuestion(); // 業者不須自評
 						$(".mRadio").prop("disabled", true);
 						break;
-					case "03":
+                    case "03":
+                        $(".cRadio").prop("disabled", true);
+					    break;
 					case "04":
 						$("#subbtn").hide();
 						break;
@@ -92,6 +94,48 @@
 							}
 						}
 					});
+                });
+
+                $(document).on("click", "#subbtnTop", function () {
+					// Get form
+					var form = $('#form1')[0];
+
+					// Create an FormData object 
+					var data = new FormData(form);
+
+					// If you want to add an extra field for the FormData
+					data.append("cpid", $.getQueryString("cp"));
+
+					$.ajax({
+						type: "POST",
+						async: true, //在沒有返回值之前,不會執行下一步動作
+						url: "../Handler/GasSaveSelfEvaluation.aspx",
+						data: data,
+						processData: false,
+						contentType: false,
+						cache: false,
+						error: function (xhr) {
+							$("#errMsg").html("Error: " + xhr.status);
+							console.log(xhr.responseText);
+						},
+						beforeSend: function () {
+							$("#subbtn").val("資料儲存中...");
+							$("#subbtn").prop("disabled", true);
+						},
+						complete: function () {
+							$("#subbtn").val("儲存");
+							$("#subbtn").prop("disabled", false);
+						},
+						success: function (data) {
+							if ($(data).find("Error").length > 0) {
+								$("#errMsg").html($(data).find("Error").attr("Message"));
+							}
+							else {
+								alert($("Response", data).text());
+								//location.href = "LessonManage.aspx";
+							}
+						}
+					});
 				});
 
 				$(document).on("change", ".psCtrl", function () {
@@ -100,8 +144,8 @@
 						$(this).closest("tr").find("a[name='psbtn']").show();
 					}
 					else {
-						$(this).closest("tr").find("td:last-child span").hide();
-						$(this).closest("tr").find("a[name='psbtn']").hide();
+						//$(this).closest("tr").find("td:last-child span").hide();
+						//$(this).closest("tr").find("a[name='psbtn']").hide();
 					}
 				});
 
@@ -336,6 +380,7 @@
 								<span class="filetitle font-size7">海管室</span>
 								<span class="btnright">
 									<div class="font-size4 font-normal">
+                                        <input type="button" id="subbtnTop" value="儲存" class="genbtn" />
 										<i class="fa fa-file-word-o IconCc" aria-hidden="true"></i><a href="../doc/附件3、110年天然氣生產進口事業查核填寫內容.docx" target="_blank">查核填寫內容下載</a> 
 										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/查核配合事項(天然氣).pptx" target="_blank">查核配合事項下載</a> 
 										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/附件4、110年天然氣生產、進口事業輸儲設備查核簡報大綱.pptx" target="_blank">簡報大綱下載</a>

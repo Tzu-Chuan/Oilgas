@@ -29,19 +29,26 @@ public partial class Handler_GetGasAnswer : System.Web.UI.Page
 			{
 				switch (LogInfo.mGuid)
 				{
-					case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
-						cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-						break;
-					case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
-						cpid = "972153A3-98FE-40F8-9F4D-7C950BD3F51C";
-						break;
-					case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
-						cpid = "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1";
-						break;
+                    case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
+                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+                        break;
+                    case "C80975D7-C35D-4A99-B784-5F2EFF2099C2":
+                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+                        break;
+                    case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
+                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+                        break;
+                    case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
+                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+                        break;
                 }
 			}
+            else if (LogInfo.competence == "03")
+            {
+                cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+            }
 
-			db._業者guid = cpid;
+            db._業者guid = cpid;
 			db._年度 = year;
 			DataTable dt = db.GetCompanyAns();
 			string xmlstr = string.Empty;
