@@ -69,7 +69,6 @@ if @datacount>0
 		    修改者=@修改者
 		    where 業者guid=@業者guid and 題目guid=@題目guid and 填寫人員類別=@填寫人員類別 and 年度=@年度
         end
-	end
 else
 	begin
 		insert into 石油_自評表答案 (
