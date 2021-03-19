@@ -566,3 +566,13 @@ a.pagestylecurrent:hover{color:#ffffff; text-decoration:none; border:1px solid #
 .titlelineTypeA{border-top: 1px dotted #cdc4ae; padding-top: 3px;}
 .font-blackA a{color:#000;}
 .tbover{overflow-x: auto;}
+
+
+input[type="radio"]:disabled:checked::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    border-radius: 50px;
+    border: 3px solid #3f3f3f;
+}
