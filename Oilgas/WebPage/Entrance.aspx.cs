@@ -21,19 +21,22 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 				default:
 					break;
 				case "01": // 委員
-						   // for 3/16
+						   // for 3/23
 					switch (LogInfo.mGuid)
 					{
 						case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
 							Response.Redirect("~/WebPage/GasCompanyList.aspx");
 							break;
-						case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
-							Response.Redirect("~/DemoHtml/oil-firmB001.html");
-							break;
 						case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
 							Response.Redirect("~/DemoHtml/oil-firmC001.html");
 							break;
-                        case "4290C46B-7BEB-4A8E-A37F-325D58D2D579":
+                        case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
+                            Response.Redirect("~/DemoHtml/oil-firmB001.html");
+                            break;
+                        case "5A2DE9FD-2A4D-4E0B-91D3-35951984571F":
+                            Response.Redirect("~/DemoHtml/oil-firmB001.html");
+                            break;
+                        case "FB0B69A5-4F28-4A6F-8EAC-3787D248E94A":
                             Response.Redirect("~/DemoHtml/oil-firmB001.html");
                             break;
 

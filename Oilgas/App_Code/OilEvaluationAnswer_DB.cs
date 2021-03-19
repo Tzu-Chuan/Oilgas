@@ -51,13 +51,24 @@ declare @datacount int
 select @datacount=count(*) from 石油_自評表答案 where 業者guid=@業者guid and 題目guid=@題目guid and 資料狀態='A' and 填寫人員類別=@填寫人員類別 and 年度=@年度
 
 if @datacount>0
-	begin
-		update 石油_自評表答案 set
-		答案=@答案,
-		委員意見=@委員意見,
-		修改日期=@修改日期,
-		修改者=@修改者
-		where 業者guid=@業者guid and 題目guid=@題目guid and 填寫人員類別=@填寫人員類別 and 年度=@年度
+    if @答案='01'
+        begin
+            update 石油_自評表答案 set
+		    答案=@答案,
+		    修改日期=@修改日期,
+		    修改者=@修改者
+		    where 業者guid=@業者guid and 題目guid=@題目guid and 填寫人員類別=@填寫人員類別 and 年度=@年度
+	    end
+    else
+        begin
+            begin
+		    update 石油_自評表答案 set
+		    答案=@答案,
+		    委員意見=@委員意見,
+		    修改日期=@修改日期,
+		    修改者=@修改者
+		    where 業者guid=@業者guid and 題目guid=@題目guid and 填寫人員類別=@填寫人員類別 and 年度=@年度
+        end
 	end
 else
 	begin
