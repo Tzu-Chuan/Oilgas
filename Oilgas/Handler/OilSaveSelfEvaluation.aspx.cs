@@ -46,13 +46,7 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
             if (LogInfo.competence == "01")
             {
                 switch (LogInfo.mGuid)
-                {
-                    case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
-                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-                        break;
-                    case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
-                        cpid = "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1";
-                        break;
+                {                    
                     case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
                         cpid = "972153A3-98FE-40F8-9F4D-7C950BD3F51C";
                         break;
@@ -98,37 +92,42 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
                     }
 					else if(LogInfo.competence == "01")
 					{
-						ans_db._業者guid = cpid;
-						ans_db._答案 = mAns;
-						string pStr = (mAns != "01") ? PsStr : "";
-						ans_db._委員意見 = pStr;
+                        if (mAns != "")
+                        {
+                            ans_db._業者guid = cpid;
+                            ans_db._答案 = mAns;
+                            string pStr = (mAns != "01") ? PsStr : "";
+                            ans_db._委員意見 = pStr;
 
 
-                        ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
-                        ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
-                        ans_db._填寫人員類別 = LogInfo.competence;
-                        ans_db._建立者 = LogInfo.mGuid;
-                        ans_db._修改者 = LogInfo.mGuid;
+                            ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
+                            ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
+                            ans_db._填寫人員類別 = LogInfo.competence;
+                            ans_db._建立者 = LogInfo.mGuid;
+                            ans_db._修改者 = LogInfo.mGuid;
 
-                        ans_db.SaveAnswer(oConn, myTrans);
+                            ans_db.SaveAnswer(oConn, myTrans);
+                        }                            
                     }
                     else
                     {
-                        ans_db._業者guid = cpid;
-                        ans_db._答案 = mAns;
-                        string pStr = (mAns != "01") ? PsStr : "";
-                        ans_db._委員意見 = pStr;
+                        if (mAns != "")
+                        {
+                            ans_db._業者guid = cpid;
+                            ans_db._答案 = mAns;
+                            string pStr = (mAns != "01") ? PsStr : "";
+                            ans_db._委員意見 = pStr;
 
 
-                        ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
-                        ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
-                        ans_db._填寫人員類別 = "01"; //暫時for 3/23
-                        ans_db._建立者 = LogInfo.mGuid;
-                        ans_db._修改者 = LogInfo.mGuid;
+                            ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
+                            ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
+                            ans_db._填寫人員類別 = "01"; //暫時for 3/23
+                            ans_db._建立者 = LogInfo.mGuid;
+                            ans_db._修改者 = LogInfo.mGuid;
 
-                        ans_db.SaveAnswer(oConn, myTrans);
-                    }
-					
+                            ans_db.SaveAnswer(oConn, myTrans);
+                        }                        
+                    }					
 				}
 			}
 
