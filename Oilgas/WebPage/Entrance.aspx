@@ -21,15 +21,31 @@
 	<link href="../css/login.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function () {
-		//	switch ($("#EnterCtrl").val()) {
-		//		case "oil":
-		//			$("#tdGas").hide();
-		//			break;
-		//		case "gas":
-		//			$("#tdOil").hide();
-		//			break;
-		//	}
+        $(document).ready(function () {
+
+            switch ($("#Competence").val()) {
+                case "01":
+                    switch ($("#EnterCtrl").val()) {
+                        case "oil":
+                            $("#tdGas").hide();
+                            $("#tdWeekReport").hide();
+                            break;
+                        case "gas":
+                            $("#tdOil").hide();
+                            $("#tdWeekReport").hide();
+                            break;
+                        default:
+                            $("#tdWeekReport").hide();
+                            break;
+                    }
+                    break;
+                case "02":
+                    break;
+                case "03":
+                    break;
+                case "04":
+                    break;
+            }			
 		});
 	</script>
 </head>
@@ -59,7 +75,7 @@
                             <div class="font-size3">查核及檢測資訊系統</div>
                         </a>
                     </td>
-                    <td width="33%">
+                    <td width="33%" id="tdWeekReport">
                         <a href="#" target="_blank" class="enerbtn">
                             <i class="fa fa-calendar font-sizeIcon" aria-hidden="true"></i>
                             <div class="font-size5 font-bold">週報、季報、月報</div>

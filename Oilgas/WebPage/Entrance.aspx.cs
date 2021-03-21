@@ -9,6 +9,7 @@ using System.Data;
 public partial class WebPage_Entrance : System.Web.UI.Page
 {
 	GasMasterCompare_DB gmc_db = new GasMasterCompare_DB();
+    OilMasterCompare_DB omc_db = new OilMasterCompare_DB();
 	public string name, identity, EnterCtrl;
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -20,59 +21,43 @@ public partial class WebPage_Entrance : System.Web.UI.Page
 			{
 				default:
 					break;
-				case "01": // 委員
-						   // for 3/23
-					//switch (LogInfo.mGuid)
-					//{
-     //                   case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
-     //                       Response.Redirect("~/WebPage/GasCompanyList.aspx");
-     //                       break;
-     //                   case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
-     //                       Response.Redirect("~/DemoHtml/oil-firmC001.html");
-     //                       break;
-     //                   case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
-     //                       Response.Redirect("~/DemoHtml/oil-firmB001.html");
-     //                       break;
-     //                   case "5A2DE9FD-2A4D-4E0B-91D3-35951984571F":
-     //                       Response.Redirect("~/DemoHtml/oil-firmB001.html");
-     //                       break;
-     //                   case "FB0B69A5-4F28-4A6F-8EAC-3787D248E94A":
-     //                       Response.Redirect("~/DemoHtml/oil-firmB001.html");
-     //                       break;
+				case "01": //委員
+                    gmc_db._年度 = "110"; //暫時先抓110年
+                    gmc_db._委員guid = LogInfo.mGuid;
+                    omc_db._年度 = "110"; //暫時先抓110年
+                    omc_db._委員guid = LogInfo.mGuid;
+                    DataTable Gasdt = gmc_db.GetMasterType();
+                    DataTable Oildt = omc_db.GetMasterType();
+                    bool bGas = false;
+                    bool bOil = false;
+                    if (Gasdt.Rows.Count > 0)
+                        bGas = true;
+                    if (Oildt.Rows.Count > 0)
+                        bOil = true;                   
 
-     //               }
-
-					//gmc_db._年度 = "110";
-					//gmc_db._委員guid = LogInfo.mGuid;
-					//DataTable dt = gmc_db.GetMasterType();
-					//bool bGas = false;
-					//bool bOil = false;
-					//if (dt.Rows.Count > 0)
-					//{
-					//	for (int i = 0; i < dt.Rows.Count; i++)
-					//	{
-					//		if (dt.Rows[i]["網站類別"].ToString() == "01")
-					//			bOil = true;
-					//		else
-					//			bGas = true;
-					//	}
-					//}
-
-					//if (bGas && bOil)
-					//	EnterCtrl = "all";
-					//else if (bOil)
-					//	EnterCtrl = "oil";
-					//else
-					//	EnterCtrl = "gas";
-					break;
+                    if (bGas && bOil)
+                        EnterCtrl = "all";
+                    else if (bOil)
+                        EnterCtrl = "oil";
+                    else
+                        EnterCtrl = "gas";
+                    break;
 				case "02": // 業者
 					if (LogInfo.user == "01")
 					{
 						// for 3/16
-						if (LogInfo.companyGuid == "39DF8B07-2F23-4D0E-8983-22AB7510DD3D")
-							Response.Redirect("~/DemoHtml/oil-firmB001.html");
-						else
-							Response.Redirect("~/DemoHtml/oil-firmC001.html");
+						if (LogInfo.companyGuid == "972153A3-98FE-40F8-9F4D-7C950BD3F51C") //豐德供油服務中心
+                        {
+                            Response.Redirect("~/DemoHtml/oil-firmB001.html");
+                        }							
+						else if(LogInfo.companyGuid == "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1") //第十蒸餾工場
+                        {
+                            Response.Redirect("~/DemoHtml/oil-firmC001.html");
+                        }
+                        else
+                        {
+                            Response.Redirect("~/DemoHtml/oil-firmTemplate001.html");
+                        }	
 					}
                     else
                     {
