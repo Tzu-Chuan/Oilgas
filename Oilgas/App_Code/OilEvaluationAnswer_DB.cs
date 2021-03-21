@@ -61,7 +61,6 @@ if @datacount>0
 	    end
     else
         begin
-            begin
 		    update 石油_自評表答案 set
 		    答案=@答案,
 		    委員意見=@委員意見,

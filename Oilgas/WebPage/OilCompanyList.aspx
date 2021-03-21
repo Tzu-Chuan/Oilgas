@@ -22,20 +22,38 @@
 			getData(0);
 
 			$(document).on("click", "a[name='editbtn']", function () {
-				// for 3/16
-				switch ($(this).attr("aid")) {
-					default:
-						location.href = "../DemoHtml/oil-firmTemplate001.html";
-						break;
-					case "972153A3-98FE-40F8-9F4D-7C950BD3F51C":
-						location.href = "../DemoHtml/oil-firmB001.html";
-						break;
-					case "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1":
-						location.href = "../DemoHtml/oil-firmC001.html";
-						break;
+                //location.href = "OilInfo.aspx?cp=" + $(this).attr("aid");
+                $.ajax({
+				type: "POST",
+				async: false, //在沒有返回值之前,不會執行下一步動作
+				url: "../Handler/GetOilCompanyList.aspx",
+				data: {
+                    type: "url",
+                    cpid: $(this).attr("aid"),
+				},
+				error: function (xhr) {
+					alert("Error: " + xhr.status);
+					console.log(xhr.responseText);
+				},
+				success: function (data) {
+					if ($(data).find("Error").length > 0) {
+						alert($(data).find("Error").attr("Message"));
+					}
+                    else {
+                        switch ($("guid", data).text()) {
+                            case "972153A3-98FE-40F8-9F4D-7C950BD3F51C":
+                                location.href = "../DemoHtml/oil-firmB001.html";
+                                break;
+                            case "4B2E5C10-A9D5-4097-BBF7-161A3CCAC1E1":
+                                location.href = "../DemoHtml/oil-firmC001.html";
+                                break;
+                            default:
+                                location.href = "../DemoHtml/oil-firmTemplate001.html";
+                                break;
+                        }  
+					}
 				}
-				
-				//location.href = "OilInfo.aspx?cp=" + $(this).attr("aid");
+			    });
 			});
 		}); // end js
 
@@ -45,7 +63,7 @@
 				async: false, //在沒有返回值之前,不會執行下一步動作
 				url: "../Handler/GetOilCompanyList.aspx",
 				data: {
-					SearchStr: $("#SearchStr").val()
+					type: "list"
 				},
 				error: function (xhr) {
 					alert("Error: " + xhr.status);

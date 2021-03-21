@@ -82,21 +82,48 @@ public class OilCompanyInfo_DB
 		return ds;
 	}
 
-	public DataTable GetCompanyList()
+    //在列表點選檢視重新更新業者guid用
+    public DataTable GetCompany()
+    {
+        HttpContext.Current.Session["companyGuid"] = null;
+        HttpContext.Current.Session.Remove("companyGuid");
+        SqlCommand oCmd = new SqlCommand();
+        oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
+        StringBuilder sb = new StringBuilder();
+
+        sb.Append(@"select * from 石油_業者基本資料 where guid=@guid ");
+
+        oCmd.CommandText = sb.ToString();
+        oCmd.CommandType = CommandType.Text;
+        SqlDataAdapter oda = new SqlDataAdapter(oCmd);
+        DataTable ds = new DataTable();
+        oCmd.Parameters.AddWithValue("@guid", guid);
+        oda.Fill(ds);
+
+        if (ds.Rows.Count > 0)
+        {
+            LogInfo.companyGuid = ds.Rows[0]["guid"].ToString();
+        }
+
+        return ds;
+    }
+
+    public DataTable GetCompanyList()
 	{
 		SqlCommand oCmd = new SqlCommand();
 		oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
 		StringBuilder sb = new StringBuilder();
 
-		sb.Append(@"select * from 石油_業者基本資料 "); 
+		sb.Append(@"select * from 石油_業者基本資料 where 列表是否顯示='Y' ");
+        if (!string.IsNullOrEmpty(guid))
+            sb.Append(@"and guid=@guid ");
 
 		oCmd.CommandText = sb.ToString();
 		oCmd.CommandType = CommandType.Text;
 		SqlDataAdapter oda = new SqlDataAdapter(oCmd);
 		DataTable ds = new DataTable();
-
-		oCmd.Parameters.AddWithValue("@KeyWord", KeyWord);
-		oda.Fill(ds);
+        oCmd.Parameters.AddWithValue("@guid", guid);
+        oda.Fill(ds);
 		return ds;
 	}
 }

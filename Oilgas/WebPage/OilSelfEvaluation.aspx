@@ -19,21 +19,24 @@
 			$(document).ready(function () {
 				GetList();
 
-					switch ($("#Competence").val()) {
-					case "01":
-						$(".cRadio").prop("disabled", true);
-						break;
-					case "02":
-						RemoveQuestion(); // 業者不須自評
-						$(".mRadio").prop("disabled", true);
-						break;
+                $("#lbl_CompanyName").html($("#CompanyName").val());
+
+                // disabled
+				switch ($("#Competence").val()) {
+				    case "01":
+				    	$(".cRadio").prop("disabled", true);
+				    	break;
+				    case "02":
+				    	RemoveQuestion(); // 業者不須自評
+				    	$(".mRadio").prop("disabled", true);
+				    	break;
                     case "03":
                         $(".cRadio").prop("disabled", true);
+				        break;
+				    case "04":
+					    $("#subbtn").hide();
+					    $("#subbtnTop").hide();
 					    break;
-					case "04":
-						$("#subbtn").hide();
-						$("#subbtnTop").hide();
-						break;
 				}
 
 				// Get Answer
@@ -351,6 +354,7 @@
 	<!-- 開頭用div:修正mmenu form bug -->
 	<div>
 	<input type="hidden" id="Competence" value="<%= identity %>" />
+	<input type="hidden" id="CompanyName" value="<%= companyName %>" />
 	<input type="hidden" id="qGuid" />
 	<form id="form1">
 		<!-- Preloader -->
@@ -377,7 +381,9 @@
 					<div class="container margin15T">
 						<div class="padding10ALL">
 							<div class="filetitlewrapper">
-								<span class="filetitle font-size7">石油自評表</span>
+								<span class="filetitle font-size7">
+                                    <label id="lbl_CompanyName"></label>
+								</span>
 								<span class="btnright">
 									<div class="font-size4 font-normal">
                                         <input type="button" id="subbtnTop" value="儲存" class="genbtn" />

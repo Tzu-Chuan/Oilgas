@@ -20,14 +20,28 @@ public partial class Handler_GetOilCompanyList : System.Web.UI.Page
 		XmlDocument xDoc = new XmlDocument();
 		try
 		{
-			string SearchStr = (string.IsNullOrEmpty(Request["SearchStr"])) ? "" : Request["SearchStr"].ToString().Trim();
+            //string SearchStr = (string.IsNullOrEmpty(Request["SearchStr"])) ? "" : Request["SearchStr"].ToString().Trim();
+            string type = (string.IsNullOrEmpty(Request["type"])) ? "" : Request["type"].ToString().Trim();
+            string cpid = (string.IsNullOrEmpty(Request["cpid"])) ? "" : Request["cpid"].ToString().Trim();
+            string xmlstr = string.Empty;
+            DataTable dt = new DataTable();
 
-			db._KeyWord = SearchStr;
-			DataTable dt = db.GetCompanyList();
-			string xmlstr = string.Empty;
-			xmlstr = DataTableToXml.ConvertDatatableToXML(dt, "dataList", "data_item");
-			xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>" + xmlstr + "</root>";
-			xDoc.LoadXml(xmlstr);
+            //db._KeyWord = SearchStr;
+            if (type == "list")
+            {
+                dt = db.GetCompanyList();
+                xmlstr = DataTableToXml.ConvertDatatableToXML(dt, "dataList", "data_item");
+                xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>" + xmlstr + "</root>";
+                xDoc.LoadXml(xmlstr);
+            }
+            else
+            {
+                db._guid = cpid;
+                dt = db.GetCompany();
+                xmlstr = "<?xml version='1.0' encoding='utf-8'?><root><guid>" + dt.Rows[0]["guid"].ToString() + "</guid></root>";
+                xDoc.LoadXml(xmlstr);
+            }
+            
 		}
 		catch (Exception ex)
 		{

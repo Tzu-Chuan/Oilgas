@@ -32,7 +32,7 @@ var menucode = "\
 </li>\
 <li><a href='oil-firmTemplate301.html' target='_self'>控制室</a></li>\
 <li><a href='oil-firmTemplate401.html' target='_self'>事故學習</a></li>\
-<li><a href='oil-firmTemplate-checkform.html' target='_blank'>查核項目自評</a></li>\
+<li><a href='../WebPage/OilSelfEvaluation.aspx' target='_blank'>查核項目自評</a></li>\
 <li><a href='#' target='_self'>查核簡報上傳</a></li>\
 </ul>\
 ";
