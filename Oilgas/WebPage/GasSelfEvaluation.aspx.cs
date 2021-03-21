@@ -26,17 +26,33 @@ public partial class WebPage_GasSelfEvaluation : System.Web.UI.Page
 
 			// for 3/16
 			string cpid = LogInfo.companyGuid;
-			if (LogInfo.competence == "01")
-			{
-                cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-            }
+			//if (LogInfo.competence == "01")
+			//{
+   //             cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+   //         }
 
 			gasInfo_db._guid = cpid;
 			DataTable dt = gasInfo_db.GetInfo();
 			if (dt.Rows.Count > 0)
 			{
-				companyName = dt.Rows[0]["營業處廠"].ToString();
-			}
+                string cpNameTmp = string.Empty;
+                if (string.IsNullOrEmpty(dt.Rows[0]["營業處廠"].ToString()))
+                {
+                    cpNameTmp = dt.Rows[0]["事業部"].ToString() + dt.Rows[0]["中心庫區儲運課工場"].ToString();
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(dt.Rows[0]["中心庫區儲運課工場"].ToString()))
+                    {
+                        cpNameTmp = dt.Rows[0]["事業部"].ToString() + dt.Rows[0]["營業處廠"].ToString();
+                    }
+                    else
+                    {
+                        cpNameTmp = dt.Rows[0]["事業部"].ToString() + dt.Rows[0]["營業處廠"].ToString() + dt.Rows[0]["中心庫區儲運課工場"].ToString();
+                    }
+                }
+                companyName = cpNameTmp;
+            }
 		}
 	}
 }

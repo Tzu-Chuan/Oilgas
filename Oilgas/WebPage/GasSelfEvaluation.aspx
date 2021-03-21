@@ -18,6 +18,8 @@
 		<script type="text/javascript">
 			$(document).ready(function () {
 				GetList();
+                
+                $("#lbl_CompanyName").html($("#CompanyName").val());
 
 				// disabled
 				switch ($("#Competence").val()) {
@@ -351,6 +353,7 @@
 	<!-- 開頭用div:修正mmenu form bug -->
 	<div>
 	<input type="hidden" id="Competence" value="<%= identity %>" />
+	<input type="hidden" id="CompanyName" value="<%= companyName %>" />
 	<input type="hidden" id="qGuid" />
 	<form id="form1">
 		<!-- Preloader -->
@@ -377,7 +380,9 @@
 					<div class="container margin15T">
 						<div class="padding10ALL">
 							<div class="filetitlewrapper">
-								<span class="filetitle font-size7">海管室</span>
+								<span class="filetitle font-size7">
+                                    <label id="lbl_CompanyName"></label>
+								</span>
 								<span class="btnright">
 									<div class="font-size4 font-normal">
                                         <input type="button" id="subbtnTop" value="儲存" class="genbtn" />

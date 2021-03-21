@@ -38,33 +38,34 @@ public partial class Handler_GasSaveSelfEvaluation : System.Web.UI.Page
 			{
 				throw new Exception("請重新登入");
 			}
-			#endregion
+            #endregion
 
-			string cpid = (string.IsNullOrEmpty(Request["cpid"])) ? LogInfo.companyGuid : Request["cpid"].ToString().Trim();
+            //string cpid = (string.IsNullOrEmpty(Request["cpid"])) ? LogInfo.companyGuid : Request["cpid"].ToString().Trim();
+            string cpid = LogInfo.companyGuid;
 
 			// for 3/16
-			if (LogInfo.competence == "01")
-			{
-				switch (LogInfo.mGuid)
-				{
-					case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
-						cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-						break;
-					case "C80975D7-C35D-4A99-B784-5F2EFF2099C2":
-                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-                        break;
-                    case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
-                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-                        break;
-                    case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
-                        cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-                        break;
-                }
-			}
-            else if (LogInfo.competence == "03")
-            {
-                cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
-            }
+			//if (LogInfo.competence == "01")
+			//{
+			//	switch (LogInfo.mGuid)
+			//	{
+			//		case "64BF9515-47C0-47A6-BC30-88C6EFD50D03":
+			//			cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+			//			break;
+			//		case "C80975D7-C35D-4A99-B784-5F2EFF2099C2":
+   //                     cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+   //                     break;
+   //                 case "39DF8B07-2F23-4D0E-8983-22AB7510DD3D":
+   //                     cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+   //                     break;
+   //                 case "B73B61B8-6CCF-4141-A858-9A8C4E403A9C":
+   //                     cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+   //                     break;
+   //             }
+			//}
+   //         else if (LogInfo.competence == "03")
+   //         {
+   //             cpid = "A11B680E-4A42-45E0-BCE2-3B16679C0606";
+   //         }
 
             DataTable qdt = q_db.GetQuestionGuid();
 			if (qdt.Rows.Count > 0)
@@ -108,8 +109,7 @@ public partial class Handler_GasSaveSelfEvaluation : System.Web.UI.Page
                             ans_db._修改者 = LogInfo.mGuid;
 
                             ans_db.SaveAnswer(oConn, myTrans);
-                        }
-                        
+                        }                        
 					}
                     else
                     {

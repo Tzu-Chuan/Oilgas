@@ -4,17 +4,17 @@
 
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="keywords" content="關鍵字內容" />
-		<meta name="description" content="描述" /><!--告訴搜尋引擎這篇網頁的內容或摘要。--> 
-		<meta name="generator" content="Notepad" /><!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。--> 
-		<meta name="author" content="工研院 資訊處" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
-		<meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... --> 
-		<meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
-		<title>天然氣事業輸儲設備查核及檢測資訊系統</title>
-		<!--#include file="Head_Include.html"-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="keywords" content="關鍵字內容" />
+	<meta name="description" content="描述" /><!--告訴搜尋引擎這篇網頁的內容或摘要。--> 
+	<meta name="generator" content="Notepad" /><!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。--> 
+	<meta name="author" content="工研院 資訊處" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
+	<meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... --> 
+	<meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
+	<title>天然氣事業輸儲設備查核及檢測資訊系統</title>
+	<!--#include file="Head_Include.html"-->
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$(".container").css("max-width", "1800px");
@@ -22,7 +22,38 @@
 			getData(0);
 
 			$(document).on("click", "a[name='editbtn']", function () {
-				location.href = "GasInfo.aspx?cp=" + $(this).attr("aid");
+				//location.href = "GasInfo.aspx?cp=" + $(this).attr("aid");
+                $.ajax({
+				type: "POST",
+				async: false, //在沒有返回值之前,不會執行下一步動作
+				url: "../Handler/GetGasCompanyList.aspx",
+				data: {
+                    type: "url",
+                    cpid: $(this).attr("aid"),
+				},
+				error: function (xhr) {
+					alert("Error: " + xhr.status);
+					console.log(xhr.responseText);
+				},
+				success: function (data) {
+					if ($(data).find("Error").length > 0) {
+						alert($(data).find("Error").attr("Message"));
+					}
+                    else {
+                        switch ($("guid", data).text()) {
+                            case "A11B680E-4A42-45E0-BCE2-3B16679C0606":
+                                location.href = "GasInfo.aspx";
+                                break;
+                            case "FE80EC82-2F88-4FBD-A136-D5E9D3233CD9":
+                                location.href = "../DemoHtml/gas-firmB001.html";
+                                break;
+                            default:
+                                location.href = "../DemoHtml/gas-firmTemplate001.html";
+                                break;
+                        }                        
+					}
+				}
+			});
 			});
 		}); // end js
 
@@ -32,7 +63,7 @@
 				async: false, //在沒有返回值之前,不會執行下一步動作
 				url: "../Handler/GetGasCompanyList.aspx",
 				data: {
-					SearchStr: $("#SearchStr").val()
+					type: "list"
 				},
 				error: function (xhr) {
 					alert("Error: " + xhr.status);
@@ -62,7 +93,7 @@
 					}
 				}
 			});
-		}
+        }
 	</script>
 </head>
 <body class="bgG">
