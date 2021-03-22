@@ -55,7 +55,7 @@ public class GasCompanyInfo_DB
 
 		sb.Append(@"select * from 天然氣_業者基本資料表 where 列表是否顯示='Y' ");
 
-		oCmd.CommandText = sb.ToString();
+        oCmd.CommandText = sb.ToString();
 		oCmd.CommandType = CommandType.Text;
 		SqlDataAdapter oda = new SqlDataAdapter(oCmd);
 		DataTable ds = new DataTable();

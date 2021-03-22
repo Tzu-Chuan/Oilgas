@@ -35,7 +35,8 @@
                         $(".cRadio").prop("disabled", true);
 					    break;
 					case "04":
-						$("#subbtn").hide();
+                        $("#subbtn").hide();
+                        $("#subbtnTop").hide();
 						break;
 				}
 
@@ -152,7 +153,7 @@
 					}
 				});
                 
-
+                // 編輯備註
                 $(document).on("click", "input[name='psbtn']", function () {
 					$("#qGuid").val($(this).attr("qid"));
                     $("#psStr").val($("#ps_" + $(this).attr("qid")).val());
@@ -162,7 +163,6 @@
 			        	async: false, //在沒有返回值之前,不會執行下一步動作
 			        	url: "../Handler/GetGasCommitteeSuggestion.aspx",
                         data: {
-                            type: "gas",
 			        		qid: $("#qGuid").val()
 			        	},
 			        	error: function (xhr) {
@@ -223,8 +223,6 @@
 					$($("#ps_" + $("#qGuid").val())).val($("#psStr").val());
 					$.colorbox.close();
                 });
-
-                //getSuggestion();
 			}); // end js
 
 			function GetList() {
@@ -451,6 +449,7 @@
 								</span>
 								<span class="btnright">
 									<div class="font-size4 font-normal">
+                                        <span style="color:red">* 請先點選儲存再離開表單</span>
                                         <input type="button" id="subbtnTop" value="儲存" class="genbtn" />
 										<i class="fa fa-file-word-o IconCc" aria-hidden="true"></i><a href="../doc/附件3、110年天然氣生產進口事業查核填寫內容.docx" target="_blank">查核填寫內容下載</a> 
 										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/查核配合事項(天然氣).pptx" target="_blank">查核配合事項下載</a> 
@@ -472,7 +471,7 @@
 											<th nowrap="nowrap">110年天然氣生產及進口事業輸儲設備查核項目</th>
 											<th nowrap="nowrap" width="200">業者</th>
 											<th nowrap="nowrap" width="200">委員</th>
-											<th nowrap="nowrap">參考文件/現場位置</th>
+											<th nowrap="nowrap">檢視文件</th>
 											<th nowrap="nowrap" width="300">委員建議</th>
 											<th nowrap="nowrap" width="">功能</th>
 										</tr>
@@ -532,7 +531,7 @@
 			<div class="twocol margin10T">
 				<div class="right">
 					<a href="javascript:void(0);" class="genbtn closecolorbox">取消</a>
-					<a href="javascript:void(0);" id="ps_savebtn" class="genbtn">儲存</a>
+					<a href="javascript:void(0);" id="ps_savebtn" class="genbtn">確定</a>
 				</div>
 			</div>
 			<br /><br />

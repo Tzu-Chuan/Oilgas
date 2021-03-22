@@ -16,7 +16,6 @@ public class GasEvaluationAnswer_DB
 	public string _KeyWord { set { KeyWord = value; } }
 	#region private
 	string id = string.Empty;
-	string 委員guid = string.Empty;
 	string 業者guid = string.Empty;
 	string 題目guid = string.Empty;
 	string 年度 = string.Empty;
@@ -32,7 +31,6 @@ public class GasEvaluationAnswer_DB
 	#endregion
 	#region public
 	public string _id { set { id = value; } }
-	public string _委員guid { set { 委員guid = value; } }
 	public string _業者guid { set { 業者guid = value; } }
 	public string _題目guid { set { 題目guid = value; } }
 	public string _年度 { set { 年度 = value; } }

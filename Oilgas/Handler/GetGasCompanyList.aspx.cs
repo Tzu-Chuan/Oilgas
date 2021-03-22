@@ -10,6 +10,7 @@ using System.Xml;
 public partial class Handler_GetGasCompanyList : System.Web.UI.Page
 {
 	GasCompanyInfo_DB db = new GasCompanyInfo_DB();
+    GasMasterCompare_DB mc_db = new GasMasterCompare_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
@@ -24,12 +25,23 @@ public partial class Handler_GetGasCompanyList : System.Web.UI.Page
             string type = (string.IsNullOrEmpty(Request["type"])) ? "" : Request["type"].ToString().Trim();
             string cpid = (string.IsNullOrEmpty(Request["cpid"])) ? "" : Request["cpid"].ToString().Trim();
             string xmlstr = string.Empty;
+            string Competence = LogInfo.competence;
             DataTable dt = new DataTable();
 
             //db._KeyWord = SearchStr;
             if (type == "list")
             {
-                dt = db.GetCompanyList();                
+                if(Competence != "01")
+                {
+                    dt = db.GetCompanyList();
+                }
+                else
+                {
+                    mc_db._委員guid = LogInfo.mGuid;
+                    mc_db._年度 = "110";
+                    dt = mc_db.GetMasterList();
+                }
+                                
                 xmlstr = DataTableToXml.ConvertDatatableToXML(dt, "dataList", "data_item");
                 xmlstr = "<?xml version='1.0' encoding='utf-8'?><root>" + xmlstr + "</root>";
                 xDoc.LoadXml(xmlstr);
