@@ -16,10 +16,12 @@ public class GasEvaluationAnswer_DB
 	public string _KeyWord { set { KeyWord = value; } }
 	#region private
 	string id = string.Empty;
+	string 委員guid = string.Empty;
 	string 業者guid = string.Empty;
 	string 題目guid = string.Empty;
 	string 年度 = string.Empty;
 	string 答案 = string.Empty;
+	string 檢視文件 = string.Empty;
 	string 委員意見 = string.Empty;
 	string 填寫人員類別 = string.Empty;
 	string 建立者 = string.Empty;
@@ -30,10 +32,12 @@ public class GasEvaluationAnswer_DB
 	#endregion
 	#region public
 	public string _id { set { id = value; } }
+	public string _委員guid { set { 委員guid = value; } }
 	public string _業者guid { set { 業者guid = value; } }
 	public string _題目guid { set { 題目guid = value; } }
 	public string _年度 { set { 年度 = value; } }
 	public string _答案 { set { 答案 = value; } }
+	public string _檢視文件 { set { 檢視文件 = value; } }
 	public string _委員意見 { set { 委員意見 = value; } }
 	public string _填寫人員類別 { set { 填寫人員類別 = value; } }
 	public string _建立者 { set { 建立者 = value; } }
@@ -55,6 +59,7 @@ if @datacount>0
         begin
             update 天然氣_自評表答案 set
 		    答案=@答案,
+		    檢視文件=@檢視文件,
 		    修改日期=@修改日期,
 		    修改者=@修改者
 		    where 業者guid=@業者guid and 題目guid=@題目guid and 填寫人員類別=@填寫人員類別 and 年度=@年度
@@ -63,6 +68,7 @@ if @datacount>0
         begin
             update 天然氣_自評表答案 set
 		    答案=@答案,
+            檢視文件=@檢視文件,
             委員意見=@委員意見,
 		    修改日期=@修改日期,
 		    修改者=@修改者
@@ -75,6 +81,7 @@ else
 		題目guid,
 		年度,
 		答案,
+        檢視文件,
 		委員意見,
 		填寫人員類別,
 		建立者,
@@ -85,6 +92,7 @@ else
 		@題目guid,
 		@年度,
 		@答案,
+        @檢視文件,
 		@委員意見,
 		@填寫人員類別,
 		@建立者,
@@ -100,6 +108,7 @@ else
 		oCmd.Parameters.AddWithValue("@題目guid", 題目guid);
 		oCmd.Parameters.AddWithValue("@年度", 年度);
 		oCmd.Parameters.AddWithValue("@答案", 答案);
+		oCmd.Parameters.AddWithValue("@檢視文件", 檢視文件);
 		oCmd.Parameters.AddWithValue("@委員意見", 委員意見);
 		oCmd.Parameters.AddWithValue("@填寫人員類別", 填寫人員類別);
 		oCmd.Parameters.AddWithValue("@建立者", 建立者);
@@ -109,15 +118,15 @@ else
 
 		oCmd.Transaction = oTran;
 		oCmd.ExecuteNonQuery();
-	}
+	}    
 
-	public DataTable GetCompanyAns()
+    public DataTable GetCompanyAns()
 	{
 		SqlCommand oCmd = new SqlCommand();
 		oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
 		StringBuilder sb = new StringBuilder();
 
-		sb.Append(@"select 題目guid,答案,委員意見,填寫人員類別 from 天然氣_自評表答案 where 資料狀態='A' and 業者guid=@業者guid and 年度=@年度 ");
+		sb.Append(@"select 題目guid,答案, 檢視文件, 委員意見,填寫人員類別 from 天然氣_自評表答案 where 資料狀態='A' and 業者guid=@業者guid and 年度=@年度 ");
 
 		oCmd.CommandText = sb.ToString();
 		oCmd.CommandType = CommandType.Text;
