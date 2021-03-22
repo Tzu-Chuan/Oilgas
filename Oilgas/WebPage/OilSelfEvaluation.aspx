@@ -28,7 +28,8 @@
 				    	break;
 				    case "02":
 				    	RemoveQuestion(); // 業者不須自評
-				    	$(".mRadio").prop("disabled", true);
+                        $(".mRadio").prop("disabled", true);
+                        $(".mRef").prop("disabled", true);
 				    	break;
                     case "03":
                         $(".cRadio").prop("disabled", true);
@@ -144,7 +145,7 @@
 				$(document).on("change", ".psCtrl", function () {
 					if (this.value != "01") {
 						$(this).closest("tr").find("span").show();
-						$(this).closest("tr").find("a[name='psbtn']").show();
+						$(this).closest("tr").find("input[name='psbtn']").show();
 					}
 					else {
 						//$(this).closest("tr").find("td:last-child span").hide();
@@ -153,9 +154,63 @@
 				});
 
 				// 編輯備註
-				$(document).on("click", "a[name='psbtn']", function () {
+				$(document).on("click", "input[name='psbtn']", function () {
 					$("#qGuid").val($(this).attr("qid"));
-					$("#psStr").val($("#ps_" + $(this).attr("qid")).val());
+                    $("#psStr").val($("#ps_" + $(this).attr("qid")).val());
+
+                    $.ajax({
+			        	type: "POST",
+			        	async: false, //在沒有返回值之前,不會執行下一步動作
+			        	url: "../Handler/GetOilCommitteeSuggestion.aspx",
+                        data: {
+			        		qid: $("#qGuid").val()
+			        	},
+			        	error: function (xhr) {
+			        		alert("Error: " + xhr.status);
+			        		console.log(xhr.responseText);
+			        	},
+			        	success: function (data) {
+			        		if ($(data).find("Error").length > 0) {
+			        			alert($(data).find("Error").attr("Message"));
+			        		}
+			        		else {
+			        			$("#tablistOpen tbody").empty();
+                                var tabstr = '';
+                                var item = '';
+                                var ans = '';                                
+			        			if ($(data).find("data_item").length > 0) {
+                                    $(data).find("data_item").each(function (i) {
+                                        item = $(this).children("答案").text().trim();
+                                        switch (item) {
+                                            case "01":
+                                                ans = "符合";
+                                                break;
+                                            case "02":
+                                                ans = "不符合";
+                                                break;
+                                            case "03":
+                                                ans = "不適用";
+                                                break;
+                                        }
+			        					tabstr += '<tr>';
+			        					tabstr += '<td nowrap="nowrap" style="display:none">';
+			        					tabstr += '<input type="hidden" aid="' + $(this).children("委員guid").text().trim() + '" />';
+			        					tabstr += '</td>';
+			        					tabstr += '<td nowrap="nowrap">' + $(this).children("委員").text().trim() + '</td>';
+			        					tabstr += '<td nowrap="nowrap">' + ans + '</td>';
+			        					tabstr += '<td nowrap="nowrap">' + $(this).children("檢視文件").text().trim() + '</td>';
+			        					tabstr += '<td nowrap="nowrap">' + $(this).children("委員意見").text().trim() + '</td>';
+			        					tabstr += '<td nowrap="nowrap">' + $(this).children("修改日期").text().trim() + '</td>';
+			        					tabstr += '</tr>';
+			        				});
+			        			}
+			        			else
+			        				tabstr += '<tr><td colspan="5">查詢無資料</td></tr>';
+			        			$("#tablistOpen tbody").append(tabstr);
+			        		}
+			        	}
+			        });
+
 					doOpenDialog();
 				});
 
@@ -207,7 +262,8 @@
 											dataStr += '<td>' + $(this).attr("lvName") + '</td>';
 											dataStr += '<td></td><td></td>';
 											dataStr += '<td style="text-align:center;">' + $(this).attr("ref") + '</td>';
-											dataStr += '<td></td>';
+                                            dataStr += '<td></td>';
+                                            dataStr += '<td></td>';
 											dataStr += '</tr>'
 											$("#tablist tbody").append(dataStr);
 										});
@@ -231,11 +287,15 @@
 									qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="02" class="psCtrl mRadio" />不符合';
 									qStr += '<input type="radio" name="mg_' + $(this).attr("qGuid") + '" value="03" class="psCtrl mRadio" />不適用';
 									qStr += '</td>';
-									qStr += '<td></td>';
+									qStr += '<td style="text-align:center;">';
+									qStr += '<input type="text" class="inputex mRef" name="vf_' + $(this).attr("qGuid") + '" />';
+									qStr += '</td>';
 									qStr += '<td class="font-normal">';
 									qStr += '<span id="sp_' + $(this).attr("qGuid") + '" class="itemhint" title="" style="display:none;"></span>';
-									qStr += '<a href="javascript:void(0);" qid="' + $(this).attr("qGuid") + '" name="psbtn" title="編輯" style="display:none;">編輯</a>';
 									qStr += '<input type="hidden" id="ps_' + $(this).attr("qGuid") + '" name="ps_' + $(this).attr("qGuid") + '" />';
+									qStr += '</td>';
+									qStr += '<td>';
+									qStr += '<input type="button" value="意見列表" qid="' + $(this).attr("qGuid") + '" name="psbtn" title="意見列表" style="display:none;" />';
 									qStr += '</td>';
 									qStr += '</tr>';
 
@@ -266,7 +326,8 @@
 						dataStr += '<td>' + $(this).attr("lvName") + '</td>';
 						dataStr += '<td></td><td></td>';
 						dataStr += '<td style="text-align:center;">' + $(this).attr("ref") + '</td>';
-						dataStr += '<td></td>';
+                        dataStr += '<td></td>';
+                        dataStr += '<td></td>';
 						dataStr += '</tr>';
 
 						//check change item
@@ -326,12 +387,14 @@
 							if ($(data).find("data_item").length > 0) {
 								$(data).find("data_item[填寫人員類別='01']").each(function () {
 									$("input[name='mg_" + $(this).attr("題目guid") + "'][value='" + $(this).attr("答案") + "']").prop("checked", true);
-									$("input[name='ps_" + $(this).attr("題目guid") + "']").val($(this).attr("委員意見"));
+                                    $("input[name='ps_" + $(this).attr("題目guid") + "']").val($(this).attr("委員意見"));
+                                    $("input[name='vf_" + $(this).attr("題目guid") + "']").val($(this).attr("檢視文件"));
 									var simpleStr = ($(this).attr("委員意見").length > 15) ? $(this).attr("委員意見").substr(0, 15) + "..." : $(this).attr("委員意見");
 									$("#sp_" + $(this).attr("題目guid")).html(simpleStr);
 									$("#sp_" + $(this).attr("題目guid")).attr("title", $(this).attr("委員意見"));
-									if ($(this).attr("答案") != "01" && $("#Competence").val() != "02" && $(this).attr("答案") != "") 
-										$("a[name='psbtn'][qid='" + $(this).attr("題目guid") + "']").show();
+                                    if ($(this).attr("答案") != "01" && $("#Competence").val() != "02" && $(this).attr("答案") != "") {
+                                        $("input[name='psbtn'][qid='" + $(this).attr("題目guid") + "']").show();
+                                    } 
 									$("#sp_" + $(this).attr("題目guid")).show();
 								});
 								$(data).find("data_item[填寫人員類別='02']").each(function () {
@@ -386,6 +449,7 @@
 								</span>
 								<span class="btnright">
 									<div class="font-size4 font-normal">
+                                        <span style="color:red">* 請先點選儲存再離開表單</span> 
                                         <input type="button" id="subbtnTop" value="儲存" class="genbtn" />
 										<i class="fa fa-file-word-o IconCc" aria-hidden="true"></i><a href="../doc/附件3、110年度石油業者石油管線及儲油設施查核.docx" target="_blank">查核填寫內容下載</a> 
 										<i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/查核配合事項_石油.pptx" target="_blank">查核配合事項下載</a> 
@@ -409,6 +473,7 @@
 											<th nowrap="nowrap" width="200">委員</th>
 											<th nowrap="nowrap">檢視文件</th>
 											<th nowrap="nowrap" width="300">委員建議</th>
+                                            <th nowrap="nowrap" width="">功能</th>
 										</tr>
 									</thead>
 									<tbody></tbody>
@@ -440,9 +505,24 @@
 			<div class="margin35T padding5RL">
 				<div class="OchiTrasTable width100 TitleLength03 font-size3">
 					<div class="OchiRow">
-						<div class="OchiCell OchiTitle IconCe TitleSetWidth">備註</div>
+						<div class="OchiCell OchiTitle IconCe TitleSetWidth">委員意見</div>
 						<div class="OchiCell width100">
 							<textarea id="psStr" rows="8" cols="" class="inputex width100"></textarea>
+                            <div class="stripetreeG margin10T">
+								<table id="tablistOpen" width="100%" border="0" cellspacing="0" cellpadding="0">
+									<thead>
+										<tr>
+											<th nowrap="nowrap"width="10%">委員</th>
+											<th nowrap="nowrap"width="5%">答案</th>
+											<th nowrap="nowrap"width="15%">檢視文件</th>
+											<th nowrap="nowrap"width="50%">委員意見</th>
+											<th nowrap="nowrap"width="20%">修改日期</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div><!-- stripetree -->
+							<div id="errMsgOpen" style="color:red;"></div>
 						</div>
 					</div><!-- OchiRow -->
 				</div><!-- OchiTrasTable -->
@@ -451,7 +531,7 @@
 			<div class="twocol margin10T">
 				<div class="right">
 					<a href="javascript:void(0);" class="genbtn closecolorbox">取消</a>
-					<a href="javascript:void(0);" id="ps_savebtn" class="genbtn">儲存</a>
+					<a href="javascript:void(0);" id="ps_savebtn" class="genbtn">確定</a>
 				</div>
 			</div>
 			<br /><br />

@@ -14,6 +14,7 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
 {
 	OilSelfEvaluation_DB q_db = new OilSelfEvaluation_DB();
 	OilEvaluationAnswer_DB ans_db = new OilEvaluationAnswer_DB();
+    OilCommitteeSuggestion_DB cs_db = new OilCommitteeSuggestion_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
@@ -72,8 +73,9 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
 					string cAns = (string.IsNullOrEmpty(Request["cg_" + qdt.Rows[i]["石油自評表題目guid"].ToString()])) ? "" : Request["cg_" + qdt.Rows[i]["石油自評表題目guid"].ToString()].ToString().Trim();
 					string mAns = (string.IsNullOrEmpty(Request["mg_" + qdt.Rows[i]["石油自評表題目guid"].ToString()])) ? "" : Request["mg_" + qdt.Rows[i]["石油自評表題目guid"].ToString()].ToString().Trim();
 					string PsStr = (string.IsNullOrEmpty(Request["ps_" + qdt.Rows[i]["石油自評表題目guid"].ToString()])) ? "" : Request["ps_" + qdt.Rows[i]["石油自評表題目guid"].ToString()].ToString().Trim();
+                    string vfStr = (string.IsNullOrEmpty(Request["vf_" + qdt.Rows[i]["石油自評表題目guid"].ToString()])) ? "" : Request["vf_" + qdt.Rows[i]["石油自評表題目guid"].ToString()].ToString().Trim();
 
-					if (LogInfo.competence == "02") // 業者
+                    if (LogInfo.competence == "02") // 業者
 					{
                         if (cAns != "")
                         {
@@ -88,15 +90,16 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
                             ans_db._修改者 = LogInfo.mGuid;
 
                             ans_db.SaveAnswer(oConn, myTrans);
-                        }
-						
+                        }						
                     }
 					else if(LogInfo.competence == "01")
 					{
                         if (mAns != "")
                         {
+                            #region 自評表答案
                             ans_db._業者guid = cpid;
                             ans_db._答案 = mAns;
+                            ans_db._檢視文件 = vfStr;
                             string pStr = (mAns != "01") ? PsStr : "";
                             ans_db._委員意見 = pStr;
 
@@ -106,27 +109,58 @@ public partial class Handler_OilSaveSelfEvaluation : System.Web.UI.Page
                             ans_db._填寫人員類別 = LogInfo.competence;
                             ans_db._建立者 = LogInfo.mGuid;
                             ans_db._修改者 = LogInfo.mGuid;
+                            #endregion
+
+                            #region 委員意見log
+                            cs_db._委員guid = LogInfo.mGuid;
+                            cs_db._委員 = LogInfo.name;
+                            cs_db._業者guid = LogInfo.companyGuid;
+                            cs_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
+                            cs_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
+                            cs_db._答案 = mAns;
+                            cs_db._檢視文件 = vfStr;
+                            cs_db._委員意見 = pStr;
+                            cs_db._建立者 = LogInfo.mGuid;
+                            cs_db._修改者 = LogInfo.mGuid;
+                            #endregion
 
                             ans_db.SaveAnswer(oConn, myTrans);
+                            cs_db.SaveSuggestion(oConn, myTrans);
                         }                            
                     }
                     else
                     {
                         if (mAns != "")
                         {
+                            #region 自評表答案
                             ans_db._業者guid = cpid;
                             ans_db._答案 = mAns;
+                            ans_db._檢視文件 = vfStr;
                             string pStr = (mAns != "01") ? PsStr : "";
                             ans_db._委員意見 = pStr;
-
 
                             ans_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
                             ans_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
                             ans_db._填寫人員類別 = "01"; //暫時for 3/23
                             ans_db._建立者 = LogInfo.mGuid;
                             ans_db._修改者 = LogInfo.mGuid;
+                            #endregion
+
+                            #region 委員意見log
+                            cs_db._委員guid = LogInfo.mGuid;
+                            cs_db._委員 = LogInfo.name;
+                            cs_db._業者guid = LogInfo.companyGuid;
+                            cs_db._題目guid = qdt.Rows[i]["石油自評表題目guid"].ToString();
+                            cs_db._年度 = qdt.Rows[i]["石油自評表題目年份"].ToString();
+                            cs_db._答案 = mAns;
+                            cs_db._檢視文件 = vfStr;
+                            cs_db._委員意見 = pStr;
+                            cs_db._建立者 = LogInfo.mGuid;
+                            cs_db._修改者 = LogInfo.mGuid;
+                            #endregion
 
                             ans_db.SaveAnswer(oConn, myTrans);
+                            cs_db.SaveSuggestion(oConn, myTrans);
                         }                        
                     }					
 				}

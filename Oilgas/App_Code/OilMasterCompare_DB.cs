@@ -66,16 +66,38 @@ group by a.業者Guid,b.網站類別 ");
         return ds;
     }
 
-    public DataTable GetMasterCompany()
+    public DataTable GetMasterList()
     {
         SqlCommand oCmd = new SqlCommand();
         oCmd.Connection = new SqlConnection(ConfigurationManager.AppSettings["ConnectionString"]);
         StringBuilder sb = new StringBuilder();
 
-        sb.Append(@"select a.業者Guid,b.網站類別 from 石油_委員業者年度對應表 a
-left join 會員檔 b on b.業者guid=a.業者Guid
-where a.資料狀態='A' and a.委員guid=@委員guid and a.年度=@年度
-group by a.業者Guid,b.網站類別 ");
+        sb.Append(@"select 
+       b.guid
+      ,b.父層guid
+      ,b.排序編號
+      ,b.公司名稱
+      ,b.處
+      ,b.事業部
+      ,b.營業處廠
+      ,b.組
+      ,b.中心庫區儲運課工場
+      ,b.石油組織階層
+      ,b.電話
+      ,b.地址
+      ,b.儲槽數量
+      ,b.管線數量
+      ,b.維運計畫書及成果報告
+      ,b.曾執行過查核日期
+      ,b.建立者
+      ,b.建立日期
+      ,b.修改者
+      ,b.修改日期
+      ,b.資料狀態
+      ,b.列表是否顯示
+from 石油_委員業者年度對應表 a
+left join 石油_業者基本資料 b on b.guid=a.業者Guid
+where a.資料狀態='A' and a.委員guid=@委員guid and a.年度=年度 ");
 
         oCmd.CommandText = sb.ToString();
         oCmd.CommandType = CommandType.Text;
