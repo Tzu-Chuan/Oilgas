@@ -269,7 +269,6 @@
                                     $($("#ps_" + $("#qGuid").val())).val($("#psStr2").val());
 
                                     GetLogList();
-                                    GetAns();
                                     doOpenDialog();                                        
                                 }
                             }
