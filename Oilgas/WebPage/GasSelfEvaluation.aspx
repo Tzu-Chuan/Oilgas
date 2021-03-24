@@ -8,16 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="keywords" content="關鍵字內容" />
-    <meta name="description" content="描述" />
-    <!--告訴搜尋引擎這篇網頁的內容或摘要。-->
-    <meta name="generator" content="Notepad" />
-    <!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。-->
-    <meta name="author" content="工研院 資訊處" />
-    <!--告訴搜尋引擎這篇網頁是由誰製作的。-->
-    <meta name="copyright" content="本網頁著作權所有" />
-    <!--告訴搜尋引擎這篇網頁是...... -->
-    <meta name="revisit-after" content="3 days" />
-    <!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
+    <meta name="description" content="描述" /><!--告訴搜尋引擎這篇網頁的內容或摘要。-->
+    <meta name="generator" content="Notepad" /><!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。-->
+    <meta name="author" content="工研院 資訊處" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
+    <meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... -->
+    <meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
     <title>天然氣事業輸儲設備查核及檢測資訊系統</title>
     <!--#include file="Head_Include.html"-->
     <script type="text/javascript">
@@ -158,77 +153,198 @@
                 }
             });
 
-            // 編輯備註
+            // 意見列表開窗
             $(document).on("click", "input[name='psbtn']", function () {
                 $("#qGuid").val($(this).attr("qid"));
-                $("#psStr").val($("#ps_" + $(this).attr("qid")).val());
+                GetLogList();
+                 doOpenDialog();
+            });
 
-                $.ajax({
-                    type: "POST",
-                    async: false, //在沒有返回值之前,不會執行下一步動作
-                    url: "../Handler/GetGasCommitteeSuggestion.aspx",
-                    data: {
-                        qid: $("#qGuid").val()
-                    },
-                    error: function (xhr) {
-                        alert("Error: " + xhr.status);
-                        console.log(xhr.responseText);
-                    },
-                    success: function (data) {
-                        if ($(data).find("Error").length > 0) {
-                            alert($(data).find("Error").attr("Message"));
-                        }
-                        else {
-                            $("#tablistOpen tbody").empty();
-                            var tabstr = '';
-                            var item = '';
-                            var ans = '';
-                            if ($(data).find("data_item").length > 0) {
-                                $(data).find("data_item").each(function (i) {
-                                    item = $(this).children("答案").text().trim();
-                                    switch (item) {
-                                        case "01":
-                                            ans = "符合";
-                                            break;
-                                        case "02":
-                                            ans = "不符合";
-                                            break;
-                                        case "03":
-                                            ans = "不適用";
-                                            break;
-                                    }
-                                    tabstr += '<tr>';
-                                    tabstr += '<td nowrap="nowrap" style="display:none">';
-                                    tabstr += '<input type="hidden" aid="' + $(this).children("委員guid").text().trim() + '" />';
-                                    tabstr += '</td>';
-                                    tabstr += '<td nowrap="nowrap">' + $(this).children("委員").text().trim() + '</td>';
-                                    tabstr += '<td nowrap="nowrap">' + ans + '</td>';
-                                    tabstr += '<td nowrap="nowrap">' + $(this).children("檢視文件").text().trim() + '</td>';
-                                    tabstr += '<td nowrap="nowrap">' + $(this).children("委員意見").text().trim() + '</td>';
-                                    tabstr += '<td nowrap="nowrap">' + $(this).children("修改日期").text().trim() + '</td>';
-                                    tabstr += '</tr>';
-                                });
-                            }
-                            else
-                                tabstr += '<tr><td colspan="5">查詢無資料</td></tr>';
-                            $("#tablistOpen tbody").append(tabstr);
-                        }
-                    }
-                });
+            // 刪除意見
+            $(document).on("click", "input[name='delbtn']", function () {
+                var isDel = confirm("確定刪除意見嗎?");
+                if (isDel) {
+                    $.ajax({
+			    	    type: "POST",
+			    	    async: false, //在沒有返回值之前,不會執行下一步動作
+			    	    url: "../Handler/GasDelLogSefEvaluation.aspx",
+                        data: {
+                            guid: $(this).attr("did")
+			    	    },
+			    	    error: function (xhr) {
+			    	    	alert("Error: " + xhr.status);
+			    	    	console.log(xhr.responseText);
+                        },
+			    	    success: function (data) {
+			    	    	if ($(data).find("Error").length > 0) {
+			    	    		alert($(data).find("Error").attr("Message"));
+			    	    	}
+			    	    	else {
+                                alert($("Response", data).text());
+                                GetLogList();
+			    	    	}
+			    	    }
+                    });
+                }                    
+            });
 
+            // radio button 再次點擊後取消
+            $(document).on("click", "input:radio", function () {
+                var domName = $(this).attr('name');
+            
+                var $radio = $(this);
+                // if this was previously checked
+                
+                if ($radio.data('waschecked') == true){
+                	 console.log($radio.data('waschecked') == true);
+                    $radio.prop('checked', false);
+                    //$("input:radio[name='radio" + domName + "']").data('waschecked',false);
+                    $radio.data('waschecked', false);
+                } else {
+                	 console.log($radio.data('waschecked') == true);
+                    $radio.prop('checked', true);
+                    //$("input:radio[name='radio" + domName + "']").data('waschecked',true);
+                    $radio.data('waschecked', true);
+                }
+            });
+
+            // 開啟新增意見開窗
+            $(document).on("click", "input[name='newbtn']", function () {
+                $("#qAnswer").val($("input:radio[name=mg_" + $("#qGuid").val() + "]:checked").val());
+                $("#qViewFile").val($("input[name=vf_" + $("#qGuid").val() + "]").val());
+                $("#psStr2").val("");
+                doOpenDialog2();
+            });
+
+            //取消意見開窗
+            $(document).on("click", "#ps_cancel2", function () {
+                GetLogList();
                 doOpenDialog();
             });
 
+            //儲存意見log
+            $(document).on("click", "#ps_savebtn2", function () {
+                var isNull = '';
+                var str = '';
+                var isSave = '';
+
+                if ($("#qAnswer").val() == '') {
+                    isNull = 'false';
+                    str = '請填寫答案再儲存!';
+                }
+                else {
+                    isNull = 'true';
+                    str = '確定儲存?'
+                }
+
+                isSave = confirm(str);
+
+                if (isSave) {
+                    if (isNull == 'true') {
+                        $.ajax({
+                            type: "POST",
+                            async: false, //在沒有返回值之前,不會執行下一步動作
+                            url: "../Handler/GasSaveLogSefEvaluation.aspx",
+                            data: {
+                                qid: $("#qGuid").val(),
+                                qOpinions: $("#psStr2").val(),
+                                qAnswer: $("#qAnswer").val(),
+                                qViewFile: $("#qViewFile").val(),
+                                qYear: "110",
+                            },
+                            error: function (xhr) {
+                                alert("Error: " + xhr.status);
+                                console.log(xhr.responseText);
+                            },
+                            success: function (data) {
+                                if ($(data).find("Error").length > 0) {
+                                    alert($(data).find("Error").attr("Message"));
+                                }
+                                else {
+                                    alert($("Response", data).text());
+                                    var simpleStr = $("#psStr2").val();
+                                    simpleStr = (simpleStr.length > 15) ? simpleStr.substr(0, 15) + "..." : simpleStr;
+                                    $($("#sp_" + $("#qGuid").val())).html(simpleStr);
+                                    $($("#sp_" + $("#qGuid").val())).data('powertip', $("#psStr2").val());
+                                    $($("#ps_" + $("#qGuid").val())).val($("#psStr2").val());
+
+                                    GetLogList();
+                                    GetAns();
+                                    doOpenDialog();                                        
+                                }
+                            }
+                        });             
+                    }
+                }                                        
+            });            
+
             // 儲存備註
-            $(document).on("click", "#ps_savebtn", function () {
-                var simpleStr = $("#psStr").val();
-                simpleStr = (simpleStr.length > 15) ? simpleStr.substr(0, 15) + "..." : simpleStr;
-                $($("#sp_" + $("#qGuid").val())).html(simpleStr);
-                $($("#sp_" + $("#qGuid").val())).data('powertip', $("#psStr").val());
-                $($("#ps_" + $("#qGuid").val())).val($("#psStr").val());
-                $.colorbox.close();
-            });
+            //$(document).on("click", "#ps_savebtn", function () {
+            //    var simpleStr = $("#psStr").val();
+            //    simpleStr = (simpleStr.length > 15) ? simpleStr.substr(0, 15) + "..." : simpleStr;
+            //    $($("#sp_" + $("#qGuid").val())).html(simpleStr);
+            //    $($("#sp_" + $("#qGuid").val())).data('powertip', $("#psStr").val());
+            //    $($("#ps_" + $("#qGuid").val())).val($("#psStr").val());
+            //    $.colorbox.close();
+            //});
         }); // end js
+
+        function GetLogList() {
+            $.ajax({
+			    type: "POST",
+			    async: false, //在沒有返回值之前,不會執行下一步動作
+			    url: "../Handler/GetGasCommitteeSuggestion.aspx",
+                data: {
+			    	qid: $("#qGuid").val()
+			    },
+			    error: function (xhr) {
+			    	alert("Error: " + xhr.status);
+			    	console.log(xhr.responseText);
+			    },
+			    success: function (data) {
+			    	if ($(data).find("Error").length > 0) {
+			    		alert($(data).find("Error").attr("Message"));
+			    	}
+			    	else {
+			    		$("#tablistOpen tbody").empty();
+                        var tabstr = '';
+                        var item = '';
+                        var ans = '';                                
+			    		if ($(data).find("data_item").length > 0) {
+                            $(data).find("data_item").each(function (i) {
+                                item = $(this).children("答案").text().trim();
+                                switch (item) {
+                                    case "01":
+                                        ans = "符合";
+                                        break;
+                                    case "02":
+                                        ans = "不符合";
+                                        break;
+                                    case "03":
+                                        ans = "不適用";
+                                        break;
+                                }
+			    				tabstr += '<tr>';
+			    				tabstr += '<td nowrap="nowrap" style="display:none">';
+			    				tabstr += '<input type="hidden" aid="' + $(this).children("委員guid").text().trim() + '" />';
+			    				tabstr += '</td>';
+			    				tabstr += '<td nowrap="nowrap">' + $(this).children("委員").text().trim() + '</td>';
+			    				tabstr += '<td nowrap="nowrap">' + ans + '</td>';
+			    				tabstr += '<td nowrap="nowrap">' + $(this).children("檢視文件").text().trim() + '</td>';
+			    				tabstr += '<td nowrap="nowrap">' + $(this).children("委員意見").text().trim() + '</td>';
+			    				tabstr += '<td nowrap="nowrap">' + $(this).children("修改日期").text().trim() + '</td>';
+			    				tabstr += '<td nowrap="nowrap">';
+			    				tabstr += '<input type=button value="刪除" class="genbtn" name="delbtn" did="' + $(this).children("guid").text().trim() + '" />';
+			    				tabstr += '</tr>';
+			    			});
+			    		}
+			    		else
+			    			tabstr += '<tr><td colspan="6">查詢無資料</td></tr>';
+			    		$("#tablistOpen tbody").append(tabstr);
+			    	}
+			    }
+            });                
+        }
 
         function GetList() {
             $.ajax({
@@ -414,9 +530,14 @@
 
         function doOpenDialog() {
             var WinHeight = $("html").height();
-            var ColHeight = WinHeight * 0.8;
-            $.colorbox({ inline: true, href: "#checklistedit", width: "100%", maxWidth: "1000", maxHeight: ColHeight, opacity: 0.5 });
+            var ColHeight = WinHeight * 0.6;
+            $.colorbox({ inline: true, href: "#checklistedit", width: "100%", maxWidth: "800", maxHeight: ColHeight, opacity: 0.5 });
         }
+        function doOpenDialog2() {
+			var WinHeight = $("html").height();
+			var ColHeight = WinHeight * 0.6;
+			$.colorbox({ inline: true, href: "#checklistedit2", width: "100%", maxWidth: "800", maxHeight: ColHeight, opacity: 0.5 });
+		}
     </script>
 </head>
 <body class="bgG">
@@ -425,6 +546,8 @@
         <input type="hidden" id="Competence" value="<%= identity %>" />
         <input type="hidden" id="CompanyName" value="<%= companyName %>" />
         <input type="hidden" id="qGuid" />
+        <input type="hidden" id="qAnswer" />
+	    <input type="hidden" id="qViewFile" />
         <form id="form1">
             <!-- Preloader -->
             <div id="preloader">
@@ -477,12 +600,12 @@
                                     <table id="tablist" width="100%" border="0" cellspacing="0" cellpadding="0">
                                         <thead>
                                             <tr>
-                                                <th nowrap="nowrap">110年天然氣生產及進口事業輸儲設備查核項目</th>
-                                                <th nowrap="nowrap" width="200">業者</th>
-                                                <th nowrap="nowrap" width="200">委員</th>
-                                                <th nowrap="nowrap">檢視文件</th>
-                                                <th nowrap="nowrap" width="300">委員建議</th>
-                                                <th nowrap="nowrap" width="">功能</th>
+                                                <th nowrap="nowrap" class="font-size3">110年天然氣生產及進口事業輸儲設備查核項目</th>
+                                                <th nowrap="nowrap" width="200" class="font-size3">業者</th>
+                                                <th nowrap="nowrap" width="200" class="font-size3">委員</th>
+                                                <th nowrap="nowrap" class="font-size3">檢視文件</th>
+                                                <th nowrap="nowrap" width="300" class="font-size3">委員建議</th>
+                                                <th nowrap="nowrap" width="" class="font-size3">功能</th>
                                             </tr>
                                         </thead>
                                         <tbody></tbody>
@@ -514,48 +637,57 @@
     </div>
     <!-- 結尾用div:修正mmenu form bug -->
 
-    <!-- colorbox -->
-    <div style="display: none;">
-        <div id="checklistedit">
-            <div class="margin35T padding5RL">
-                <div class="OchiTrasTable width100 TitleLength03 font-size3">
-                    <div class="OchiRow">
-                        <div class="OchiCell OchiTitle IconCe TitleSetWidth">委員意見</div>
-                        <div class="OchiCell width100">
-                            <textarea id="psStr" rows="8" cols="" class="inputex width100"></textarea>
-                            <div class="stripetreeG margin10T">
-                                <table id="tablistOpen" width="100%" border="0" cellspacing="0" cellpadding="0">
-                                    <thead>
-                                        <tr>
-                                            <th nowrap="nowrap" width="10%">委員</th>
-                                            <th nowrap="nowrap" width="5%">答案</th>
-                                            <th nowrap="nowrap" width="15%">檢視文件</th>
-                                            <th nowrap="nowrap" width="50%">委員意見</th>
-                                            <th nowrap="nowrap" width="20%">修改日期</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                                </table>
-                            </div>
-                            <!-- stripetree -->
-                            <div id="errMsgOpen" style="color: red;"></div>
-                        </div>
-                    </div>
-                    <!-- OchiRow -->
+    <!-- logList -->
+    <!-- logList -->
+	<div style="display:none;">
+		<div id="checklistedit">
+			<div class="margin35T padding5RL">
+                <div align="right">
+                    <input type="button" name="newbtn" value="新增" class="genbtn" />
                 </div>
-                <!-- OchiTrasTable -->
-            </div>
+                <div class="stripetreeG margin10T">
+					<table id="tablistOpen" width="100%" border="0" cellspacing="0" cellpadding="0">
+						<thead>
+							<tr>
+								<th nowrap="nowrap"width="8%">委員</th>
+								<th nowrap="nowrap"width="4%">答案</th>
+								<th nowrap="nowrap"width="13%">檢視文件</th>
+								<th nowrap="nowrap"width="50%">委員意見</th>
+								<th nowrap="nowrap"width="20%">修改日期</th>
+								<th nowrap="nowrap"width="10%">功能</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div><!-- stripetree -->
+				<div id="errMsgOpen" style="color:red;"></div>						
+			</div>
+		</div>
+	</div>
 
-            <div class="twocol margin10T">
-                <div class="right">
-                    <a href="javascript:void(0);" class="genbtn closecolorbox">取消</a>
-                    <a href="javascript:void(0);" id="ps_savebtn" class="genbtn">確定</a>
-                </div>
-            </div>
-            <br />
-            <br />
-        </div>
-    </div>
+    <!-- new opinnions -->
+	<div style="display:none;">
+		<div id="checklistedit2">
+			<div class="margin35T padding5RL">
+				<div class="OchiTrasTable width100 TitleLength03 font-size3">
+					<div class="OchiRow">
+                        <div class="OchiCell OchiTitle IconCe TitleSetWidth">委員意見</div>
+						<div class="OchiCell width100">
+							<textarea id="psStr2" rows="8" cols="" class="inputex width100"></textarea>
+						</div>
+					</div><!-- OchiRow -->
+				</div><!-- OchiTrasTable -->
+			</div>
+
+			<div class="twocol margin10T">
+				<div class="right">
+					<a href="javascript:void(0);" id="ps_cancel2" class="genbtn">取消</a>
+					<a href="javascript:void(0);" id="ps_savebtn2" class="genbtn">儲存</a>
+				</div>
+			</div>
+			<br /><br />
+		</div>
+	</div>
 
     <!-- 本頁面使用的JS -->
     <script type="text/javascript">

@@ -8,7 +8,7 @@ using System.Data;
 
 public partial class WebPage_OilSelfEvaluation : System.Web.UI.Page
 {
-	public string username, identity, companyName;
+	public string userguid, username, identity, companyName;
 	OilCompanyInfo_DB oilInfo_db = new OilCompanyInfo_DB();
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -16,6 +16,7 @@ public partial class WebPage_OilSelfEvaluation : System.Web.UI.Page
 			Response.Write("<script>alert('請重新登入'); location='SignIn.aspx';</script>");
 		else
 		{
+            userguid = LogInfo.mGuid;
 			username = LogInfo.name;
 			identity = LogInfo.competence;
 			//if (LogInfo.competence != "02")
