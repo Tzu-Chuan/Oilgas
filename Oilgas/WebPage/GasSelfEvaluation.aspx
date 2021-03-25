@@ -8,11 +8,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11; IE=10; IE=9; IE=8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="keywords" content="關鍵字內容" />
-    <meta name="description" content="描述" /><!--告訴搜尋引擎這篇網頁的內容或摘要。-->
-    <meta name="generator" content="Notepad" /><!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。-->
-    <meta name="author" content="工研院 資訊處" /><!--告訴搜尋引擎這篇網頁是由誰製作的。-->
-    <meta name="copyright" content="本網頁著作權所有" /><!--告訴搜尋引擎這篇網頁是...... -->
-    <meta name="revisit-after" content="3 days" /><!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
+    <meta name="description" content="描述" />
+    <!--告訴搜尋引擎這篇網頁的內容或摘要。-->
+    <meta name="generator" content="Notepad" />
+    <!--告訴搜尋引擎這篇網頁是用什麼軟體製作的。-->
+    <meta name="author" content="工研院 資訊處" />
+    <!--告訴搜尋引擎這篇網頁是由誰製作的。-->
+    <meta name="copyright" content="本網頁著作權所有" />
+    <!--告訴搜尋引擎這篇網頁是...... -->
+    <meta name="revisit-after" content="3 days" />
+    <!--告訴搜尋引擎3天之後再來一次這篇網頁，也許要重新登錄。-->
     <title>天然氣事業輸儲設備查核及檢測資訊系統</title>
     <!--#include file="Head_Include.html"-->
     <script type="text/javascript">
@@ -157,7 +162,7 @@
             $(document).on("click", "input[name='psbtn']", function () {
                 $("#qGuid").val($(this).attr("qid"));
                 GetLogList();
-                 doOpenDialog();
+                doOpenDialog();
             });
 
             // 刪除意見
@@ -165,43 +170,43 @@
                 var isDel = confirm("確定刪除意見嗎?");
                 if (isDel) {
                     $.ajax({
-			    	    type: "POST",
-			    	    async: false, //在沒有返回值之前,不會執行下一步動作
-			    	    url: "../Handler/GasDelLogSefEvaluation.aspx",
+                        type: "POST",
+                        async: false, //在沒有返回值之前,不會執行下一步動作
+                        url: "../Handler/GasDelLogSefEvaluation.aspx",
                         data: {
                             guid: $(this).attr("did")
-			    	    },
-			    	    error: function (xhr) {
-			    	    	alert("Error: " + xhr.status);
-			    	    	console.log(xhr.responseText);
                         },
-			    	    success: function (data) {
-			    	    	if ($(data).find("Error").length > 0) {
-			    	    		alert($(data).find("Error").attr("Message"));
-			    	    	}
-			    	    	else {
+                        error: function (xhr) {
+                            alert("Error: " + xhr.status);
+                            console.log(xhr.responseText);
+                        },
+                        success: function (data) {
+                            if ($(data).find("Error").length > 0) {
+                                alert($(data).find("Error").attr("Message"));
+                            }
+                            else {
                                 alert($("Response", data).text());
                                 GetLogList();
-			    	    	}
-			    	    }
+                            }
+                        }
                     });
-                }                    
+                }
             });
 
             // radio button 再次點擊後取消
             $(document).on("click", "input:radio", function () {
                 var domName = $(this).attr('name');
-            
+
                 var $radio = $(this);
                 // if this was previously checked
-                
-                if ($radio.data('waschecked') == true){
-                	 console.log($radio.data('waschecked') == true);
+
+                if ($radio.data('waschecked') == true) {
+                    console.log($radio.data('waschecked') == true);
                     $radio.prop('checked', false);
                     //$("input:radio[name='radio" + domName + "']").data('waschecked',false);
                     $radio.data('waschecked', false);
                 } else {
-                	 console.log($radio.data('waschecked') == true);
+                    console.log($radio.data('waschecked') == true);
                     $radio.prop('checked', true);
                     //$("input:radio[name='radio" + domName + "']").data('waschecked',true);
                     $radio.data('waschecked', true);
@@ -269,13 +274,13 @@
                                     $($("#ps_" + $("#qGuid").val())).val($("#psStr2").val());
 
                                     GetLogList();
-                                    doOpenDialog();                                        
+                                    doOpenDialog();
                                 }
                             }
-                        });             
+                        });
                     }
-                }                                        
-            });            
+                }
+            });
 
             // 儲存備註
             //$(document).on("click", "#ps_savebtn", function () {
@@ -290,26 +295,26 @@
 
         function GetLogList() {
             $.ajax({
-			    type: "POST",
-			    async: false, //在沒有返回值之前,不會執行下一步動作
-			    url: "../Handler/GetGasCommitteeSuggestion.aspx",
+                type: "POST",
+                async: false, //在沒有返回值之前,不會執行下一步動作
+                url: "../Handler/GetGasCommitteeSuggestion.aspx",
                 data: {
-			    	qid: $("#qGuid").val()
-			    },
-			    error: function (xhr) {
-			    	alert("Error: " + xhr.status);
-			    	console.log(xhr.responseText);
-			    },
-			    success: function (data) {
-			    	if ($(data).find("Error").length > 0) {
-			    		alert($(data).find("Error").attr("Message"));
-			    	}
-			    	else {
-			    		$("#tablistOpen tbody").empty();
+                    qid: $("#qGuid").val()
+                },
+                error: function (xhr) {
+                    alert("Error: " + xhr.status);
+                    console.log(xhr.responseText);
+                },
+                success: function (data) {
+                    if ($(data).find("Error").length > 0) {
+                        alert($(data).find("Error").attr("Message"));
+                    }
+                    else {
+                        $("#tablistOpen tbody").empty();
                         var tabstr = '';
                         var item = '';
-                        var ans = '';                                
-			    		if ($(data).find("data_item").length > 0) {
+                        var ans = '';
+                        if ($(data).find("data_item").length > 0) {
                             $(data).find("data_item").each(function (i) {
                                 item = $(this).children("答案").text().trim();
                                 switch (item) {
@@ -323,26 +328,26 @@
                                         ans = "不適用";
                                         break;
                                 }
-			    				tabstr += '<tr>';
-			    				tabstr += '<td nowrap="nowrap" style="display:none">';
-			    				tabstr += '<input type="hidden" aid="' + $(this).children("委員guid").text().trim() + '" />';
-			    				tabstr += '</td>';
-			    				tabstr += '<td nowrap="nowrap">' + $(this).children("委員").text().trim() + '</td>';
-			    				tabstr += '<td nowrap="nowrap">' + ans + '</td>';
-			    				tabstr += '<td nowrap="nowrap">' + $(this).children("檢視文件").text().trim() + '</td>';
-			    				tabstr += '<td nowrap="nowrap">' + $(this).children("委員意見").text().trim() + '</td>';
-			    				tabstr += '<td nowrap="nowrap">' + $(this).children("修改日期").text().trim() + '</td>';
-			    				tabstr += '<td nowrap="nowrap">';
-			    				tabstr += '<input type=button value="刪除" class="genbtn" name="delbtn" did="' + $(this).children("guid").text().trim() + '" />';
-			    				tabstr += '</tr>';
-			    			});
-			    		}
-			    		else
-			    			tabstr += '<tr><td colspan="6">查詢無資料</td></tr>';
-			    		$("#tablistOpen tbody").append(tabstr);
-			    	}
-			    }
-            });                
+                                tabstr += '<tr>';
+                                tabstr += '<td nowrap="nowrap" style="display:none">';
+                                tabstr += '<input type="hidden" aid="' + $(this).children("委員guid").text().trim() + '" />';
+                                tabstr += '</td>';
+                                tabstr += '<td nowrap="nowrap">' + $(this).children("委員").text().trim() + '</td>';
+                                tabstr += '<td nowrap="nowrap">' + ans + '</td>';
+                                tabstr += '<td nowrap="nowrap">' + $(this).children("檢視文件").text().trim() + '</td>';
+                                tabstr += '<td nowrap="nowrap">' + $(this).children("委員意見").text().trim() + '</td>';
+                                tabstr += '<td nowrap="nowrap">' + $(this).children("修改日期").text().trim() + '</td>';
+                                tabstr += '<td nowrap="nowrap">';
+                                tabstr += '<input type=button value="刪除" class="genbtn" name="delbtn" did="' + $(this).children("guid").text().trim() + '" />';
+                                tabstr += '</tr>';
+                            });
+                        }
+                        else
+                            tabstr += '<tr><td colspan="6">查詢無資料</td></tr>';
+                        $("#tablistOpen tbody").append(tabstr);
+                    }
+                }
+            });
         }
 
         function GetList() {
@@ -430,7 +435,7 @@
                                 expandable: true, // 展開or收合
                                 column: 0
                             });
-                            $("#tablist").treetable('expandAll');//預設全展開
+                            //$("#tablist").treetable('expandAll');//預設全展開
                         }
                     }
                 }
@@ -533,10 +538,10 @@
             $.colorbox({ inline: true, href: "#checklistedit", width: "100%", maxWidth: "800", maxHeight: ColHeight, opacity: 0.5 });
         }
         function doOpenDialog2() {
-			var WinHeight = $("html").height();
-			var ColHeight = WinHeight * 0.6;
-			$.colorbox({ inline: true, href: "#checklistedit2", width: "100%", maxWidth: "800", maxHeight: ColHeight, opacity: 0.5 });
-		}
+            var WinHeight = $("html").height();
+            var ColHeight = WinHeight * 0.6;
+            $.colorbox({ inline: true, href: "#checklistedit2", width: "100%", maxWidth: "800", maxHeight: ColHeight, opacity: 0.5 });
+        }
     </script>
 </head>
 <body class="bgG">
@@ -546,7 +551,7 @@
         <input type="hidden" id="CompanyName" value="<%= companyName %>" />
         <input type="hidden" id="qGuid" />
         <input type="hidden" id="qAnswer" />
-	    <input type="hidden" id="qViewFile" />
+        <input type="hidden" id="qViewFile" />
         <form id="form1">
             <!-- Preloader -->
             <div id="preloader">
@@ -589,7 +594,7 @@
                                     </span>
                                 </div>
                                 <div class="twocol">
-                                    <div class="right font-normal">
+                                    <div class="right font-normal" font-size4>
                                         <a href="#" id="btnallopen"><i class="fa fa-plus-square-o" aria-hidden="true"></i>&nbsp;全部展開</a>&nbsp;&nbsp;
 									<a href="#" id="btnallclose"><i class="fa fa-minus-square-o" aria-hidden="true"></i>&nbsp;全部收合</a>
                                     </div>
@@ -613,7 +618,8 @@
                                 <!-- stripetree -->
                                 <div id="errMsg" style="color: red;"></div>
                                 <div style="margin-top: 20px;">
-                                    <input type="button" id="subbtn" value="儲存" class="genbtn" /></div>
+                                    <input type="button" id="subbtn" value="儲存" class="genbtn" />
+                                </div>
                             </div>
                         </div>
                         <!-- container -->
@@ -638,55 +644,59 @@
 
     <!-- logList -->
     <!-- logList -->
-	<div style="display:none;">
-		<div id="checklistedit">
-			<div class="margin35T padding5RL">
+    <div style="display: none;">
+        <div id="checklistedit">
+            <div class="margin35T padding5RL">
                 <div align="right">
                     <input type="button" name="newbtn" value="新增" class="genbtn" />
                 </div>
                 <div class="stripetreeG margin10T">
-					<table id="tablistOpen" width="100%" border="0" cellspacing="0" cellpadding="0">
-						<thead>
-							<tr>
-								<th nowrap="nowrap"width="8%">委員</th>
-								<th nowrap="nowrap"width="4%">答案</th>
-								<th nowrap="nowrap"width="13%">檢視文件</th>
-								<th nowrap="nowrap"width="50%">委員意見</th>
-								<th nowrap="nowrap"width="20%">修改日期</th>
-								<th nowrap="nowrap"width="10%">功能</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
-				</div><!-- stripetree -->
-				<div id="errMsgOpen" style="color:red;"></div>						
-			</div>
-		</div>
-	</div>
+                    <table id="tablistOpen" width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th nowrap="nowrap" width="8%">委員</th>
+                                <th nowrap="nowrap" width="4%">答案</th>
+                                <th nowrap="nowrap" width="13%">檢視文件</th>
+                                <th nowrap="nowrap" width="50%">委員意見</th>
+                                <th nowrap="nowrap" width="20%">修改日期</th>
+                                <th nowrap="nowrap" width="10%">功能</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- stripetree -->
+                <div id="errMsgOpen" style="color: red;"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- new opinnions -->
-	<div style="display:none;">
-		<div id="checklistedit2">
-			<div class="margin35T padding5RL">
-				<div class="OchiTrasTable width100 TitleLength03 font-size3">
-					<div class="OchiRow">
+    <div style="display: none;">
+        <div id="checklistedit2">
+            <div class="margin35T padding5RL">
+                <div class="OchiTrasTable width100 TitleLength03 font-size3">
+                    <div class="OchiRow">
                         <div class="OchiCell OchiTitle IconCe TitleSetWidth">委員意見</div>
-						<div class="OchiCell width100">
-							<textarea id="psStr2" rows="8" cols="" class="inputex width100"></textarea>
-						</div>
-					</div><!-- OchiRow -->
-				</div><!-- OchiTrasTable -->
-			</div>
+                        <div class="OchiCell width100">
+                            <textarea id="psStr2" rows="8" cols="" class="inputex width100"></textarea>
+                        </div>
+                    </div>
+                    <!-- OchiRow -->
+                </div>
+                <!-- OchiTrasTable -->
+            </div>
 
-			<div class="twocol margin10T">
-				<div class="right">
-					<a href="javascript:void(0);" id="ps_cancel2" class="genbtn">取消</a>
-					<a href="javascript:void(0);" id="ps_savebtn2" class="genbtn">儲存</a>
-				</div>
-			</div>
-			<br /><br />
-		</div>
-	</div>
+            <div class="twocol margin10T">
+                <div class="right">
+                    <a href="javascript:void(0);" id="ps_cancel2" class="genbtn">取消</a>
+                    <a href="javascript:void(0);" id="ps_savebtn2" class="genbtn">儲存</a>
+                </div>
+            </div>
+            <br />
+            <br />
+        </div>
+    </div>
 
     <!-- 本頁面使用的JS -->
     <script type="text/javascript">
