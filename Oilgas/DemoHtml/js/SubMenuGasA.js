@@ -3,33 +3,33 @@ var menucode = "\
 <ul class='nav'>\
 <li><a href='#' target='_self'>天然氣業者基本資料</a>\
 <ul class='navSa'>\
-<li><a href='gas-firmA001.html' target='_self'>事業單位基本資料表</a></li>\
-<li><a href='gas-firmA002.html' target='_self'>用戶管線定期檢查計畫及檢查結果</a></li>\
-<li><a href='gas-firmA003.html' target='_self'>轄區管線示意圖</a></li>\
-<li><a href='gas-firmA004.html' target='_self'>場站管線流程圖(PFD)</a></li>\
-<li><a href='gas-firmA005.html' target='_self'>場站概況分佈圖</a></li>\
+<li><a href='GasInfo.aspx' target='_self'>事業單位基本資料表</a></li>\
+<li><a href='GasTubeCheckPlanAndResult.aspx' target='_self'>用戶管線定期檢查計畫及檢查結果</a></li>\
+<li><a href='GasAreaSchematicDiagram.aspx' target='_self'>轄區管線示意圖</a></li>\
+<li><a href='GasStationFlowChart.aspx' target='_self'>場站管線流程圖(PFD)</a></li>\
+<li><a href='GasStationAboutDistribution.aspx' target='_self'>場站概況分佈圖</a></li>\
 </ul>\
 </li>\
 <!--<li><a href='gas-firmA101.html' target='_self'>二、天然氣儲槽設施資料</a></li>-->\
 \
 <li><a href='#' target='_self'>管線管理</a>\
 <ul class='navSb'>\
-<li><a href='gas-firmA201.html' target='_self'>管線基本資料</a></li>\
-<!--<li><a href='gas-firmA202.html' target='_self'>(二)、管線路徑環境特質</a></li>-->\
-<li><a href='gas-firmA203.html' target='_self'>管線完整性管理作為</a></li>\
-<li><a href='gas-firmA204.html' target='_self'>智慧型通管器檢查(ILI)</a></li>\
-<!--<li><a href='gas-firmA205.html' target='_self'>(五)、緊密電位檢測(CIPS)</a></li>-->\
-<!--<li><a href='gas-firmA206.html' target='_self'>(六)、異常整流站</a></li>-->\
-<li><a href='gas-firmA207.html' target='_self'>管線巡檢\t</a></li>\
-<li><a href='gas-firmA208.html' target='_self'>管線維修或開挖</a></li>\
-<li><a href='gas-firmA209.html' target='_blank'>風險評估</a></li>\
-<li><a href='gas-firmA210.html' target='_self'>內部稽核</a></li>\
+<li><a href='GasTubeInfo.aspx' target='_self'>管線基本資料</a></li>\
+<!--<li><a href='gas-firmA202.html' target='_self'>管線路徑環境特質</a></li>-->\
+<li><a href='GasTubeComplete.aspx' target='_self'>管線完整性管理作為</a></li>\
+<li><a href='GasCheckSmartTubeCleaner.aspx' target='_self'>智慧型通管器檢查(ILI)</a></li>\
+<!--<li><a href='gas-firmA205.html' target='_self'>緊密電位檢測(CIPS)</a></li>-->\
+<li><a href='GasAberrantStation.aspx' target='_self'>異常整流站</a></li>\
+<li><a href='GasTubeCheck.aspx' target='_self'>管線巡檢</a></li>\
+<li><a href='GasTubeMaintain.aspx' target='_self'>管線維修或開挖</a></li>\
+<li><a href='GasRiskAssessment.aspx' target='_self'>風險評估</a></li>\
+<li><a href='GasInsideInspect.aspx' target='_self'>內部稽核</a></li>\
 </ul>\
 </li>\
-<!--<li><a href='gas-firmA301.html' target='_self'>四、控制室</a></li>-->\
-<li><a href='gas-firmA401.html' target='_self'>事故學習</a></li>\
-<li><a href='../WebPage/GasSelfEvaluation.aspx' target='_blank'>查核項目自評</a></li>\
-<li><a href='#' target='_self'>查核簡報上傳</a></li>\
+<!--<li><a href='gas-firmA301.html' target='_self'>控制室</a></li>-->\
+<li><a href='GasAccidentLearning.aspx' target='_self'>事故學習</a></li>\
+<li><a href='GasSelfEvaluation.aspx' target='_blank'>查核項目自評</a></li>\
+<li><a href='doc/查核簡報-海管室.pdf' target='_blank'>查核簡報上傳</a></li>\
 </ul>\
 ";
 

@@ -112,23 +112,9 @@ public partial class Handler_GasSaveSelfEvaluation : System.Web.UI.Page
                             ans_db._填寫人員類別 = LogInfo.competence;
                             ans_db._建立者 = LogInfo.mGuid;
                             ans_db._修改者 = LogInfo.mGuid;
-                            #endregion
-
-                            #region 委員意見log
-                            cs_db._委員guid = LogInfo.mGuid;
-                            cs_db._委員 = LogInfo.name;
-                            cs_db._業者guid = LogInfo.companyGuid;
-                            cs_db._題目guid = qdt.Rows[i]["天然氣自評表題目guid"].ToString();
-                            cs_db._年度 = qdt.Rows[i]["天然氣自評表題目年份"].ToString();
-                            cs_db._答案 = mAns;
-                            cs_db._檢視文件 = vfStr;
-                            cs_db._委員意見 = pStr;
-                            cs_db._建立者 = LogInfo.mGuid;
-                            cs_db._修改者 = LogInfo.mGuid;
-                            #endregion
+                            #endregion                            
 
                             ans_db.SaveAnswer(oConn, myTrans);
-                            cs_db.SaveSuggestion(oConn, myTrans);
                         }                        
 					}
                     else
@@ -163,7 +149,6 @@ public partial class Handler_GasSaveSelfEvaluation : System.Web.UI.Page
                             #endregion
 
                             ans_db.SaveAnswer(oConn, myTrans);
-                            cs_db.SaveSuggestion(oConn, myTrans);
                         }
                     }					
 				}
