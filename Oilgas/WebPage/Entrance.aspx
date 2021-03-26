@@ -44,6 +44,7 @@
                 case "03":
                     break;
                 case "04":
+                    $("#tdWeekReport").hide();
                     break;
             }			
 		});

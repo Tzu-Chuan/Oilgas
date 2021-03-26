@@ -41,7 +41,11 @@
                     break;
                 case "04":
                     $("#subbtn").hide();
-                    $("#subbtnTop").hide();
+                    $("#subbtnTop").hide();                    
+                    $("#alertText").hide();                    
+                    $(".cRadio").prop("disabled", true);
+                    $(".mRadio").prop("disabled", true);
+                    $(".mRef").prop("disabled", true);
                     break;
             }
 
@@ -161,7 +165,7 @@
             // 意見列表開窗
             $(document).on("click", "input[name='psbtn']", function () {
                 $("#qGuid").val($(this).attr("qid"));
-                GetLogList();
+                GetLogList();                
                 doOpenDialog();
             });
 
@@ -337,14 +341,19 @@
                                 tabstr += '<td nowrap="nowrap">' + $(this).children("檢視文件").text().trim() + '</td>';
                                 tabstr += '<td nowrap="nowrap">' + $(this).children("委員意見").text().trim() + '</td>';
                                 tabstr += '<td nowrap="nowrap">' + $(this).children("修改日期").text().trim() + '</td>';
-                                tabstr += '<td nowrap="nowrap">';
-                                tabstr += '<input type=button value="刪除" class="genbtn" name="delbtn" did="' + $(this).children("guid").text().trim() + '" />';
+                                tabstr += '<td name="ftd" nowrap="nowrap">';
+                                tabstr += '<input type=button value="刪除" class="genbtn delbtn" name="delbtn" did="' + $(this).children("guid").text().trim() + '" />';
                                 tabstr += '</tr>';
                             });
                         }
                         else
                             tabstr += '<tr><td colspan="6">查詢無資料</td></tr>';
                         $("#tablistOpen tbody").append(tabstr);
+                        if ($("#Competence").val() == '04') {
+                            $("input[name='newbtn']").hide();
+                            $("#fth").hide();
+                            $("td[name='ftd']").hide();
+                        }
                     }
                 }
             });
@@ -593,7 +602,7 @@
                                     </span>
                                     <span class="btnright">
                                         <div class="font-size4 font-normal">
-                                            <span style="color: red">* 請先點選儲存再離開表單</span>
+                                            <span id="alertText" style="color: red">* 請先點選儲存再離開表單</span>
                                             <input type="button" id="subbtnTop" value="儲存" class="genbtn" />
                                             <i class="fa fa-file-word-o IconCc" aria-hidden="true"></i><a href="../doc/附件3、110年度石油業者石油管線及儲油設施查核.docx" target="_blank">查核填寫內容下載</a>
                                             <i class="fa fa-file-powerpoint-o IconCc" aria-hidden="true"></i><a href="../doc/查核配合事項_石油.pptx" target="_blank">查核配合事項下載</a>
@@ -665,7 +674,7 @@
                                 <th nowrap="nowrap" width="13%">檢視文件</th>
                                 <th nowrap="nowrap" width="50%">委員意見</th>
                                 <th nowrap="nowrap" width="20%">修改日期</th>
-                                <th nowrap="nowrap" width="10%">功能</th>
+                                <th id="fth" nowrap="nowrap" width="10%">功能</th>
                             </tr>
                         </thead>
                         <tbody></tbody>

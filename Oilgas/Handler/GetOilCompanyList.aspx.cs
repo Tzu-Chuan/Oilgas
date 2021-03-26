@@ -14,7 +14,7 @@ public partial class Handler_GetOilCompanyList : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		///-----------------------------------------------------
-		///功    能: 查詢天然氣業者清單
+		///功    能: 查詢石油業者清單
 		///說    明:
 		/// * Request[""]: 
 		///-----------------------------------------------------
